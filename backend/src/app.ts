@@ -15,7 +15,7 @@ app.get('/healthcheck', (req, res, next) => {
 });
 
 app.listen(config.port, () => {
-  console.log("Hi");
+  console.log('Hello');
 })
 
 export default app;

@@ -7,14 +7,17 @@
   },
   "main": "index.js",
   "scripts": {
+    "start": "node dist/app.js",
     "build": "tsc",
-    "lint": "tslint",
+    "lint": "tslint --project \"tsconfig.json\"",
     "test": "jest",
-    "dev": "tsc --watch & nodemon dist",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch:ts\" \"npm run watch:node\"",
+
+
     "serve": "npm run build && npm start",
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
-    "watch:node": "nodemon ./bin/www",
+    "watch:node": "nodemon dist/app.js",
     "test:watch": "npm run test -- --watchAll",
     "test:coverage": "npm run test -- --coverage"
   },
