@@ -11,9 +11,9 @@
     "build": "tsc",
     "lint": "tslint --project \"tsconfig.json\"",
     "test": "jest",
-    "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch:ts\" \"npm run watch:node\"",
+    "dev": "concurrently --names \"serverTS,serverNode,client\" \"npm run watch:ts\" \"npm run watch:node\" \"npm start --prefix ../frontend\"",
 
-
+    
     "serve": "npm run build && npm start",
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
@@ -24,7 +24,9 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "mongoose": "^5.12.1",
     "morgan": "^1.9.1"
   },
   "devDependencies": {

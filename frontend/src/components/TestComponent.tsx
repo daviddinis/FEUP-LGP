@@ -5,8 +5,14 @@ interface Props {
     optionalProp?: string,
 }
 
-const Component = (props : Props) => {
+/*
+type Props = {
+    requiredProp: number,
+    optionalProp?: string,
+}
+*/
 
+const Component = (props : Props) => {
     return (
         <div>
             <span>{props.optionalProp}</span>

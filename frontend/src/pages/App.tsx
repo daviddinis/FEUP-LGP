@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import Component from "../components/TestComponent";
+import axios from "axios";
+
+interface IUser {
+  username: string
+}
 
 function App() {
+  const [users, setUsers] = useState<IUser[]>([]);
+
+  useEffect(() => {
+    axios.get("/users").then(res => {      
+      setUsers(res.data);
+      console.log(res.data);
+    })
+  }, []);
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -21,6 +36,15 @@ function App() {
         </a>
 
         <Component requiredProp={99} optionalProp="Hi"/>
+
+        {users.map(user => {
+          return (
+            <div className="user" key={user.username}>
+              <span className="square"></span>
+              {user.username}
+            </div>
+          )
+        })}        
       </header>
     </div>
   );
