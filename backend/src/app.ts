@@ -9,6 +9,9 @@ import MongoClient from "./models/index";
 import User from "./models/user";
 import File from "./models/file";
 
+import DocParser from './lib/DocumentParser';
+import { parse } from 'node:path';
+
 const app = express();
 
 app.use(logger(config.loggerLevel));
@@ -40,6 +43,13 @@ app.get('/users', async (req, res) => {
 
 app.listen(config.port, async () => {
   console.log('Hello');
+  
+  const parser = new DocParser(); 
+
+  await parser.ping();
+  
+
+  /*
   await MongoClient.connect();
 
   const name = "NewName" + Math.random();
@@ -55,6 +65,7 @@ app.listen(config.port, async () => {
   })
 
   console.log(user2);
+  */
 
 })
 
