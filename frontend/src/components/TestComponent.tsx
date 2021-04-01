@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface Props {
     requiredProp: number,
@@ -12,7 +12,7 @@ type Props = {
 }
 */
 
-const Component = (props : Props) => {
+const component = (props : Props) => {
     return (
         <div>
             <span>{props.optionalProp}</span>
@@ -22,4 +22,4 @@ const Component = (props : Props) => {
 }
 
 
-export default Component;
+export default component;

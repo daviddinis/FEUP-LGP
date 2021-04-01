@@ -3,8 +3,8 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import config from './config';
 
-import MongoClient from "./models/index";
-import User from "./models/user";
+import MongoClient from './models/index';
+import User from './models/user';
 
 
 const app = express();
@@ -28,8 +28,7 @@ app.get('/users', async (req, res) => {
 app.listen(config.port, async () => {
   console.log('Hello');
   await MongoClient.connect();
-  
-  const name = "NewName" + Math.random();
+  const name = 'NewName' + Math.random();
   const user = await User.create({
     username: name
   })
