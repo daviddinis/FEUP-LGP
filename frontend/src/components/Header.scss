@@ -1,0 +1,75 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 50px 60px;
+    background : linear-gradient(135deg, rgba(219, 161, 140, 1) 0%, rgba(189, 125, 134, 0.96) 6.06%, rgba(147, 76, 127, 0.89) 15.49%, rgba(121, 45, 122, 0.85) 22.65%, rgba(111, 33, 120, 0.82) 26.65%, rgba(111, 37, 123, 0.85) 39.01%, rgba(110, 48, 133, 0.88) 50.9%, rgba(108, 68, 148, 0.91) 62.61%, rgba(107, 95, 171, 0.94) 74.2%, rgba(104, 130, 199, 0.96) 85.72%, rgba(101, 173, 234, 0.99) 97.02%, rgba(100, 185, 244, 1) 100%);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.navigation {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropfile-container {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    max-width: 700px;
+    margin-top: 47px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(247, 244, 249, 0.9);
+    border-radius: 10px;
+}
+
+.dropfile-container::after {
+    position: absolute;
+    content: '';
+    top: 11px;
+    right: 11px;
+    bottom: 11px;
+    left: 11px;
+    border-radius: 10px;
+    border: 1px dashed #701C74;
+}
+
+.user-icon {
+    margin-left: 20px;
+} 
+
+.document-icon {
+    margin-bottom: 18px;    
+}
+
+.drop-file-label {
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 17px;
+    color: #701C74;
+}
+
+.drop-file-label strong {
+    font-weight: bolder;
+}
+
+.username {
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 17px;
+    color: #F7F4F9;
+}
+
+.page-title {
+    font-family: Ubuntu;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #F7F4F9;
+}
