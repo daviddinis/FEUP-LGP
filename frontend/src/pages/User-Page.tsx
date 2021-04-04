@@ -8,6 +8,12 @@ interface IUser {
   username: string
 }
 
+/*
+<li key={file.path}>
+        {file.path} - {file.size} bytes
+      </li>
+      */
+
 function UserPage() {
   const [users, setUsers] = useState<IUser[]>([]);
 
@@ -16,9 +22,17 @@ function UserPage() {
   // This is another component but concise example
   const fileList = (files: FileWithPath[]): ReactNode => (
     files.map(file => (
-      <li key={file.path}>
-        {file.path} - {file.size} bytes
-      </li>
+      
+
+      <div className={'file-info'} key={file.path}>
+        <p></p>
+        <p>100%</p>
+        <p>{file.name}</p>
+        <p>tipo</p>
+        <p>{file.type}</p>
+        <p>{file.lastModified}</p>
+      </div>
+
     ))
   );
 
@@ -40,13 +54,23 @@ function UserPage() {
             <input {...getInputProps()} />
             <img
               className={ 'document-icon' }
-              src={ '../shared/icons/document.png' }/>
+               src={ '../shared/icons/document.png' }/>
             <label className={ 'drop-file-label' }><strong>choose a file</strong> or drag it here.</label>
           </div>
       </header>
-      <aside>
-        <ul>{fileList(acceptedFiles)}</ul>
-      </aside>
+      <div className={ 'files-table' }>
+        <div className={ 'column-names' }>
+          <p>status</p>
+          <p>name</p>
+          <p>type</p>
+          <p>format</p>
+          <p>date</p>
+        </div>
+
+        <div className={'table'}>
+          {fileList(acceptedFiles)}
+        </div>
+      </div>
     </div>
   );
 }
