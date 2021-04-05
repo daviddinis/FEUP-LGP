@@ -13,6 +13,7 @@
     "quotemark": {
       "options": "single"
     },
+    "no-trailing-whitespace": false,
     "ordered-imports": false,
     "comment-format": false,
     "eofline": false,

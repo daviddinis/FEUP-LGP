@@ -1,6 +1,6 @@
-import config from "../config";
+import config from '../config';
 
-const docparser = require("docparser-node");
+const docparser = require('docparser-node');
 
 class DocParser {
 	client: any;
@@ -9,32 +9,35 @@ class DocParser {
 		this.client = new docparser.Client(config.docparserApiKey);
 	}
 
-	ping() {
+	ping() : Promise<any> {
 		return this.client
 			.ping()
-			.then(() => console.log("authentication succeeded!"))
-			.catch((err : any) => console.error("authentication failed!", err));
+			.then(() => console.log('authentication succeeded!'))
+			.catch((err : any) => console.error('authentication failed!', err));
 	}
 
-	getParsers() {
+	getParsers() : Promise<any> {
 		return this.client.getParsers();
 	}
 
-	getParsedDocument(parserId: string, documentId : string) {
+	getParsedDocument(parserId: string, documentId : string) : Promise<any> {
 		return this.client.getResultsByDocument(parserId, documentId, {
-			format: "object",
+			format: 'object',
 		});
 	}
 
-	getAllParsedDocuments(parserId : string) {
-		return this.client.getResultsByParser(parserId, { format: "object" });
+	getAllParsedDocuments(parserId : string) : Promise<any> {
+		return this.client.getResultsByParser(parserId, { format: 'object' });
 	}
 
-	uploadDocument(parserId : string, filePath : string) {
+	uploadDocument(parserId : string, filePath : string) : Promise<any> {
 		return this.client.uploadFileByPath(parserId, filePath, {
-			remote_id: "test",
+			remote_id: 'test',
 		});
 	}
+
+
+
 
 }
 
@@ -48,7 +51,7 @@ async function run() {
 
   const parserId = "cvzcwokujphi";
   const documentId = "bc7dab2bb30b39d7991ce3557713a2cc";
- 
+
   console.log(await client.getParsers());
 
   const document = (await getParsedDocument(parserId, documentId))[0];
@@ -65,6 +68,6 @@ async function run() {
 
 }
 
-module.exports = 
+module.exports =
 
 */

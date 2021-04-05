@@ -43,11 +43,45 @@ app.get('/users', async (req, res) => {
 
 app.listen(config.port, async () => {
   console.log('Hello');
-  
-  const parser = new DocParser(); 
+
+  const parser = new DocParser();
 
   await parser.ping();
-  
+
+  console.log(await parser.getParsers());
+
+  const parserId = 'cvzcwokujphi';
+  const documentId = 'bc7dab2bb30b39d7991ce3557713a2cc';
+
+  const data = await parser.getParsedDocument(parserId, documentId);
+
+
+  const parseFinancialList = (parsedData : any, keywords : string[]) => {
+    return parsedData
+        .map((item : any ) => parseFinancialItem(item.key_0, keywords))
+        .filter((item : any) => item !== null);
+  }
+
+  const parseFinancialItem = (item: string, keywords: string[]) => {
+    const line : string = item.replace(/\s\s+/g, ' '); // remove repeated spaces
+
+    const digit = line.search(/\d/)
+
+    const [name, valuesStr] = [ line.slice(0, digit), line.slice(digit, line.length) ]
+
+    const values = valuesStr.split(' ')
+        .map(value => value.replace(/['’]/g, '')) // remove '’
+        .filter(value => value.search(/[a-z]/i) === -1)
+
+//
+    if (!keywords.every(keyword => name.includes(keyword)))
+      return null;
+
+    return { line, name, values }
+  }
+
+
+  console.log(parseFinancialList(data[0].assets, ['total', 'assets']));
 
   /*
   await MongoClient.connect();
