@@ -27,10 +27,14 @@ function UserPage() {
       <div className={'file-info'} key={file.path}>
         <p></p>
         <p>100%</p>
+        
         <p>{file.name}</p>
         <p>tipo</p>
         <p>{file.type}</p>
         <p>{file.lastModified}</p>
+        <p><img
+              className={ 'details-icon' }
+               src={ '../shared/icons/details.png' }/></p>
       </div>
 
     ))
