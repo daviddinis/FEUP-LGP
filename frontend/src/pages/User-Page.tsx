@@ -3,6 +3,8 @@ import { FileWithPath, useDropzone } from 'react-dropzone';
 import './User-Page.scss';
 import axios from "axios";
 import Header from "../components/Header";
+import details from '../shared/icons/details.svg';
+import document from '../shared/icons/document.svg';
 
 interface IUser {
   username: string
@@ -34,7 +36,7 @@ function UserPage() {
         <p>{file.lastModified}</p>
         <p><img
               className={ 'details-icon' }
-               src={ '../shared/icons/details.png' }/></p>
+               src={ details }/></p>
       </div>
 
     ))
@@ -58,7 +60,7 @@ function UserPage() {
             <input {...getInputProps()} />
             <img
               className={ 'document-icon' }
-               src={ '../shared/icons/document.png' }/>
+               src={ document }/>
             <label className={ 'drop-file-label' }><strong>choose a file</strong> or drag it here.</label>
           </div>
       </header>

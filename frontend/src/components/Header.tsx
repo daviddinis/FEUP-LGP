@@ -1,5 +1,6 @@
 import React from "react";
 import './Header.scss';
+import person from '../shared/icons/person.svg';
 
 interface Props {
     username: string,
@@ -20,7 +21,7 @@ const Component = (props : Props) => {
                 {props.username}
                 <img
                     className={ 'user-icon' }
-                    src={ '../shared/icons/person.png' }/>
+                    src={ person }/>
             </p>
         </nav>
     )
