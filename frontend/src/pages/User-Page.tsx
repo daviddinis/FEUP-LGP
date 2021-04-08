@@ -3,6 +3,8 @@ import { FileWithPath, useDropzone } from 'react-dropzone';
 import './User-Page.scss';
 import axios from "axios";
 import Header from "../components/Header";
+import details from '../shared/icons/details.svg';
+import document from '../shared/icons/document.svg';
 
 
 interface IUser {
@@ -51,8 +53,8 @@ function UserPage() {
         <p>{file.type}</p>
         <p>{file.lastModified}</p>
         <p><img
-          className={'details-icon'}
-          src={'../shared/icons/details.png'} /></p>
+              className={ 'details-icon' }
+               src={ details }/></p>
       </div>
 
     ))
@@ -71,14 +73,14 @@ function UserPage() {
       <header className={'header'}>
         <Header
           username="gingerAle"
-          isAdmin={false} />
-        <div {...getRootProps({ className: 'dropzone' })}>
-          <input {...getInputProps()} />
-          <img
-            className={'document-icon'}
-            src={'../shared/icons/document.png'} />
-          <label className={'drop-file-label'}><strong>choose a file</strong> or drag it here.</label>
-        </div>
+          isAdmin={ false }/>
+          <div {...getRootProps({className: 'dropzone'})}>
+            <input {...getInputProps()} />
+            <img
+              className={ 'document-icon' }
+               src={ document }/>
+            <label className={ 'drop-file-label' }><strong>choose a file</strong> or drag it here.</label>
+          </div>
       </header>
       <div className={'files-table'}>
         <div className={'column-names'}>
