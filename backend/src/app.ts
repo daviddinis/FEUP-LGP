@@ -10,7 +10,7 @@ import User from "./models/user";
 import File from "./models/file";
 
 import DocParser from './lib/DocumentParser';
-import { parse } from 'node:path';
+import DataExtractor from './lib/DataExtractor';
 
 const app = express();
 
@@ -41,9 +41,11 @@ app.get('/users', async (req, res) => {
   return res.status(200).json(users);
 });
 
-app.listen(config.port, async () => {
-  console.log('Hello');
+/*
+\d{1,2}[\/\-\s*]?((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\w*|\d{2})(\/|-|\s*)?(\d{4})
 
+ */
+app.listen(config.port, async () => {
   const parser = new DocParser();
 
   await parser.ping();
@@ -51,37 +53,43 @@ app.listen(config.port, async () => {
   console.log(await parser.getParsers());
 
   const parserId = 'cvzcwokujphi';
-  const documentId = 'bc7dab2bb30b39d7991ce3557713a2cc';
+ // const documentId = 'bc7dab2bb30b39d7991ce3557713a2cc'; // AFCA
+  const documentId = '087782204d4bf8cd57365b736d61e53b'; // KB
 
   const data = await parser.getParsedDocument(parserId, documentId);
 
 
-  const parseFinancialList = (parsedData : any, keywords : string[]) => {
-    return parsedData
-        .map((item : any ) => parseFinancialItem(item.key_0, keywords))
-        .filter((item : any) => item !== null);
-  }
+  const strings = DataExtractor.extractStringArray(data.all_data_regex);
+  console.log(DataExtractor.findDataNearKeywords(strings, [/address/i], {
+    maxDistance: 1,
+  }))
 
-  const parseFinancialItem = (item: string, keywords: string[]) => {
-    const line : string = item.replace(/\s\s+/g, ' '); // remove repeated spaces
-
-    const digit = line.search(/\d/)
-
-    const [name, valuesStr] = [ line.slice(0, digit), line.slice(digit, line.length) ]
-
-    const values = valuesStr.split(' ')
-        .map(value => value.replace(/['’]/g, '')) // remove '’
-        .filter(value => value.search(/[a-z]/i) === -1)
-
-//
-    if (!keywords.every(keyword => name.includes(keyword)))
-      return null;
-
-    return { line, name, values }
-  }
+  console.log(DataExtractor.findDataNearKeywords(strings, [/company number/i], {
+    maxDistance: 1,
+    regex: /[0-9]{4,}/i, // minimum 4 digits
+  }))
 
 
-  console.log(parseFinancialList(data[0].assets, ['total', 'assets']));
+  console.log(DataExtractor.findDataNearKeywords(strings, [/company/i], {
+    maxDistance: 1,
+    includeKeyword: true,
+  }))
+
+  console.log(DataExtractor.findDataNearKeywords(strings, [/created on/, /incorporated on/i], {
+    maxDistance: 1,
+    regex: DataExtractor.regexes.DATE
+  }))
+
+  console.log(DataExtractor.findDataNearKeywords(strings, [/.*/], {
+    maxDistance: 1,
+    regex: DataExtractor.regexes.DATE
+  }))
+
+  console.log('2020-19-20 2020 Mar 29  March, 29, 200 29 April 29'.match(DataExtractor.regexes.DATE))
+
+
+
+ // console.log(extractor.parseFinancialList(data.assets, ['total', 'assets']));
 
   /*
   await MongoClient.connect();

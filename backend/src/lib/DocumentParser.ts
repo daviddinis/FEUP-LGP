@@ -2,6 +2,8 @@ import config from '../config';
 
 const docparser = require('docparser-node');
 
+
+
 class DocParser {
 	client: any;
 
@@ -23,7 +25,7 @@ class DocParser {
 	getParsedDocument(parserId: string, documentId : string) : Promise<any> {
 		return this.client.getResultsByDocument(parserId, documentId, {
 			format: 'object',
-		});
+		}).then((data: any[]) => data[0]);
 	}
 
 	getAllParsedDocuments(parserId : string) : Promise<any> {
@@ -35,11 +37,11 @@ class DocParser {
 			remote_id: 'test',
 		});
 	}
-
-
-
-
 }
+
+
+
+
 
 export default DocParser;
 /*
