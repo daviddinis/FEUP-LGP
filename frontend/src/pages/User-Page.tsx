@@ -1,8 +1,9 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState, useCallback } from 'react';
 import { FileWithPath, useDropzone } from 'react-dropzone';
 import './User-Page.scss';
 import axios from "axios";
 import Header from "../components/Header";
+
 
 interface IUser {
   username: string
@@ -17,31 +18,48 @@ interface IUser {
 function UserPage() {
   const [users, setUsers] = useState<IUser[]>([]);
 
-  const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
-  
+  const onDrop = useCallback(acceptedFiles => {
+
+    const formData = new FormData();
+    formData.append('file', acceptedFiles[0]);
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    };
+
+    axios.post("/sendFile", formData, config)
+      .then((response) => {
+        alert("The file is successfully uploaded");
+      });
+  }, [])
+
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ onDrop });
+
+
   // This is another component but concise example
   const fileList = (files: FileWithPath[]): ReactNode => (
     files.map(file => (
-      
+
 
       <div className={'file-info'} key={file.path}>
         <p></p>
         <p>100%</p>
-        
+
         <p>{file.name}</p>
         <p>tipo</p>
         <p>{file.type}</p>
         <p>{file.lastModified}</p>
         <p><img
-              className={ 'details-icon' }
-               src={ '../shared/icons/details.png' }/></p>
+          className={'details-icon'}
+          src={'../shared/icons/details.png'} /></p>
       </div>
 
     ))
   );
 
   useEffect(() => {
-    axios.get("/users").then(res => {      
+    axios.get("/users").then(res => {
       setUsers(res.data);
       console.log(res.data);
     })
@@ -50,20 +68,20 @@ function UserPage() {
 
   return (
     <div className="user-page">
-      <header className={ 'header' }>
+      <header className={'header'}>
         <Header
           username="gingerAle"
-          isAdmin={ false }/>
-          <div {...getRootProps({className: 'dropzone'})}>
-            <input {...getInputProps()} />
-            <img
-              className={ 'document-icon' }
-               src={ '../shared/icons/document.png' }/>
-            <label className={ 'drop-file-label' }><strong>choose a file</strong> or drag it here.</label>
-          </div>
+          isAdmin={false} />
+        <div {...getRootProps({ className: 'dropzone' })}>
+          <input {...getInputProps()} />
+          <img
+            className={'document-icon'}
+            src={'../shared/icons/document.png'} />
+          <label className={'drop-file-label'}><strong>choose a file</strong> or drag it here.</label>
+        </div>
       </header>
-      <div className={ 'files-table' }>
-        <div className={ 'column-names' }>
+      <div className={'files-table'}>
+        <div className={'column-names'}>
           <p>status</p>
           <p>name</p>
           <p>type</p>
