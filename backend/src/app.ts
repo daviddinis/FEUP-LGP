@@ -9,9 +9,6 @@ import MongoClient from "./models/index";
 import User from "./models/user";
 import File from "./models/file";
 
-import DocParser from './lib/DocumentParser';
-import DataExtractor from './lib/DataExtractor';
-
 const app = express();
 
 app.use(logger(config.loggerLevel));
