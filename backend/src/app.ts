@@ -3,8 +3,9 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import config from './config';
 
-import MongoClient from "./models/index";
-import User from "./models/user";
+import MongoClient from './models/index';
+import User from './models/user';
+import File from './models/file';
 
 
 const app = express();
@@ -25,11 +26,16 @@ app.get('/users', async (req, res) => {
   return res.status(200).json(users);
 });
 
+app.get('/files', async (req, res) => {
+  const files = await File.find();
+  return res.status(200).json(files);
+});
+
 app.listen(config.port, async () => {
   console.log('Hello');
   await MongoClient.connect();
-  
-  const name = "NewName" + Math.random();
+
+  const name = 'NewName' + Math.random();
   const user = await User.create({
     username: name
   })
@@ -41,6 +47,13 @@ app.listen(config.port, async () => {
   })
 
   console.log(user2);
+
+  const nameFile = 'NewFile2' + Math.random();
+  const file = await File.create({
+    path: nameFile
+  })
+
+  console.log(file);
 
 })
 
