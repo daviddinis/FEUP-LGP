@@ -41,57 +41,7 @@ app.get('/users', async (req, res) => {
   return res.status(200).json(users);
 });
 
-/*
-\d{1,2}[\/\-\s*]?((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\w*|\d{2})(\/|-|\s*)?(\d{4})
-
- */
 app.listen(config.port, async () => {
-  const parser = new DocParser();
-
-  await parser.ping();
-
-  console.log(await parser.getParsers());
-
-  const parserId = 'cvzcwokujphi';
- // const documentId = 'bc7dab2bb30b39d7991ce3557713a2cc'; // AFCA
-  const documentId = '087782204d4bf8cd57365b736d61e53b'; // KB
-
-  const data = await parser.getParsedDocument(parserId, documentId);
-
-
-  const strings = DataExtractor.extractStringArray(data.all_data_regex);
-  console.log(DataExtractor.findDataNearKeywords(strings, [/address/i], {
-    maxDistance: 1,
-  }))
-
-  console.log(DataExtractor.findDataNearKeywords(strings, [/company number/i], {
-    maxDistance: 1,
-    regex: /[0-9]{4,}/i, // minimum 4 digits
-  }))
-
-
-  console.log(DataExtractor.findDataNearKeywords(strings, [/company/i], {
-    maxDistance: 1,
-    includeKeyword: true,
-  }))
-
-  console.log(DataExtractor.findDataNearKeywords(strings, [/created on/, /incorporated on/i], {
-    maxDistance: 1,
-    regex: DataExtractor.regexes.DATE
-  }))
-
-  console.log(DataExtractor.findDataNearKeywords(strings, [/.*/], {
-    maxDistance: 1,
-    regex: DataExtractor.regexes.DATE
-  }))
-
-  console.log('2020-19-20 2020 Mar 29  March, 29, 200 29 April 29'.match(DataExtractor.regexes.DATE))
-
-
-
- // console.log(extractor.parseFinancialList(data.assets, ['total', 'assets']));
-
-  /*
   await MongoClient.connect();
 
   const name = "NewName" + Math.random();
@@ -107,7 +57,6 @@ app.listen(config.port, async () => {
   })
 
   console.log(user2);
-  */
 
 })
 
