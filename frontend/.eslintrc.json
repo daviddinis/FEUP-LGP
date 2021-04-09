@@ -9,8 +9,10 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "ecmaFeatures":  {
-        "jsx":  true  // Allows for the parsing of JSX
+    "ecmaFeatures": {
+        "jsx": true, // Allows for the parsing of JSX
+        "ts": true, // Allows for the parsing of JSX
+        "tsx": true // Allows for the parsing of JSX
     },
     "plugins": [
         "@typescript-eslint",

@@ -12,8 +12,6 @@
     "lint": "tslint --project \"tsconfig.json\"",
     "test": "jest",
     "dev": "concurrently --names \"serverTS,serverNode,client\" \"npm run watch:ts\" \"npm run watch:node\" \"npm start --prefix ../frontend\"",
-
-    
     "serve": "npm run build && npm start",
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
