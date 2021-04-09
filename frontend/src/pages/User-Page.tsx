@@ -32,14 +32,13 @@ function UserPage() {
 
     axios.post("/sendFile", formData, config)
       .then((response) => {
-        alert("The file is successfully uploaded");
+        // alert("The file is successfully uploaded");
       });
   }, [])
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ onDrop });
 
 
-  // This is another component but concise example
   const fileList = (files: FileWithPath[]): ReactNode => (
     files.map(file => (
 
@@ -60,12 +59,12 @@ function UserPage() {
     ))
   );
 
-  useEffect(() => {
-    axios.get("/users").then(res => {
-      setUsers(res.data);
-      console.log(res.data);
-    })
-  }, []);
+  // useEffect(() => {
+  //   axios.get("/users").then(res => {
+  //     setUsers(res.data);
+  //     console.log(res.data);
+  //   })
+  // }, []);
 
 
   return (

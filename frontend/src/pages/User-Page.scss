@@ -108,14 +108,8 @@
     
     margin-top: 6px;
     
-    height: 40px;
+    height: 44px;
 }
-
-.table > .file-info:nth-child(2n) {
-    background: #EDEAEF;
-}
-
-
 
 .file-info p {
     font-family: Anaheim;
@@ -151,14 +145,17 @@
 
 .file-info > p:nth-child(3) {
     width: 20%;
+    padding-left: 1%;
 }
 
 .file-info > p:nth-child(4) {
     width: 15%;
+    padding-right: 1%;
 }
 
 .file-info > p:nth-child(5) {
     width: 20%;
+    padding-right: 1%;
 }
 
 .file-info > p:nth-child(6) {
