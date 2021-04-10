@@ -35,15 +35,10 @@ function UserPage() {
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ onDrop });
 
-
   const fileList = (files: FileWithPath[]): ReactNode => (
     files.map(file => (
-
-
       <div className={'file-info'} key={file.path}>
-        <p></p>
-        <p>100%</p>
-
+        <p><span className={ 'status-icon' } />100%</p>
         <p>{file.name}</p>
         <p>tipo</p>
         <p>{file.type}</p>
@@ -52,7 +47,6 @@ function UserPage() {
           className={'details-icon'}
           src={details} /></p>
       </div>
-
     ))
   );
 
@@ -86,7 +80,6 @@ function UserPage() {
           <p>format</p>
           <p>date</p>
         </div>
-
         <div className={'table'}>
           {fileList(acceptedFiles)}
         </div>
