@@ -14,7 +14,7 @@ const Header = (user : User) => {
     return (
         <header className={ 'page-header' }>
             <h1 className={ 'page-title' }>
-                Know your customer on the news
+                 Know your customer on the news
             </h1>
             <nav>
             <p className={ 'username' }>
