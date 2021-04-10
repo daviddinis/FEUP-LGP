@@ -10,18 +10,34 @@ interface IUser {
   username: string
 }
 
+interface File {
+  _id: string,
+  path: string,
+  name: string
+}
+
 function App() {
-  const [users, setUsers] = useState<IUser[]>([]);
+  const [files, setUsers] = useState<File[]>([]);
 
   useEffect(() => {
-    axios.get("/users").then(res => {      
+    axios.get("/files").then(res => {      
       setUsers(res.data);
       console.log(res.data);
     })
   }, []);
 
+
   const submitions: any[] = [{id: "1", isFlaged: true, user: "filipasenra", documentName: "anualreportdocura", type: "extract", format: "pdf", date: "25-03-2021",},
   {id: "2", isFlaged: false, user: "claudiasilva", documentName: "IDClaudia", type: "pdf", format: "jpeg", date: "21-03-2021",}];
+
+  for(let i = 0; i != files.length; i++) {
+    const id = files[i]._id;
+    const name = files[i].name;
+
+    submitions.push({id: id, isFlaged: false, user: "pc", documentName: name, type: "extract", format: "pdf", date: "30-01-2012"});
+
+    console.log(submitions);
+  }
 
   return (
 

@@ -48,12 +48,6 @@ app.listen(config.port, async () => {
 
   console.log(user2);
 
-  const nameFile = 'NewFile2' + Math.random();
-  const file = await File.create({
-    path: nameFile
-  })
-
-  console.log(file);
 
 })
 
