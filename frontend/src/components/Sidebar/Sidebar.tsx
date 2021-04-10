@@ -19,7 +19,7 @@ const Sidebar = () => {
                 <i className="fa fa-fw documents" style={{ fontSize: '1.75em' }} />
             </NavIcon>
             <NavText className="text">
-                Submited Documents
+             Submitted Documents           
             </NavText>
         </NavItem>
         <NavItem eventKey="parameters" className="navitem">
