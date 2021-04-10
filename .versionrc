@@ -1,7 +1,7 @@
 {
     "releaseCommitMessageFormat": "docs: Updated changelog",
     "types": [
-        {"type": "feature", "section": "Features"},
+        {"type": "feat", "section": "Features"},
         {"type": "buildc", "section": "Build"},
         {"type": "feat", "hidden": true},
         {"type": "fix", "hidden": true},
@@ -11,6 +11,6 @@
         {"type": "style", "hidden": true},
         {"type": "refactor", "hidden": true},
         {"type": "perf", "hidden": true},
-        {"type": "test", "section": "Test"}
+        {"type": "test", "hidden": true}
     ]
 }
