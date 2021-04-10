@@ -7,6 +7,7 @@ var upload = multer({ dest: 'uploads/' })
 
 import MongoClient from "./models/index";
 import User from "./models/user";
+import File from "./models/file";
 
 const app = express();
 
@@ -18,10 +19,13 @@ app.use(cookieParser());
 
 
 
-app.post('/sendFile', upload.single('file'), function (req: any, res: any) {
-  console.log(req.body, 'Body');
-  console.log(req.file, 'files');
+app.post('/sendFile', upload.single('file'), async function (req: any, res: any) {
 
+  const file = await File.create({
+    path: req.file.path,
+    name: req.file.originalname
+  })
+  
   return res.send(200).end();
 });
 

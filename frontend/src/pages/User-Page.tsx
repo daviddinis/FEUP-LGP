@@ -30,10 +30,7 @@ function UserPage() {
       }
     };
 
-    axios.post("/sendFile", formData, config)
-      .then((response) => {
-        alert("The file is successfully uploaded");
-      });
+    axios.post("/sendFile", formData, config);
   }, [])
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ onDrop });
@@ -53,8 +50,8 @@ function UserPage() {
         <p>{file.type}</p>
         <p>{file.lastModified}</p>
         <p><img
-              className={ 'details-icon' }
-               src={ details }/></p>
+          className={'details-icon'}
+          src={details} /></p>
       </div>
 
     ))
@@ -73,14 +70,14 @@ function UserPage() {
       <header className={'header'}>
         <Header
           username="gingerAle"
-          isAdmin={ false }/>
-          <div {...getRootProps({className: 'dropzone'})}>
-            <input {...getInputProps()} />
-            <img
-              className={ 'document-icon' }
-               src={ document }/>
-            <label className={ 'drop-file-label' }><strong>choose a file</strong> or drag it here.</label>
-          </div>
+          isAdmin={false} />
+        <div {...getRootProps({ className: 'dropzone' })}>
+          <input {...getInputProps()} />
+          <img
+            className={'document-icon'}
+            src={document} />
+          <label className={'drop-file-label'}><strong>choose a file</strong> or drag it here.</label>
+        </div>
       </header>
       <div className={'files-table'}>
         <div className={'column-names'}>

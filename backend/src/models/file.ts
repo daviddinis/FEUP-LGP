@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const fileSchema = new mongoose.Schema(
 	{
-		path: String,
-		name: String
+		path: {type: String, unique: true, required: true},
+		name: {type: String, required: true}
 	},
 	{ timestamps: true }
 );
