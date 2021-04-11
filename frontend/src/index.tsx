@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './pages/App';
+import User from './pages/User-Page';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'></link>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'></link>
+    <User />
   </React.StrictMode>,
   document.getElementById('root')
 );
