@@ -43,6 +43,7 @@ app.listen(config.port, async () => {
   await MongoClient.connect();
 
   const name = "NewName" + Math.random();
+  
   const user = await User.create({
     username: name
   })
