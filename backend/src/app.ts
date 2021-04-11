@@ -38,11 +38,9 @@ app.get('/users', async (req, res) => {
   return res.status(200).json(users);
 });
 
-app.listen(config.port, async () => {
-  await MongoClient.connect();
-
+app.post('/test-db', async(req, res) => {
   const name = "NewName" + Math.random();
-  
+
   const user = await User.create({
     username: name
   })
@@ -54,6 +52,10 @@ app.listen(config.port, async () => {
   })
 
   console.log(user2);
+})
+
+app.listen(config.port, async () => {
+  await MongoClient.connect();
 
 })
 

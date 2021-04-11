@@ -10,9 +10,7 @@
   ],
   "jsRules": {},
   "rules": {
-    "quotemark": {
-      "options": "single"
-    },
+    "quotemark": false,
     "no-trailing-whitespace": false,
     "ordered-imports": false,
     "comment-format": false,
