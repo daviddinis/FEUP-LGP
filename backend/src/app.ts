@@ -2,6 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import config from './config';
+import path from 'path';
 
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' })
@@ -30,5 +31,15 @@ app.listen(config.port, async () => {
   await MongoClient.connect();
   console.log("App is running on port " + config.port);
 })
+
+// Serve react app on production
+
+if (config.environment === 'production') {
+  app.use(express.static(path.join(__dirname, 'frontend', 'build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
+}
+
 
 export default app;
