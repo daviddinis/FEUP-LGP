@@ -35,9 +35,10 @@ app.listen(config.port, async () => {
 // Serve react app on production
 
 if (config.environment === 'production') {
-  app.use(express.static(path.join(__dirname, 'frontend', 'build')));
+  const frontendBuildFolder = path.join(__dirname, '..', 'frontend', 'build');
+  app.use(express.static(path.join(frontendBuildFolder)));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(frontendBuildFolder, 'index.html'));
   });
 }
 
