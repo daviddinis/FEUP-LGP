@@ -6,7 +6,12 @@ import config from './config';
 import MongoClient from './models/index';
 import User from './models/user';
 import File from './models/file';
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' })
 
+
+import DocumentController from "./controllers/DocumentController";
+import UserController from "./controllers/UserController";
 
 const app = express();
 
@@ -17,14 +22,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-app.get('/healthcheck', (req, res, next) => {
-  res.status(200).send('OK');
-});
+app.get('/files/:id', DocumentController.read);
+app.post('/sendFile', upload.single('file'), DocumentController.submit);
 
-app.get('/users', async (req, res) => {
-  const users = await User.find();
-  return res.status(200).json(users);
-});
+app.get('/users', UserController.list);
+app.post('/test-db', UserController.testDB)
 
 app.get('/files', async (req, res) => {
   const files = await File.find();
@@ -32,7 +34,6 @@ app.get('/files', async (req, res) => {
 });
 
 app.listen(config.port, async () => {
-  console.log('Hello');
   await MongoClient.connect();
 
   const name = 'NewName' + Math.random();

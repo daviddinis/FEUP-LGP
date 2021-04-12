@@ -10,16 +10,18 @@
   ],
   "jsRules": {},
   "rules": {
-    "quotemark": false,
     "no-trailing-whitespace": false,
+    "quotemark": false,
     "ordered-imports": false,
     "comment-format": false,
     "eofline": false,
     "object-literal-sort-keys": false,
     "no-console": false,
-    "no-var-requires": false,
     "variable-name": {
-      "options": "allow-leading-underscore"
+      "options": [
+        "allow-leading-underscore",
+        "allow-pascal-case"
+      ]
     },
     "arrow-parens": {
       "options": "ban-single-arg-parens"
