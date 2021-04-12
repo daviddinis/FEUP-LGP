@@ -32,7 +32,9 @@ jobs:
           cd backend
           npm install
       - name: Build
-        run: npm run build
+        run: |
+          cd backend
+          npm run build
       
 
   build_frontend:
@@ -50,7 +52,9 @@ jobs:
           cd backend/frontend
           npm install
       - name: Build
-        run: npm run build
+        run: |
+          cd backend/frontend
+          npm run build
 
   
 
