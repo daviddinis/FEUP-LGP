@@ -25,9 +25,17 @@ After that, go to the backend folder and run `npm run dev`. This will run the Ex
 
 If you wish to simply run the server app, run `npm run dev-server`, and if you want to run the client, run `npm run dev-client` (this will just run `npm start` on the frontend folder).
 
+### **Staging**
+
+Our source code is automatically deployed to heroku's staging app when changes are pushed to the dev branch.
+
+URL: https://kycon-staging.herokuapp.com/
+
 ### **Production**
 
-TODO
+Our source code is automatically deployed to heroku's production app when changes are pushed to the main branch.
+
+https://kycon-production.herokuapp.com/
 
 ## Test
 
