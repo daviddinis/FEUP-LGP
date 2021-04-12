@@ -28,8 +28,8 @@ app.get('/users', UserController.list);
 app.post('/test-db', UserController.testDB)
 
 app.listen(config.port, async () => {
-  await MongoClient.connect();
   console.log("App is running on port " + config.port);
+  await MongoClient.connect();
 })
 
 // Serve react app on production

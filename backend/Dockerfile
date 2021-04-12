@@ -9,6 +9,7 @@ COPY . .
 # Frontend
 WORKDIR /usr/src/app/frontend
 RUN npm install 
+RUN npm rebuild node-sass
 RUN npm run build
 
 # Backend 
