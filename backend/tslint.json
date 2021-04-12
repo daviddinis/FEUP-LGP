@@ -10,14 +10,14 @@
   ],
   "jsRules": {},
   "rules": {
-    "quotemark": {
-      "options": "single"
-    },
+    "quotemark": false,
+    "no-trailing-whitespace": false,
     "ordered-imports": false,
     "comment-format": false,
     "eofline": false,
     "object-literal-sort-keys": false,
     "no-console": false,
+    "no-var-requires": false,
     "variable-name": {
       "options": "allow-leading-underscore"
     },

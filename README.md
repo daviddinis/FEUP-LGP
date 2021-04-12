@@ -33,6 +33,6 @@ To run the client tests, open the frontend folder and run `npm run test`.
 To run the server tests, open the backend folder and run `npm run test`.
 
 ## Linter
-
+ 
 To run the client linter, open the frontend folder and run `npm run lint`. 
 To run the server linter, open the backend folder and run `npm run lint`. 

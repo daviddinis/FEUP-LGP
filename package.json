@@ -1,0 +1,7 @@
+{
+    "name": "kycon",
+    "version": "1.0.3",
+    "scripts": {
+        "release": "standard-version"
+    }
+}

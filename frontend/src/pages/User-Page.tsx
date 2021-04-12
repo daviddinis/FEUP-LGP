@@ -20,6 +20,7 @@ interface IUser {
 function UserPage() {
   const [users, setUsers] = useState<IUser[]>([]);
 
+    // tslint:disable-next-line:no-shadowed-variable
   const onDrop = useCallback(acceptedFiles => {
 
     const formData = new FormData();
