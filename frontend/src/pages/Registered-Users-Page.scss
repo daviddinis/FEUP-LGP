@@ -7,4 +7,43 @@
     color: #701C74;
 }
 
+.users-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+    margin-right: 300px;
+    margin-left: 50px;
+}
+
+.user-item{
+    margin-left: 18%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    // width: 100px;
+}
+
+.flag-image{
+    width: 14px;
+    margin-right: 12px;
+    align-self: center;
+}
+
+.user-image{
+    background-color: #F7F4F9;
+    border-radius: 12px;
+    width: 22px;
+    padding: 8px;
+    margin-right: 5px;
+}
+
+.user-name{
+    font-family: Anaheim;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    align-self: center;
+    color: #6A5B70;
+}
 
