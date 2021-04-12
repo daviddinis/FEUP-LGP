@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState, useCallback } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 import { FileWithPath, useDropzone } from 'react-dropzone';
 import './User-Page.scss';
 import axios from "axios";
@@ -7,18 +7,20 @@ import details from '../shared/icons/details.svg';
 import document from '../shared/icons/document.svg';
 
 
+
+/*
+
 interface IUser {
   username: string
 }
 
-/*
 <li key={file.path}>
         {file.path} - {file.size} bytes
       </li>
       */
 
-function UserPage() {
-  const [users, setUsers] = useState<IUser[]>([]);
+const UserPage : React.FC = () => {
+  // const [users, setUsers] = useState<IUser[]>([]);
 
     // tslint:disable-next-line:no-shadowed-variable
   const onDrop = useCallback(acceptedFiles => {

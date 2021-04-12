@@ -101,7 +101,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: audit frontend
         run: |
-          cd backend/frontend MOAS POE TUDO BACKEND/FRONTEND
+          cd backend/frontend
           npm audit
 
   audit_backend:
@@ -112,7 +112,7 @@ jobs:
       - name: audit backend
         run: |
           cd backend
-          npm run audit
+          npm audit
 
   test_frontend:
     runs-on: ubuntu-latest
