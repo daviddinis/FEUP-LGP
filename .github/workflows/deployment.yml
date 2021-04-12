@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+      - feature/improve-pipeline-#40
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -15,17 +16,30 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test Commands
-        run: |
-          echo 'Hello'
-          echo 'Goodbye'
+        run: echo 'Hello'
 
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
+        uses: gonuit/heroku-docker-deploy@v1.3.2 # GitHub action name (leave it as it is).
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "kycon-staging"
-          heroku_email: "miguel.moas@gmail.com"
-          usedocker: true
+          email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_STAGING }}
 
-        env:
+          # (Optional, default: "./")        env:
           HD_FIREBASE_API_KEY: ${{secrets.FIREBASE_API_KEY}}
           HD_RANDOM_DATA: "Hello"
+          dockerfile_directory: ./backend
+
+          # (Optional, default: "Dockerfile")
+          # Dockerfile name.
+          dockerfile_name: Dockerfile
+
+          # (Optional, default: "")
+          # Additional options of docker build command.
+          docker_options: "--no-cache"
+
+          # (Optional, default: "web")
+          # Select the process type for which you want the docker container to be uploaded.
+          # By default, this argument is set to "web".
+          # For more information look at https://devcenter.heroku.com/articles/process-model
+          process_type: web
