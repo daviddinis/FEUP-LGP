@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './pages/App';
 import User from './pages/User-Page';
+import RegisteredUsers from './pages/Registered-Users-Page';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -10,7 +11,7 @@ ReactDOM.render(
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'></link>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'></link>
-    <User />
+    <RegisteredUsers />
   </React.StrictMode>,
   document.getElementById('root')
 );
