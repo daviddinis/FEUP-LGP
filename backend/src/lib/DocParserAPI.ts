@@ -7,78 +7,74 @@ const docparser = require('docparser-node');
 
 
 
-class DocParser {
-	client: any;
+class DocParserAPI {
+	static client = new docparser.Client(config.docparserApiKey);
 
-	constructor() {
-		this.client = new docparser.Client(config.docparserApiKey);
-	}
-
-	ping() : Promise<any> {
+	static ping() : Promise<any> {
 		return this.client
 			.ping()
 			.then(() => console.log('authentication succeeded!'))
 			.catch((err : any) => console.error('authentication failed!', err));
 	}
 
-	getParsers() : Promise<any> {
+	static getParsers() : Promise<any> {
 		return this.client.getParsers();
 	}
 
-	getParsedDocument(parserId: string, documentId : string) : Promise<any> {
+	static getParsedDocument(parserId: string, documentId : string) : Promise<any> {
 		return this.client.getResultsByDocument(parserId, documentId, {
 			format: 'object',
 		}).then((data: any[]) => data[0]);
 	}
 
-	getAllParsedDocuments(parserId : string) : Promise<any> {
+	static getAllParsedDocuments(parserId : string) : Promise<any> {
 		return this.client.getResultsByParser(parserId, { format: 'object' });
 	}
 
-	uploadDocument(parserId : string, filePath : string) : Promise<any> {
+	static uploadDocument(parserId : string, filePath : string) : Promise<any> {
 		return this.client.uploadFileByPath(parserId, filePath, {
 			remote_id: 'test',
 		});
 	}
 
-
 	//
-	async TestDocParser() {
-		const parser = new DocParser();
 
-		await parser.ping();
+	static async TestDocParser() {
+		const parser = new DocParserAPI();
 
-		console.log(await parser.getParsers());
+		await DocParserAPI.ping();
+
+		console.log(await DocParserAPI.getParsers());
 
 		const parserId = 'cvzcwokujphi';
 		// const documentId = 'bc7dab2bb30b39d7991ce3557713a2cc'; // AFCA
 		const documentId = '087782204d4bf8cd57365b736d61e53b'; // KB
 
-		const data = await parser.getParsedDocument(parserId, documentId);
+		const data = await DocParserAPI.getParsedDocument(parserId, documentId);
 
 
 		const strings = DataExtractor.extractStringArray(data.all_data_regex);
-		console.log(DataExtractor.findDataNearKeywords(strings, [/address/i], {
+		console.log(DataExtractor.extractByKeywords(strings, [/address/i], {
 			maxDistance: 1,
 		}))
 
-		console.log(DataExtractor.findDataNearKeywords(strings, [/company number/i], {
+		console.log(DataExtractor.extractByKeywords(strings, [/company number/i], {
 			maxDistance: 1,
 			regex: /[0-9]{4,}/i, // minimum 4 digits
 		}))
 
 
-		console.log(DataExtractor.findDataNearKeywords(strings, [/company/i], {
+		console.log(DataExtractor.extractByKeywords(strings, [/company/i], {
 			maxDistance: 1,
 			includeKeyword: true,
 		}))
 
-		console.log(DataExtractor.findDataNearKeywords(strings, [/created on/, /incorporated on/i], {
+		console.log(DataExtractor.extractByKeywords(strings, [/created on/, /incorporated on/i], {
 			maxDistance: 1,
 			regex: DataExtractor.regexes.DATE
 		}))
 
-		console.log(DataExtractor.findDataNearKeywords(strings, [/.*/], {
+		console.log(DataExtractor.extractByKeywords(strings, [/.*/], {
 			maxDistance: 1,
 			regex: DataExtractor.regexes.DATE
 		}))
@@ -97,7 +93,7 @@ class DocParser {
 
 
 
-export default DocParser;
+export default DocParserAPI;
 /*
 async function run() {
 

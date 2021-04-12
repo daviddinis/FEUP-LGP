@@ -17,6 +17,7 @@
     "eofline": false,
     "object-literal-sort-keys": false,
     "no-console": false,
+    "no-var-requires": false,
     "variable-name": {
       "options": "allow-leading-underscore"
     },

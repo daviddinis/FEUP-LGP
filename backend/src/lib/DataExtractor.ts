@@ -1,8 +1,7 @@
 interface ParseKeywordOptions {
-    maxDistance: number,
+    maxDistance?: number,
     includeKeyword?: boolean,
     regex?: RegExp,
-    lineLength?: number,
 }
 
 
@@ -22,16 +21,21 @@ const dateRegex = new RegExp(
 class DataExtractor {
     public static regexes = {
         INTEGER: /[1-9][0-9]*/i,
-        WORD: /[a-z0-9]+/i,
         DATE: dateRegex,
         IDENTIFIER: /[0-9]+/i,
+        ALPHANUM: /[a-z0-9]+/i,
        // IDENTIFIER: /[0-9a-zA-Z]{6,}/ // min 6 characters
     }
 
     // Funcoes inventadas -- moas
+    static extractByKeywords(strs: string[], keywords: RegExp[], options: ParseKeywordOptions = {}) : string {
+        return this.extractAllByKeywords(strs, keywords, options)[0];
+    }
 
-    static findDataNearKeywords(strs: string[], keywords: RegExp[], options: ParseKeywordOptions) { // keywords regex tb?
+
+    static extractAllByKeywords(strs: string[], keywords: RegExp[], options: ParseKeywordOptions = {}) : string[] {
         const lines = DataExtractor.removeEmptyLines(strs);
+        const maxDistance = options.maxDistance || 1;
 
         //console.log(lines);
 
@@ -44,13 +48,13 @@ class DataExtractor {
                 let linesToAdd = [];
 
                 if (options.includeKeyword) {
-                    linesToAdd = lines.slice(index, index + options.maxDistance);
+                    linesToAdd = lines.slice(index, index + maxDistance);
                 }
                 else {
                     const afterKeyword : string = line.substr( line.indexOf(keywordMatch[0]) + keywordMatch[0].length);
                     if (DataExtractor.isEmptyLine(afterKeyword))
-                        linesToAdd = lines.slice(index + 1, index + 1 + options.maxDistance)
-                    else linesToAdd = [afterKeyword].concat(lines.slice(index + 1, index + options.maxDistance));
+                        linesToAdd = lines.slice(index + 1, index + 1 + maxDistance)
+                    else linesToAdd = [afterKeyword].concat(lines.slice(index + 1, index + maxDistance));
                 }
 
                 const cleaned = linesToAdd.join('\n').trim();
