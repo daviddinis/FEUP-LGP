@@ -7,8 +7,6 @@ interface Props {
     isAdmin: boolean,
 }
 
-
-
 const Component = (props : Props) => {
     
 
