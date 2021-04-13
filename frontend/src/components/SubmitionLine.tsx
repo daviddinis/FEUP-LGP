@@ -2,7 +2,8 @@ import React from "react";
 import details from '../shared/icons/details.svg';
 import flag from '../shared/icons/flag.svg';
 import flagSelected from '../shared/icons/flagSelected.svg';
-interface submition {
+
+interface Submition {
     user: string,
     documentName: string,
     type: string,
@@ -11,14 +12,7 @@ interface submition {
     isFlaged: boolean
 }
 
-/*
-type Props = {
-    requiredProp: number,
-    optionalProp?: string,
-}
-*/
-
-const SubmitionLine = (submition : submition) => {
+const SubmitionLine = (submition : Submition) => {
     return (
         <tr className={'line submition'}>
             <td><img

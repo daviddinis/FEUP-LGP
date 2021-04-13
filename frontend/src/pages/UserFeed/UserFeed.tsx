@@ -1,11 +1,12 @@
 import React, { ReactNode, useEffect, useState, useCallback } from 'react';
-import { FileWithPath, useDropzone } from 'react-dropzone';
-import './User-Page.scss';
-import '../index.css'
+import { useDropzone } from 'react-dropzone';
+import './UserFeed.scss';
+import '../Table.scss';
+import '../../index.css'
 import axios from "axios";
-import Header from "../components/Header";
-import details from '../shared/icons/details.svg';
-import document from '../shared/icons/document.svg';
+import Header from "../../components/Header";
+import document from '../../shared/icons/document.svg';
+import SubmitionLineUser from '../../components/SubmitionLineUser';
 
 
 interface IUser {
@@ -37,29 +38,6 @@ function UserPage() {
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ onDrop });
 
-  const fileList = (files: FileWithPath[]): ReactNode => (
-    files.map(file => (
-      <div className={'file-info'} key={file.path}>
-        <p><span className={ 'status-icon' } />100%</p>
-        <p>{file.name}</p>
-        <p>tipo</p>
-        <p>{file.type}</p>
-        <p>{file.lastModified}</p>
-        <p><img
-          className={'details-icon'}
-          src={details} /></p>
-      </div>
-    ))
-  );
-
-  // useEffect(() => {
-  //   axios.get("/users").then(res => {
-  //     setUsers(res.data);
-  //     console.log(res.data);
-  //   })
-  // }, []);
-
-
   return (
     <div className="user-page">
       <header className={'header'}>
@@ -69,22 +47,35 @@ function UserPage() {
         <div {...getRootProps({ className: 'dropzone' })}>
           <input {...getInputProps()} />
           <img
-            className={'document-icon'}
+            className={'icon document'}
             src={document} />
           <label className={'drop-file-label'}><strong>choose a file</strong> or drag it here.</label>
         </div>
       </header>
-      <div className={'files-table'}>
-        <div className={'column-names'}>
-          <p>status</p>
-          <p>name</p>
-          <p>type</p>
-          <p>format</p>
-          <p>date</p>
-        </div>
-        <div className={'table'}>
-          {fileList(acceptedFiles)}
-        </div>
+
+      <div className="content">
+      <table className={'submitions'}>
+      <thead>
+        <tr>
+          <th>status</th>
+          <th></th>
+          <th>name</th>
+          <th>type</th>
+          <th>format</th>
+          <th>date</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {acceptedFiles.map(submition => { return (
+          <SubmitionLineUser key={1} name={submition.name} type={submition.type} date={(new Date(submition.lastModified)).toLocaleDateString()}/>
+        )})}
+      </tbody>
+
+      </table>
+
       </div>
     </div>
   );

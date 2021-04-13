@@ -48,18 +48,22 @@ function App() {
          
       <div className="content">
       <table className={'submitions'}>
-      <tr className={'column-names'}>
+      <thead>
+        <tr>
           <th></th>
           <th>name</th>
           <th>name</th>
           <th>type</th>
           <th>format</th>
           <th>date</th>
-      </tr>
-
+        </tr>
+      </thead>
+      
+      <tbody>
         {submitions.map(submition => { return (
           <SubmitionLine key={submition.id} isFlaged={submition.isFlaged} user={submition.user} documentName={submition.documentName} type={submition.type} format={submition.format} date={submition.date}/>
         )})}
+      </tbody>
 
     </table>
 

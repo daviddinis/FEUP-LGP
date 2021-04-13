@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Admin from './pages/AdminFeed/AdminFeed';
-import App from './pages/App';
-import User from './pages/User-Page';
+import User from './pages/UserFeed/UserFeed';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -10,7 +9,7 @@ ReactDOM.render(
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'></link>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'></link>
-    <Admin />
+    <User />
   </React.StrictMode>,
   document.getElementById('root')
 );
