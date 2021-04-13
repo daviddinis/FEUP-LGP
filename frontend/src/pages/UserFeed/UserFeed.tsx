@@ -9,21 +9,8 @@ import axios from "axios";
 import document from '../../shared/icons/document.svg';
 import SubmitionLineUser from '../../components/SubmitionLineUser';
 
-
-interface IUser {
-  username: string
-}
-
-/*
-<li key={file.path}>
-        {file.path} - {file.size} bytes
-      </li>
-      */
-
 function UserPage() {
-  const [users, setUsers] = useState<IUser[]>([]);
 
-    // tslint:disable-next-line:no-shadowed-variable
   const onDrop = useCallback(acceptedFiles => {
 
     const formData = new FormData();
