@@ -9,9 +9,7 @@ interface Props {
 
 
 
-const Component = (props : Props) => {
-    
-
+const Component : React.FC<Props> = (props) => {
     return (
         <nav className={ 'navigation' }>
             <p className={ 'page-title' }>
