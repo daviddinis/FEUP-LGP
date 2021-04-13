@@ -1,11 +1,11 @@
 import React, {useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import Header from "../../components/Header/Header";
+import Header from "components/Header/Header";
 import "pages/UserFeed/UserFeed.scss";
 import "pages/Table.scss";
 import axios from "axios";
-import document from "../../shared/icons/document.svg";
-import SubmissionLineUser from "../../components/SubmissionLineUser";
+import document from "shared/icons/document.svg";
+import SubmissionLineUser from "components/SubmissionLineUser";
 
 function UserFeed(): JSX.Element {
   const onDrop = useCallback((acceptedFiles) => {
