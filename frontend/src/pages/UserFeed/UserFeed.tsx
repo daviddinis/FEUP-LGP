@@ -7,10 +7,9 @@ import "../Table.scss";
 import "../../index.css";
 import axios from "axios";
 import document from "../../shared/icons/document.svg";
-import SubmitionLineUser from "../../components/SubmitionLineUser";
+import SubmissionLineUser from "../../components/SubmissionLineUser";
 
 function UserFeed() {
-  
   const onDrop = useCallback((acceptedFiles) => {
     const formData = new FormData();
     formData.append("file", acceptedFiles[0]);
@@ -43,7 +42,7 @@ function UserFeed() {
       </header>
 
       <div className="content">
-        <table className={"submitions"}>
+        <table className={"submissions"}>
           <thead>
             <tr>
               <th>status</th>
@@ -57,15 +56,15 @@ function UserFeed() {
           </thead>
 
           <tbody>
-            {acceptedFiles.map((submition) => {
+            {acceptedFiles.map((submission) => {
               return (
-                <SubmitionLineUser
+                <SubmissionLineUser
                   key={1} //TODO: change this for the submission id
                   state={20} //TODO: change this for the submission state -> try with undefined or remove
-                  name={submition.name}
+                  name={submission.name}
                   type={"report"} //TODO: change this for the submission type (report, ID, etc)
-                  format={submition.type}
-                  date={new Date(submition.lastModified)}  //TODO: this date shouldn't be of the file, but of the submission
+                  format={submission.type}
+                  date={new Date(submission.lastModified)} //TODO: this date shouldn't be of the file, but of the submission
                 />
               );
             })}

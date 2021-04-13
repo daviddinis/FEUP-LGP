@@ -1,7 +1,7 @@
 import React from "react";
 import details from '../shared/icons/details.svg';
 
-interface Submition {
+interface Submission {
     name: string,
     type: string,
     format: string,
@@ -27,9 +27,9 @@ function stateToString(percentage: number | undefined) {
 
 }
 
-const SubmitionLineUser = (submission : Submition) => {
+const submissionLineUser = (submission : Submission) => {
     return (
-        <tr className='line submition'>
+        <tr className='line submission'>
             <td><span className={"icon status " +  stateToClass(submission.state)}/></td>
             <td>{stateToString(submission.state)}</td>
             <td>{submission.name}</td>
@@ -44,4 +44,4 @@ const SubmitionLineUser = (submission : Submition) => {
 }
 
 
-export default SubmitionLineUser;
+export default submissionLineUser;

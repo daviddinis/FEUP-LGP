@@ -3,7 +3,7 @@ import details from '../shared/icons/details.svg';
 import flag from '../shared/icons/flag.svg';
 import flagSelected from '../shared/icons/flagSelected.svg';
 
-interface Submition {
+interface Submission {
     user: string,
     documentName: string,
     type: string,
@@ -12,17 +12,17 @@ interface Submition {
     isFlaged: boolean
 }
 
-const SubmitionLine = (submition : Submition) => {
+const SubmissionLine = (submission : Submission) => {
     return (
-        <tr className={'line submition'}>
+        <tr className={'line submission'}>
             <td><img
               className={ 'icon flag' }
-               src={ submition.isFlaged ? flagSelected : flag}/></td>
-            <td>{submition.user}</td>
-            <td>{submition.documentName}</td>
-            <td>{submition.type}</td>
-            <td>{submition.format}</td>
-            <td>{(submition.date).toLocaleDateString()}</td>
+               src={ submission.isFlaged ? flagSelected : flag}/></td>
+            <td>{submission.user}</td>
+            <td>{submission.documentName}</td>
+            <td>{submission.type}</td>
+            <td>{submission.format}</td>
+            <td>{(submission.date).toLocaleDateString()}</td>
             <td><img
               className={ 'icon details' }
                src={ details }/></td>
@@ -31,4 +31,4 @@ const SubmitionLine = (submition : Submition) => {
 }
 
 
-export default SubmitionLine;
+export default SubmissionLine;
