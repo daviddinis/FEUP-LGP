@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactElement } from "react";
 import details from '../shared/icons/details.svg';
 
 interface Submission {
@@ -27,7 +28,7 @@ function stateToString(percentage: number | undefined) {
 
 }
 
-const submissionLineUser = (submission : Submission) => {
+const submissionLineUser = (submission : Submission) : JSX.Element => {
     return (
         <tr className='line submission'>
             <td><span className={"icon status " +  stateToClass(submission.state)}/></td>

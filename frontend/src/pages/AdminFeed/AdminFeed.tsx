@@ -11,7 +11,17 @@ interface File {
   name: string;
 }
 
-function AdminFeed() {
+interface Submission {
+  id: string,
+  user: string,
+  documentName: string,
+  type: string,
+  format: string,
+  date: Date,
+  isFlaged: boolean
+}
+
+function AdminFeed(): JSX.Element {
   const [files, setUsers] = useState<File[]>([]);
 
   useEffect(() => {
@@ -21,7 +31,8 @@ function AdminFeed() {
     });
   }, []);
 
-  const submissions: any[] = [
+  //TODO: erase submissions content after we have a seed in db
+  const submissions: Submission[] = [
     {
       id: "1",
       isFlaged: true,

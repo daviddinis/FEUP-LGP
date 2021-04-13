@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState, useCallback } from "react";
+import React, {useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
 import Header from "../../components/Header/Header";
@@ -9,7 +9,7 @@ import axios from "axios";
 import document from "../../shared/icons/document.svg";
 import SubmissionLineUser from "../../components/SubmissionLineUser";
 
-function UserFeed() {
+function UserFeed(): JSX.Element {
   const onDrop = useCallback((acceptedFiles) => {
     const formData = new FormData();
     formData.append("file", acceptedFiles[0]);

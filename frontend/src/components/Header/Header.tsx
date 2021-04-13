@@ -9,7 +9,7 @@ interface User {
 
 
 
-const HeaderBase = (user : User) => {
+const HeaderBase = (user : User): JSX.Element => {
 
     return (
         <header className={ 'page-header' }>

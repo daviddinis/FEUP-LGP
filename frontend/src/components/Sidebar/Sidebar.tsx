@@ -6,7 +6,7 @@ import { SidebarData } from './SidebarData.js';
 import './Sidebar.scss';
 import { IconContext } from 'react-icons';
 
-function Sidebar() {
+function Sidebar(): JSX.Element {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);

@@ -12,7 +12,7 @@ interface Submission {
     isFlaged: boolean
 }
 
-const SubmissionLine = (submission : Submission) => {
+const SubmissionLine = (submission : Submission): JSX.Element => {
     return (
         <tr className={'line submission'}>
             <td><img
