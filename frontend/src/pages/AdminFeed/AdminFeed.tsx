@@ -3,7 +3,6 @@ import "../Table.scss";
 import axios from "axios";
 import SubmissionLine from "../../components/SubmissionLineAdmin";
 import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
 
 interface File {
   _id: string;
@@ -73,8 +72,6 @@ function AdminFeed(): JSX.Element {
   return (
     <div className="admin-feed">
       <Header username="gingerAle" isAdmin={true} />
-
-      <Sidebar />
 
       <div className="content">
         <table className={"submissions"}>
