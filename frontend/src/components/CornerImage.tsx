@@ -1,6 +1,6 @@
 import React from 'react';
 import cornerImage from '../shared/icons/corner.png';
-import './Corner-Image.scss';
+import './CornerImage.scss';
 
 
 const Component = () => {
