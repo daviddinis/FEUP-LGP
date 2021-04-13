@@ -23,6 +23,7 @@ function UserFeed() {
     axios.post("/sendFile", formData, config);
   }, []);
 
+  //TODO: only shows the latest uploaded files
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     onDrop,
   });
@@ -59,9 +60,11 @@ function UserFeed() {
             {acceptedFiles.map((submition) => {
               return (
                 <SubmitionLineUser
-                  key={1}
+                  key={1} //TODO: change this for the submission id
+                  state={20} //TODO: change this for the submission state -> try with undefined or remove
                   name={submition.name}
-                  type={submition.type}
+                  type={"report"} //TODO: change this for the submission type (report, ID, etc)
+                  format={submition.type}
                   date={new Date(submition.lastModified).toLocaleDateString()}  //TODO: this date shouldn't be of the file, but of the submission
                 />
               );
