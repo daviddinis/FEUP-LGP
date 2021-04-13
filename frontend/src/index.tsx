@@ -9,7 +9,7 @@ ReactDOM.render(
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'></link>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'></link>
-    <User />
+    <Admin />
   </React.StrictMode>,
   document.getElementById('root')
 );

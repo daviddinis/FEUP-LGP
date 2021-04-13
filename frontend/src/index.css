@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+.content {
+  margin: 5% 10%;
+}
+
 body {
   margin: 0;
   font-family: Anaheim;

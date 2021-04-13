@@ -1,7 +1,3 @@
-.content {
-    margin: 10%;
-  }
-
 .icon.document {
     margin-bottom: 18px; 
     height: 54.99px;
@@ -44,7 +40,7 @@
     border: 1px dashed #701C74;
 }
 
-.header {
+header.header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,10 +49,17 @@
     border-radius: 0px 0px 10px 10px;
 }
 
-.files-table {
-    padding-top: 82px;
-    padding-right: 15%;
-    padding-left: 15%;
+header.page-header {
+    padding: 0rem;
+    width: 100%;
+}
+
+.username {
+    color: white;
+}
+
+.page-title {
+    color: white;
 }
 
 .icon.status {

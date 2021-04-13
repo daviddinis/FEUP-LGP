@@ -9,7 +9,7 @@ interface User {
 
 
 
-const Header = (user : User) => {
+const HeaderBase = (user : User) => {
 
     return (
         <header className={ 'page-header' }>
@@ -29,4 +29,4 @@ const Header = (user : User) => {
 }
 
 
-export default Header;
+export default HeaderBase;
