@@ -1,0 +1,26 @@
+name: Deployment (Staging)
+
+on:
+  push:
+    branches:
+      - dev
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
+        uses: gonuit/heroku-docker-deploy@v1.3.2 # GitHub action name (leave it as it is).
+        with:
+          email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_STAGING }}
+          
+          dockerfile_directory: ./backend # (Optional, default: "./")         
+          dockerfile_name: Dockerfile  # (Optional, default: "Dockerfile")
+          docker_options: "--no-cache" # (Optional, default: "")
+          process_type: web # (Optional, default: "web". For more information look at https://devcenter.heroku.com/articles/process-model)

@@ -2,10 +2,6 @@
   "name": "server",
   "version": "0.0.0",
   "private": true,
-  "bin": {
-    "server": "bin/wwww"
-  },
-  "main": "app.ts",
   "scripts": {
     "start": "node dist/app.js",
     "build": "tsc",
@@ -13,7 +9,8 @@
     "test": "jest",
     "dev": "concurrently --names \"server,client\" \"npm run dev-server\" \"npm run dev-client\"",
     "dev-server": "concurrently --names \"serverTS,serverNode\" \"npm run watch:ts\" \"npm run watch:node\"",
-    "dev-client": "npm start --prefix ../frontend",
+    "dev-client": "npm start --prefix frontend",
+    "dev": "concurrently --names \"server,client\" \"npm run dev-server\" \"npm run dev-client\"",
     "serve": "npm run build && npm start",
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
@@ -48,12 +45,11 @@
     "@types/node": "^14.0.9",
     "@types/supertest": "^2.0.9",
     "concurrently": "^5.2.0",
-    "jest": "^26.0.1",
+    "jest": "^26.6.0",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2",
-    "ts-jest": "^26.1.0",
-    "tsc": "^1.20150623.0",
+    "ts-jest": "^26.5.4",
     "tslint": "^6.1.2",
-    "typescript": "^3.9.3"
+    "typescript": "^4.2.4"
   }
 }

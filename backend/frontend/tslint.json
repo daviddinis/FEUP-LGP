@@ -22,9 +22,6 @@
         "allow-leading-underscore",
         "allow-pascal-case"
       ]
-    },
-    "arrow-parens": {
-      "options": "ban-single-arg-parens"
     }
   },
   "rulesDirectory": []

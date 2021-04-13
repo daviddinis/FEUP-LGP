@@ -2,6 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import config from './config';
+import path from 'path';
 
 import MongoClient from './models/index';
 import User from './models/user';
@@ -34,22 +35,19 @@ app.get('/files', async (req, res) => {
 });
 
 app.listen(config.port, async () => {
+  console.log("App is running on port " + config.port);
   await MongoClient.connect();
-
-  const name = 'NewName' + Math.random();
-  const user = await User.create({
-    username: name
-  })
-
-  console.log(user)
-
-  const user2 = await User.find({
-    username: name
-  })
-
-  console.log(user2);
-
-
 })
+
+// Serve react app on production
+
+if (config.environment === 'production') {
+  const frontendBuildFolder = path.join(__dirname, '..', 'frontend', 'build');
+  app.use(express.static(path.join(frontendBuildFolder)));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendBuildFolder, 'index.html'));
+  });
+}
+
 
 export default app;
