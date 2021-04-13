@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import '../Table.scss';
-import './AdminFeed.scss';
 import axios from "axios";
 import SubmitionLine from '../../components/SubmitionLine';
 import Header from '../../components/Header/Header';
 import Sidebar from '../../components/Sidebar/Sidebar';
-
-interface IUser {
-  username: string
-}
 
 interface File {
   _id: string,
@@ -16,7 +11,7 @@ interface File {
   name: string
 }
 
-function App() {
+function AdminFeed() {
   const [files, setUsers] = useState<File[]>([]);
 
   useEffect(() => {
@@ -41,7 +36,7 @@ function App() {
 
   return (
 
-    <div className="Admin-Page">
+    <div className="admin-feed">
       <Header username="gingerAle" isAdmin={ true }/>
 
       <Sidebar/>   
@@ -72,4 +67,4 @@ function App() {
   );
 }
 
-export default App;
+export default AdminFeed;
