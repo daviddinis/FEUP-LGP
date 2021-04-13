@@ -1,10 +1,8 @@
 import React, {useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-
 import Header from "../../components/Header/Header";
-import "./UserFeed.scss";
-import "../Table.scss";
-import "../../index.css";
+import "pages/UserFeed/UserFeed.scss";
+import "pages/Table.scss";
 import axios from "axios";
 import document from "../../shared/icons/document.svg";
 import SubmissionLineUser from "../../components/SubmissionLineUser";

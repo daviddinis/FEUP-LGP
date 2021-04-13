@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./Header.scss";
-import "./Sidebar.scss";
-import person from "../../shared/icons/person.svg";
-import Hamburger from "../../shared/icons/hamburger.svg";
-import HamburgerWhite from "../../shared/icons/hamburger_white.svg";
-import { SidebarData } from "./SidebarData";
+import "components/Header/Header.scss";
+import "components/Header/Sidebar.scss";
+import person from "shared/icons/person.svg";
+import Hamburger from "shared/icons/hamburger.svg";
+import HamburgerWhite from "shared/icons/hamburger_white.svg";
+import { SidebarData } from "components/Header/SidebarData";
 
 interface User {
   username: string;

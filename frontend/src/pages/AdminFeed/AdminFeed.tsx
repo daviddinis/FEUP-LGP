@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "../Table.scss";
+import "pages/Table.scss";
 import axios from "axios";
-import SubmissionLine from "../../components/SubmissionLineAdmin";
-import Header from "../../components/Header/Header";
+import SubmissionLine from "components/SubmissionLineAdmin";
+import Header from "components/Header/Header";
 
 interface File {
   _id: string;

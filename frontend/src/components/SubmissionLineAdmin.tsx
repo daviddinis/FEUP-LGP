@@ -1,7 +1,7 @@
 import React from "react";
-import details from '../shared/icons/details.svg';
-import flag from '../shared/icons/flag.svg';
-import flagSelected from '../shared/icons/flagSelected.svg';
+import details from 'shared/icons/details.svg';
+import flag from 'shared/icons/flag.svg';
+import flagSelected from 'shared/icons/flagSelected.svg';
 
 interface Submission {
     user: string,

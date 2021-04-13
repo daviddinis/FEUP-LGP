@@ -1,6 +1,5 @@
 import React from "react";
-import { ReactElement } from "react";
-import details from '../shared/icons/details.svg';
+import details from 'shared/icons/details.svg';
 
 interface Submission {
     name: string,
