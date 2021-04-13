@@ -3,10 +3,10 @@ import details from '../shared/icons/details.svg';
 
 interface Submition {
     name: string,
-    date: string,
     type: string,
     format: string,
-    state?: number
+    state?: number,
+    date: Date
 }
 
 function stateToClass(percentage: number | undefined) {
@@ -35,7 +35,7 @@ const SubmitionLineUser = (submission : Submition) => {
             <td>{submission.name}</td>
             <td>{submission.type}</td>
             <td>{submission.format}</td>
-            <td>{submission.date}</td>
+            <td>{(submission.date).toLocaleDateString()}</td>
             <td><img
               className='icon details'
                src={ details }/></td>

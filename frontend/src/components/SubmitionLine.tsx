@@ -8,7 +8,7 @@ interface Submition {
     documentName: string,
     type: string,
     format: string,
-    date: string,
+    date: Date,
     isFlaged: boolean
 }
 
@@ -22,7 +22,7 @@ const SubmitionLine = (submition : Submition) => {
             <td>{submition.documentName}</td>
             <td>{submition.type}</td>
             <td>{submition.format}</td>
-            <td>{submition.date}</td>
+            <td>{(submition.date).toLocaleDateString()}</td>
             <td><img
               className={ 'icon details' }
                src={ details }/></td>

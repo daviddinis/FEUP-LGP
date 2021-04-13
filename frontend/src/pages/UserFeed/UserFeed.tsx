@@ -65,7 +65,7 @@ function UserFeed() {
                   name={submition.name}
                   type={"report"} //TODO: change this for the submission type (report, ID, etc)
                   format={submition.type}
-                  date={new Date(submition.lastModified).toLocaleDateString()}  //TODO: this date shouldn't be of the file, but of the submission
+                  date={new Date(submition.lastModified)}  //TODO: this date shouldn't be of the file, but of the submission
                 />
               );
             })}

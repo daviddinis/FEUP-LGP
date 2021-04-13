@@ -29,7 +29,7 @@ function AdminFeed() {
       documentName: "anualreportdocura",
       type: "extract",
       format: "pdf",
-      date: "25-03-2021",
+      date: new Date("2021-03-25"),
     },
     {
       id: "2",
@@ -38,7 +38,7 @@ function AdminFeed() {
       documentName: "IDClaudia",
       type: "pdf",
       format: "jpeg",
-      date: "21-03-2021",
+      date: new Date("2021-03-21"),
     },
   ];
 
@@ -53,7 +53,7 @@ function AdminFeed() {
       documentName: name,
       type: "extract",
       format: "pdf",
-      date: "30-01-2012",
+      date: new Date("2012-01-30"),
     });
 
     console.log(submitions);
