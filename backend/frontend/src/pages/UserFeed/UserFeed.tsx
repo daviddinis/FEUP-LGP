@@ -8,9 +8,10 @@ import document from "shared/icons/document.svg";
 import SubmissionLineUser from "components/SubmissionLineUser";
 
 function UserFeed(): JSX.Element {
-  const onDrop = useCallback((acceptedFiles) => {
+
+  const onDrop = useCallback((_acceptedFiles) => {
     const formData = new FormData();
-    formData.append("file", acceptedFiles[0]);
+    formData.append("file", _acceptedFiles[0]);
     const config = {
       headers: {
         "content-type": "multipart/form-data",

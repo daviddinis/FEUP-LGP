@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'index.css';
 import Admin from 'pages/AdminFeed/AdminFeed';
-import User from 'pages/UserFeed/UserFeed';
+//import User from 'pages/UserFeed/UserFeed';
 import reportWebVitals from 'reportWebVitals';
 
 ReactDOM.render(

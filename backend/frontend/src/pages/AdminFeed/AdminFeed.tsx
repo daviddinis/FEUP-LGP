@@ -52,12 +52,12 @@ function AdminFeed(): JSX.Element {
     },
   ];
 
-  for (let i = 0; i != files.length; i++) {
+  for (let i = 0; i !== files.length; i++) {
     const id = files[i]._id;
     const name = files[i].name;
 
     submissions.push({
-      id: id,
+      id,
       isFlaged: false,
       user: "pc",
       documentName: name,
