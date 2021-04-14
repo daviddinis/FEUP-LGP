@@ -6,40 +6,42 @@ import person from '../shared/icons/person.svg';
 import flag from '../shared/icons/flag.svg';
 import flagSelected from '../shared/icons/flagselected.svg';
 import search from '../shared/icons/pesquisa.svg';
+import classes from '*.module.css';
 
 
 
 const users = [
-  { id: 0, name: 'user_name_1', flagged: false },
-  { id: 1, name: 'user_name_2', flagged: false },
-  { id: 2, name: 'user_name_3', flagged: false },
-  { id: 3, name: 'user_name_4', flagged: false },
-  { id: 4, name: 'user_name_5', flagged: false },
-  { id: 5, name: 'user_name_6', flagged: false },
-  { id: 6, name: 'user_name_7', flagged: false },
-  { id: 7, name: 'user_name_8', flagged: false },
-  { id: 8, name: 'user_name_9', flagged: false },
-  { id: 9, name: 'user_name_10', flagged: false },
-  { id: 10, name: 'user_name_11', flagged: false },
-  { id: 11, name: 'user_name_12', flagged: false },
-  { id: 12, name: 'user_name_13', flagged: false },
-  { id: 13, name: 'user_name_14', flagged: false },
-  { id: 14, name: 'user_name_15', flagged: false },
-  { id: 15, name: 'user_name_16', flagged: false },
-  { id: 16, name: 'user_name_17', flagged: false },
-  { id: 17, name: 'user_name_18', flagged: false },
-  { id: 18, name: 'user_name_19', flagged: false },
-  { id: 19, name: 'user_name_20', flagged: false },
-  { id: 20, name: 'user_name_21', flagged: false },
-  { id: 21, name: 'user_name_22', flagged: false },
-  { id: 22, name: 'user_name_23', flagged: false },
-  { id: 23, name: 'user_name_24', flagged: false },
-  { id: 24, name: 'user_name_25', flagged: false },
+  { id: 0, name: 'user_name_1', flagged: 0 },
+  { id: 1, name: 'user_name_2', flagged: 0 },
+  { id: 2, name: 'user_name_3', flagged: 0 },
+  { id: 3, name: 'user_name_4', flagged: 0 },
+  { id: 4, name: 'user_name_5', flagged: 0 },
+  { id: 5, name: 'user_name_6', flagged: 0 },
+  { id: 6, name: 'user_name_7', flagged: 0 },
+  { id: 7, name: 'user_name_8', flagged: 0 },
+  { id: 8, name: 'user_name_9', flagged: 0 },
+  { id: 9, name: 'user_name_10', flagged: 0 },
+  { id: 10, name: 'user_name_11', flagged: 0 },
+  { id: 11, name: 'user_name_12', flagged: 0 },
+  { id: 12, name: 'user_name_13', flagged: 0 },
+  { id: 13, name: 'user_name_14', flagged: 0 },
+  { id: 14, name: 'user_name_15', flagged: 0 },
+  { id: 15, name: 'user_name_16', flagged: 0 },
+  { id: 16, name: 'user_name_17', flagged: 0 },
+  { id: 17, name: 'user_name_18', flagged: 0 },
+  { id: 18, name: 'user_name_19', flagged: 0 },
+  { id: 19, name: 'user_name_20', flagged: 0 },
+  { id: 20, name: 'user_name_21', flagged: 0 },
+  { id: 21, name: 'user_name_22', flagged: 0 },
+  { id: 22, name: 'user_name_23', flagged: 1 },
+  { id: 23, name: 'user_name_24', flagged: 0 },
+  { id: 24, name: 'user_name_25', flagged: 0 },
 ];
 
 function RegisteredUsersPage() {
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [changeFlag, setChangeFlag] = useState(false);
 
   return (
     <div className="registered-users-page">
@@ -51,22 +53,36 @@ function RegisteredUsersPage() {
       <div className="body-container">
         <div className="search-bar">
           <img src={search} className="search-image"/>
-          <input type="text" className="search-name" placeholder="search name..." onChange={(event => {setSearchTerm(event.target.value)})}/>
+          <input type="text" className="search-name" placeholder="search name..." 
+            onChange={
+              (event => {
+                setSearchTerm(event.target.value)
+              })}/>
 
         </div>
         <div className="users-container">
           
-          {users.filter(val => 
-          {
-            if(val.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
-              return val
-          }).reverse().map(user => 
-            (
-            <div className="user-item" key={user.id}>
-            <img src={flag} className="flag-image"/>
-            <img src={person} className="user-image"/>
-            <p className="user-name">{user.name}</p>
-          </div>
+          {users
+            .filter(val => 
+            {
+              if(val.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+                return val
+            })
+            .reverse()
+            .sort(
+              (a,b) => b.flagged - a.flagged
+            )
+            .map(user => 
+              (
+              <div className="user-item" key={user.id}>
+              <img src={user.flagged? flagSelected: flag} className="flag-image" 
+                onClick={(event => {
+                  user.flagged == 1? user.flagged = 0: user.flagged = 1; 
+                  setChangeFlag(!changeFlag)
+                })}/>
+              <img src={person} className="user-image"/>
+              <p className="user-name">{user.name}</p>
+            </div>
           ))}
 
         </div>
