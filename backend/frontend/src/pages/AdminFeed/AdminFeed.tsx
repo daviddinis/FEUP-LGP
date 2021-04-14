@@ -11,13 +11,13 @@ interface File {
 }
 
 interface Submission {
-  id: string,
-  user: string,
-  documentName: string,
-  type: string,
-  format: string,
-  date: Date,
-  isFlaged: boolean
+  id: string;
+  user: string;
+  documentName: string;
+  type: string;
+  format: string;
+  date: Date;
+  isFlaged: boolean;
 }
 
 function AdminFeed(): JSX.Element {
@@ -88,17 +88,7 @@ function AdminFeed(): JSX.Element {
 
           <tbody>
             {submissions.map((submission) => {
-              return (
-                <SubmissionLine
-                  key={submission.id}
-                  isFlaged={submission.isFlaged}
-                  user={submission.user}
-                  documentName={submission.documentName}
-                  type={submission.type}
-                  format={submission.format}
-                  date={submission.date}
-                />
-              );
+              return <SubmissionLine key={submission.id} {...submission} />;
             })}
           </tbody>
         </table>

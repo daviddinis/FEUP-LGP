@@ -1,9 +1,18 @@
 .icon {
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+button {
   cursor: pointer
 }
 
 .content {
   margin: 5% 10%;
+}
+
+header {
+  display: flow-root;
 }
 
 body {
