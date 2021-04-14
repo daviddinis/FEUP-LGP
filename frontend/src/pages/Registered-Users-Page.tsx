@@ -56,11 +56,11 @@ function RegisteredUsersPage() {
         </div>
         <div className="users-container">
           
-          {users.reverse().filter(val => 
+          {users.filter(val => 
           {
             if(val.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
               return val
-          }).map(user => 
+          }).reverse().map(user => 
             (
             <div className="user-item" key={user.id}>
             <img src={flag} className="flag-image"/>
