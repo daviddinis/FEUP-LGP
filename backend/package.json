@@ -10,7 +10,6 @@
     "dev": "concurrently --names \"server,client\" \"npm run dev-server\" \"npm run dev-client\"",
     "dev-server": "concurrently --names \"serverTS,serverNode\" \"npm run watch:ts\" \"npm run watch:node\"",
     "dev-client": "npm start --prefix frontend",
-    "dev": "concurrently --names \"server,client\" \"npm run dev-server\" \"npm run dev-client\"",
     "serve": "npm run build && npm start",
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
