@@ -4,10 +4,12 @@ import logger from 'morgan';
 import config from './config';
 import path from 'path';
 
+import MongoClient from './models/index';
+import User from './models/user';
+import File from './models/file';
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' })
 
-import MongoClient from "./models/index";
 
 import DocumentController from "./controllers/DocumentController";
 import UserController from "./controllers/UserController";
@@ -26,6 +28,11 @@ app.post('/sendFile', upload.single('file'), DocumentController.submit);
 
 app.get('/users', UserController.list);
 app.post('/test-db', UserController.testDB)
+
+app.get('/files', async (req, res) => {
+  const files = await File.find();
+  return res.status(200).json(files);
+});
 
 app.listen(config.port, async () => {
   console.log("App is running on port " + config.port);

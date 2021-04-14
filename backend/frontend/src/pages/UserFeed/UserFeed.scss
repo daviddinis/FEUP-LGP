@@ -1,0 +1,99 @@
+.icon.document {
+    margin-bottom: 18px; 
+    height: 54.99px;
+    width: 46.37px;   
+}
+
+.drop-file-label {
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 17px;
+    color: #701C74;
+}
+
+.drop-file-label strong {
+    font-weight: bolder;
+}
+
+.dropzone {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    max-width: 700px;
+    margin-top: 47px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(247, 244, 249, 0.9);
+    border-radius: 10px;
+}
+
+.dropzone::after {
+    position: absolute;
+    content: '';
+    top: 11px;
+    right: 11px;
+    bottom: 11px;
+    left: 11px;
+    border-radius: 10px;
+    border: 1px dashed #701C74;
+}
+
+header.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    background : linear-gradient(135deg, rgba(219, 161, 140, 1) 0%, rgba(189, 125, 134, 0.96) 6.06%, rgba(147, 76, 127, 0.89) 15.49%, rgba(121, 45, 122, 0.85) 22.65%, rgba(111, 33, 120, 0.82) 26.65%, rgba(111, 37, 123, 0.85) 39.01%, rgba(110, 48, 133, 0.88) 50.9%, rgba(108, 68, 148, 0.91) 62.61%, rgba(107, 95, 171, 0.94) 74.2%, rgba(104, 130, 199, 0.96) 85.72%, rgba(101, 173, 234, 0.99) 97.02%, rgba(100, 185, 244, 1) 100%);
+    border-radius: 0px 0px 10px 10px;
+}
+
+header.page-header {
+    padding: 0em;
+    width: 100%;
+}
+
+.username {
+    color: white;
+}
+
+.page-title {
+    color: white;
+}
+
+.icon.status.good {
+    display: block;
+    height: 24px;
+    width: 30px;
+    background: rgba(74, 196, 244, 0.8);
+    border-radius: 8px;
+    margin: 8px 10px;
+}
+
+.icon.status.bad {
+    display: block;
+    height: 24px;
+    width: 30px;
+    background: #C41414;
+    border-radius: 8px;
+    margin: 8px 10px;
+}
+
+.icon.status.medium {
+    display: block;
+    height: 24px;
+    width: 30px;
+    background: #e69d00;
+    border-radius: 8px;
+    margin: 8px 10px;
+}
+
+.icon.status.analysing {
+    display: block;
+    height: 24px;
+    width: 30px;
+    background: #701C74;
+    border-radius: 8px;
+    margin: 8px 10px;
+}
