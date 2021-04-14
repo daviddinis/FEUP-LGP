@@ -1,0 +1,41 @@
+header.page-header {
+    padding: 2em 3em;
+}
+
+.page-title{
+    margin-left: 5%;
+}
+
+.icon.user {
+    margin-left: 10px;
+    width: 22px;
+} 
+
+.username {
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 17px;
+    color: #701C74;
+}
+
+.page-title {
+    float:left;
+    font-family: Ubuntu;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #701C74;
+}
+
+.navbar-toggle {
+    float:left;
+    border: 0;
+    padding: 0;
+    background: none;
+    margin-block-start: 2em;
+}
+
+header.page-header nav {
+    float: right;
+    margin-top: 0.5%;
+}

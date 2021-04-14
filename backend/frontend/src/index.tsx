@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import User from './pages/User-Page';
-import reportWebVitals from './reportWebVitals';
+import 'index.css';
+import Admin from 'pages/AdminFeed/AdminFeed';
+//import User from 'pages/UserFeed/UserFeed';
+import reportWebVitals from 'reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'></link>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'></link>
-    <User />
+    <Admin />
   </React.StrictMode>,
   document.getElementById('root')
 );
