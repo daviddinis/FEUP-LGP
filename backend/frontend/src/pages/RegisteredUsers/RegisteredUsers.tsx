@@ -44,7 +44,7 @@ const users : User[] = [
 
 
 
-function RegisteredUsersPage() {
+function RegisteredUsersPage(): JSX.Element  {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [changeFlag, setChangeFlag] = useState(false);

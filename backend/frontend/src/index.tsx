@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'index.css';
-import Admin from 'pages/AdminFeed/AdminFeed';
+// import Admin from 'pages/AdminFeed/AdminFeed';
 import RegisteredUsers from 'pages/RegisteredUsers/RegisteredUsers';
 import reportWebVitals from 'reportWebVitals';
 
