@@ -1,4 +1,4 @@
-import {useState } from 'react';
+import React, {useState } from 'react';
 import './RegisteredUsers.scss';
 import Header from "../../components/Header/Header";
 import BottomCornerImage from '../../components/BottomCornerImage/BottomCornerImage';
