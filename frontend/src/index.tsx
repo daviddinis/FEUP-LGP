@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './pages/App';
 import User from './pages/User-Page';
-import RegisteredUsers from './pages/Registered-Users-Page';
+import RegisteredUsers from './pages/RegisteredUsers/RegisteredUsers';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

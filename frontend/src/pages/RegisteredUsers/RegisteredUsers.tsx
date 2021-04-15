@@ -1,11 +1,11 @@
 import React, { ReactNode, useEffect, useState, useCallback } from 'react';
-import './Registered-Users-Page.scss';
-import Header from "../components/Header";
-import BottomCornerImage from '../components/BottomCornerImage';
-import person from '../shared/icons/person.svg';
-import flag from '../shared/icons/flag.svg';
-import flagSelected from '../shared/icons/flagselected.svg';
-import search from '../shared/icons/pesquisa.svg';
+import './RegisteredUsers.scss';
+import Header from "../../components/Header";
+import BottomCornerImage from '../../components/BottomCornerImage';
+import person from '../../shared/icons/person.svg';
+import flag from '../../shared/icons/flag.svg';
+import flagSelected from '../../shared/icons/flagselected.svg';
+import search from '../../shared/icons/pesquisa.svg';
 
 interface User {
   id: string,
