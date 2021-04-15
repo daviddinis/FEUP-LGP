@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState, useCallback } from 'react';
+import {useState } from 'react';
 import './RegisteredUsers.scss';
 import Header from "../../components/Header/Header";
 import BottomCornerImage from '../../components/BottomCornerImage/BottomCornerImage';
@@ -60,7 +60,7 @@ function RegisteredUsersPage() {
     )
   
   const flagUser = (user:User) => {
-    user.flagged == 1? user.flagged = 0: user.flagged = 1; 
+    user.flagged === 1? user.flagged = 0: user.flagged = 1; 
     setChangeFlag(!changeFlag)
   }
 
