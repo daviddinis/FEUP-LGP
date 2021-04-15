@@ -1,9 +1,10 @@
-.corner-image{
+.bottom-corner-image{
     width: 300px;
     height: 229px;
-    position: fixed;
+    position: absolute;
     right: 0;
     bottom: 0;
     background-size: cover;
     transform: rotate(180deg);
+    align-self: flex-end;
 }

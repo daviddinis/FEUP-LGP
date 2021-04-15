@@ -1,11 +1,11 @@
 import React from 'react';
 import cornerImage from '../shared/icons/corner.png';
-import './CornerImage.scss';
+import './BottomCornerImage.scss';
 
 
 const Component = () => {
    return (
-         <div style={{backgroundImage: "url(" + cornerImage + ")"}} className={'corner-image'}></div>
+        <div style={{backgroundImage: "url(" + cornerImage + ")"}} className={'bottom-corner-image'}></div>
     );
 }
 

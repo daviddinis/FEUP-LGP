@@ -7,6 +7,11 @@
     color: #701C74;
 }
 
+.registered-users-page{
+    position: relative;
+    min-height: 100vh;
+}
+
 .body-container{
     margin-left: 50px;
 }
@@ -25,7 +30,6 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 5px;
-    // width: 100px;
 }
 
 .flag-image{

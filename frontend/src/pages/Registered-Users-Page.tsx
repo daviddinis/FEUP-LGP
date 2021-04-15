@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useState, useCallback } from 'react';
 import './Registered-Users-Page.scss';
 import Header from "../components/Header";
-import CornerImage from '../components/CornerImage';
+import BottomCornerImage from '../components/BottomCornerImage';
 import person from '../shared/icons/person.svg';
 import flag from '../shared/icons/flag.svg';
 import flagSelected from '../shared/icons/flagselected.svg';
@@ -26,7 +26,7 @@ const users : User[] = [
   { id: "8", name: 'user_name_9', flagged: 0 },
   { id: "9", name: 'user_name_10', flagged: 0 },
   { id: "10", name: 'user_name_11', flagged: 0 },
-  { id: "11", name: 'user_name_12', flagged: 0 },
+  { id: "11", name: 'user_name_12', flagged: 1 },
   { id: "12", name: 'user_name_13', flagged: 0 },
   { id: "13", name: 'user_name_14', flagged: 0 },
   { id: "14", name: 'user_name_15', flagged: 0 },
@@ -37,55 +37,49 @@ const users : User[] = [
   { id: "19", name: 'user_name_20', flagged: 0 },
   { id: "20", name: 'user_name_21', flagged: 0 },
   { id: "21", name: 'user_name_22', flagged: 0 },
-  { id: "22", name: 'user_name_23', flagged: 1 },
+  { id: "22", name: 'user_name_23', flagged: 0 },
   { id: "23", name: 'user_name_24', flagged: 0 },
   { id: "24", name: 'user_name_25', flagged: 0 },
 ];
+
+
 
 function RegisteredUsersPage() {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [changeFlag, setChangeFlag] = useState(false);
-  const [hoverFlag, setHoverFlag] = useState(false);
+
+  const usersFinal = (users2:User[]): User[] => users2.
+    filter(val => {
+      if(val.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+        return val
+    })
+    .reverse()
+    .sort(
+      (a,b) => b.flagged - a.flagged
+    )
+  
+  const flagUser = (user:User) => {
+    user.flagged == 1? user.flagged = 0: user.flagged = 1; 
+    setChangeFlag(!changeFlag)
+  }
+
 
   return (
     <div className="registered-users-page">
       <header className={'header'}>
-        <Header
-          username="Miller"
-          isAdmin={true} />
+        <Header username="Miller" isAdmin={true} />
       </header>
       <div className="body-container">
         <div className="search-bar">
           <img src={search} className="search-image"/>
-          <input type="text" className="search-name" placeholder="search name..." 
-            onChange={
-              (event => {
-                setSearchTerm(event.target.value)
-              })}/>
-
+          <input type="text" className="search-name" placeholder="search name..." onChange={(event => {setSearchTerm(event.target.value)})}/>
         </div>
         <div className="users-container">
           
-          {users
-            .filter(val => 
-            {
-              if(val.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
-                return val
-            })
-            .reverse()
-            .sort(
-              (a,b) => b.flagged - a.flagged
-            )
-            .map(user => 
-              (
+          {usersFinal(users).map(user => (
               <div className="user-item" key={user.id}>
-              <img src={(user.flagged || hoverFlag)? flagSelected: flag} className="flag-image" 
-                onClick={(event => {
-                  user.flagged == 1? user.flagged = 0: user.flagged = 1; 
-                  setChangeFlag(!changeFlag)
-                })}
-                />
+              <img src={user.flagged? flagSelected: flag} className="flag-image" onClick={() => flagUser(user)}/>
               <img src={person} className="user-image"/>
               <p className="user-name">{user.name}</p>
             </div>
@@ -93,7 +87,7 @@ function RegisteredUsersPage() {
 
         </div>
       </div>
-      <CornerImage/>
+      <BottomCornerImage/>
     </div>
   );
 }
