@@ -1,0 +1,101 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 50px 60px;
+    border-radius: 0px 0px 10px 10px;
+    color: #701C74;
+}
+
+.registered-users-page{
+    position: relative;
+    min-height: 100vh;
+}
+
+.body-container{
+    margin-left: 50px;
+}
+
+.users-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+    margin-right: 300px;
+}
+
+.user-item{
+    width: 180px;
+    margin-left: 15%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.flag-image{
+    width: 16px;
+    margin-right: 15px;
+    align-self: center;
+    cursor: pointer;
+}
+
+.user-image{
+    background-color: #F7F4F9;
+    border-radius: 12px;
+    width: 24px;
+    padding: 8px;
+    margin-right: 6px;
+}
+
+.user-name{
+    font-family: Anaheim;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    align-self: center;
+    color: #6A5B70;
+}
+
+.search-bar{
+    background-color: rgba(247, 244, 249, 0.5);
+    width: 300px;
+    border-radius: 12px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 8%;
+
+}
+
+.search-image{
+    width: 18px;
+    margin-right: 12px;
+    align-self: center;
+    margin-left: 15px;
+}
+
+.search-name{
+    font-family: Anaheim;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 40px;
+    color: rgba(106, 91, 112, 0.5);
+    border-style: none;
+    background-color: transparent;
+    width: 80%;
+}
+
+input:focus{
+    outline: none;
+}
+
+.search-name::placeholder{
+    font-family: Anaheim;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 35px;
+    color: rgba(106, 91, 112, 0.5);
+}
+
