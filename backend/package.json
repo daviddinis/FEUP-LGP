@@ -2,18 +2,14 @@
   "name": "server",
   "version": "0.0.0",
   "private": true,
-  "bin": {
-    "server": "bin/wwww"
-  },
-  "main": "index.js",
   "scripts": {
     "start": "node dist/app.js",
     "build": "tsc",
     "lint": "tslint --project \"tsconfig.json\"",
     "test": "jest",
-    "dev-server": "concurrently --names \"serverTS,serverNode\" \"npm run watch:ts\" \"npm run watch:node\"",
-    "dev-client": "npm start --prefix ../frontend",
     "dev": "concurrently --names \"server,client\" \"npm run dev-server\" \"npm run dev-client\"",
+    "dev-server": "concurrently --names \"serverTS,serverNode\" \"npm run watch:ts\" \"npm run watch:node\"",
+    "dev-client": "npm start --prefix frontend",
     "serve": "npm run build && npm start",
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
@@ -22,6 +18,10 @@
     "test:coverage": "npm run test -- --coverage"
   },
   "dependencies": {
+    "@trendmicro/react-sidenav": "^0.5.0",
+    "@types/react-router": "^5.1.13",
+    "awesome-react-icons": "^1.4.8",
+    "common-js": "^0.3.8",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "docparser-node": "^1.2.2",
@@ -29,7 +29,12 @@
     "express": "~4.16.1",
     "mongoose": "^5.12.1",
     "morgan": "^1.9.1",
-    "multer": "^1.4.2"
+    "multer": "^1.4.2",
+    "react": "^17.0.2",
+    "react-dropzone": "^11.3.2",
+    "react-icons": "^4.2.0",
+    "react-minimal-side-navigation": "^1.8.0",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.2",
@@ -39,12 +44,11 @@
     "@types/node": "^14.0.9",
     "@types/supertest": "^2.0.9",
     "concurrently": "^5.2.0",
-    "jest": "^26.0.1",
+    "jest": "^26.6.0",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2",
-    "ts-jest": "^26.1.0",
-    "tsc": "^1.20150623.0",
+    "ts-jest": "^26.5.4",
     "tslint": "^6.1.2",
-    "typescript": "^3.9.3"
+    "typescript": "^4.2.4"
   }
 }

@@ -1,0 +1,115 @@
+table {
+  width: 94%;
+  margin: 3%;
+  border-collapse: separate;
+  border-spacing: 0 0.3em;
+  table-layout: fixed;
+}
+
+thead th {
+  height: 19px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: left;
+
+  margin: 0% 1%;
+
+  color: #701C74;
+}
+
+thead th:first-child{
+  padding-left: 0.7em;
+}
+
+.td {
+  vertical-align: middle;
+  border: solid 1px #000;
+}
+
+tr td:first-child { 
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+tr td:last-child { 
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px; 
+}
+
+.line {
+
+  background: #F7F4F9;
+  border-radius: 12px;
+  
+  margin-top: 6px;
+  height: 40px;
+}
+
+.line:nth-child(2n) {
+  background: #EDEAEF;
+}
+
+.line td {
+  font-family: Anaheim;
+  font-size: 14px;
+  color: #6A5B70;
+  line-height: 18px;
+  margin: 0.8em 2%;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+
+tr :nth-child(1) {
+  width: 5%;
+}
+
+tr :nth-child(2) {
+  width: 20%;
+}
+
+tr :nth-child(3) {
+  width: 30%;
+  max-width: 30%;
+}
+
+tr :nth-child(4) {
+  width: 15%;
+}
+
+tr :nth-child(5) {
+  width: 15%;
+}
+
+tr :nth-child(6) {
+  width: 10%;
+}
+
+tr :nth-child(7) {
+  width: 5%;
+}
+
+td:nth-child(7) {
+  text-align: right;
+}
+
+.icon {
+  vertical-align: middle;
+}
+
+.icon.flag {
+  width: 17px;
+  padding-left: 20px;
+}
+
+.icon.details {
+  width: 24px;
+  padding-right: 15px;
+}
