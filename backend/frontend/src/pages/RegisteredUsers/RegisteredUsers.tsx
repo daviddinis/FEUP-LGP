@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import BottomCornerImage from '../../components/BottomCornerImage/BottomCornerImage';
 import person from '../../shared/icons/person.svg';
 import flag from '../../shared/icons/flag.svg';
-import flagSelected from '../../shared/icons/flagselected.svg';
+import flagSelected from '../../shared/icons/flagSelected.svg';
 import search from '../../shared/icons/pesquisa.svg';
 
 interface User {

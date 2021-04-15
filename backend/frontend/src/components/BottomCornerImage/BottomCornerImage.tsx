@@ -1,5 +1,5 @@
 import React from 'react';
-import cornerImage from '../shared/icons/corner.png';
+import cornerImage from '../../shared/icons/canto.png';
 import './BottomCornerImage.scss';
 
 
