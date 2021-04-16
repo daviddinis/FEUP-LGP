@@ -64,12 +64,18 @@ function RegisteredUsersPage(): JSX.Element  {
     setChangeFlag(!changeFlag)
   }
 
+  const userItem = (user: User) => (
+    <div className="user-item" key={user.id}>
+      <button onClick={() => flagUser(user)}><img src={user.flagged? flagSelected: flag} className="flag-image icons"/></button>
+      <img src={person} className="user-image"/>
+      <p className="user-name">{user.name}</p>
+    </div>
+  )
+
 
   return (
     <div className="registered-users-page">
-      <header className={'header'}>
-        <Header username="Miller" isAdmin={true} />
-      </header>
+      <Header username="Miller" isAdmin={true} />
       <div className="body-container">
         <div className="search-bar">
           <img src={search} className="search-image"/>
@@ -77,13 +83,7 @@ function RegisteredUsersPage(): JSX.Element  {
         </div>
         <div className="users-container">
           
-          {usersFinal(users).map(user => (
-              <div className="user-item" key={user.id}>
-              <img src={user.flagged? flagSelected: flag} className="flag-image" onClick={() => flagUser(user)}/>
-              <img src={person} className="user-image"/>
-              <p className="user-name">{user.name}</p>
-            </div>
-          ))}
+          {usersFinal(users).map(user => (userItem(user)))}
 
         </div>
       </div>
