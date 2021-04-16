@@ -6,6 +6,7 @@ import RegisteredUsers from 'pages/RegisteredUsers/RegisteredUsers';
 import reportWebVitals from 'reportWebVitals';
 import Submission from 'pages/Submission/Submission';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import User from 'pages/UserFeed/UserFeed';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,7 +18,10 @@ ReactDOM.render(
           <Route path="/admin">
             <Admin/>
           </Route>
-          <Route path="/users">
+          <Route path="/user">
+            <User/>
+          </Route>
+          <Route path="/register-users">
             <RegisteredUsers />
           </Route>
           <Route path="/submissions/:id">

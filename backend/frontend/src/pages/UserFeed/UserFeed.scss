@@ -62,38 +62,26 @@ header.page-header {
     color: white;
 }
 
-.icon.status.good {
+.icon.status {
     display: block;
     height: 24px;
     width: 30px;
-    background: rgba(74, 196, 244, 0.8);
     border-radius: 8px;
     margin: 8px 10px;
+}
+
+.status.good {
+    background: rgba(74, 196, 244, 0.8);
 }
 
 .icon.status.bad {
-    display: block;
-    height: 24px;
-    width: 30px;
     background: #C41414;
-    border-radius: 8px;
-    margin: 8px 10px;
 }
 
 .icon.status.medium {
-    display: block;
-    height: 24px;
-    width: 30px;
     background: #e69d00;
-    border-radius: 8px;
-    margin: 8px 10px;
 }
 
 .icon.status.analysing {
-    display: block;
-    height: 24px;
-    width: 30px;
     background: #701C74;
-    border-radius: 8px;
-    margin: 8px 10px;
 }
