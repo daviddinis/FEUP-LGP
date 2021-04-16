@@ -15,7 +15,8 @@
     "watch:ts": "tsc -w",
     "watch:node": "nodemon dist/app.js",
     "test:watch": "npm run test -- --watchAll",
-    "test:coverage": "npm run test -- --coverage"
+    "test:coverage": "npm run test -- --coverage",
+    "release": "standard-version"
   },
   "dependencies": {
     "@trendmicro/react-sidenav": "^0.5.0",
