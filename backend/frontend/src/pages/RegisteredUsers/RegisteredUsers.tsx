@@ -55,9 +55,6 @@ function RegisteredUsersPage(): JSX.Element  {
         return val
     })
     .reverse()
-    .sort(
-      (a,b) => b.flagged - a.flagged
-    )
   
   const flagUser = (user:User) => {
     user.flagged === 1? user.flagged = 0: user.flagged = 1; 
