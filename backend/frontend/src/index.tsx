@@ -1,17 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'index.css';
-// import Admin from 'pages/AdminFeed/AdminFeed';
+import Admin from 'pages/AdminFeed/AdminFeed';
 import RegisteredUsers from 'pages/RegisteredUsers/RegisteredUsers';
 import reportWebVitals from 'reportWebVitals';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'></link>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'></link>
-    {/* <Admin /> */}
-    <RegisteredUsers />
+    <Router>
+        <Switch>
+          <Route path="/admin">
+            <Admin/>
+          </Route>
+          <Route path="/registered-users">
+            <RegisteredUsers />
+          </Route>
+          <Route path="/">
+            <RegisteredUsers/>
+          </Route>
+        </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

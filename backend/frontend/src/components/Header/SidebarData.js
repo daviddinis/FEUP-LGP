@@ -1,7 +1,7 @@
 export const SidebarData = [
   {
     title: 'Submitted Documents',
-    path: '/',
+    path: '/admin',
     cName: 'nav-text'
   },
   {
@@ -11,7 +11,7 @@ export const SidebarData = [
   },
   {
     title: 'Registered Users',
-    path: '/',
+    path: '/registered-users',
     cName: 'nav-text'
   },
 ];
