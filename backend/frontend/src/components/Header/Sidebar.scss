@@ -49,9 +49,6 @@
   display: flex;
   width: 105%;
   margin-top: 1em;
-}
-
-.nav-text a {
   background-color:#4AC4F4;
   
   font-family: montserrat;
@@ -65,10 +62,10 @@
   border-bottom-right-radius: 6px;
 }
 
-.nav-text a:hover {
+.nav-text:hover {
   background-color: #587FE7;
 }
 
-.nav-text a:active {
+.nav-text:active {
   background-color: #587FE7;
 }
