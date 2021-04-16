@@ -1,14 +1,14 @@
-.registered-users-page{
+.registered-users-page .registered-users-page{
     position: relative;
     min-height: 100vh;
 }
 
-.body-container{
+.registered-users-page .body-container{
     margin-left: 50px;
     margin-top: 50px;
 }
 
-.users-container {
+.registered-users-page .users-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -16,7 +16,7 @@
     margin-right: 300px;
 }
 
-.user-item{
+.registered-users-page .user-item{
     width: 180px;
     margin-left: 15%;
     display: flex;
@@ -24,14 +24,7 @@
     margin-bottom: 5px;
 }
 
-.flag-image{
-    width: 16px;
-    margin-right: 15px;
-    align-self: center;
-    cursor: pointer;
-}
-
-.user-image{
+.registered-users-page .user-image{
     background-color: #F7F4F9;
     border-radius: 12px;
     width: 24px;
@@ -40,7 +33,7 @@
     margin-right: 6px;
 }
 
-.user-name{
+.registered-users-page .user-name{
     font-family: Anaheim;
     font-style: normal;
     font-weight: normal;
@@ -49,7 +42,7 @@
     color: #6A5B70;
 }
 
-.search-bar{
+.registered-users-page .search-bar{
     background-color: rgba(247, 244, 249, 0.5);
     width: 300px;
     border-radius: 12px;
@@ -88,8 +81,6 @@
     color: rgba(106, 91, 112, 0.5);
 }
 
-.user-item button{
-    background-color: transparent;
-    border-style: none;
+.registered-users-page .icon.flag{
+    margin-right: 15px;
 }
-
