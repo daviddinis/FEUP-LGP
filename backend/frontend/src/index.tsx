@@ -4,7 +4,7 @@ import 'index.css';
 import Admin from 'pages/AdminFeed/AdminFeed';
 import RegisteredUsers from 'pages/RegisteredUsers/RegisteredUsers';
 import reportWebVitals from 'reportWebVitals';
-import SubmissionDetails from 'pages/SubmissionDetails/SubmissionDetails';
+import Submission from 'pages/Submission/Submission';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 ReactDOM.render(
@@ -21,7 +21,7 @@ ReactDOM.render(
             <RegisteredUsers />
           </Route>
           <Route path="/submissions/:id">
-            <SubmissionDetails />
+            <Submission />
           </Route>
         </Switch>
     </Router>

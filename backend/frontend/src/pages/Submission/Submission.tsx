@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "pages/Table.scss";
-import axios from "axios";
 import Header from "components/Header/Header";
 import SubmissionBlock from "components/SubmissionBlock/SubmissionBlock";
-import arrow from 'shared/icons/arrow.svg';
+import { useParams } from "react-router-dom";
+import BackButton from "components/BackButton/BackButton";
 
 interface File {
   _id: string;
@@ -26,12 +26,15 @@ interface Submission {
   highlights: Highlights[];
 }
 
-function SubmissionDetails(): JSX.Element {
+function Submission(): JSX.Element {
+  const { id } = useParams();
+
   //TODO get submission from backend
   const submission: Submission = {
     id: "1",
     user: "filipasenra",
-    documentName: "anualreportdocuraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    documentName:
+      "anualreportdocuraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     type: "extract",
     format: "pdf",
     date: new Date("2021-03-25"),
@@ -45,8 +48,7 @@ function SubmissionDetails(): JSX.Element {
     <div className="submition-details">
       <Header username="gingerAle" isAdmin={true} />
 
-      <img className={ 'icon back-arrow' }
-               src={arrow}></img> {/*TODO make back arrow go back*/}
+      <BackButton />
 
       <div className="content">
         <SubmissionBlock {...submission} />
@@ -55,4 +57,4 @@ function SubmissionDetails(): JSX.Element {
   );
 }
 
-export default SubmissionDetails;
+export default Submission;
