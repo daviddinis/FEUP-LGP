@@ -54,7 +54,6 @@ function RegisteredUsersPage(): JSX.Element  {
       if(val.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
         return val
     })
-    .reverse()
   
   const flagUser = (user:User) => {
     user.flagged === 1? user.flagged = 0: user.flagged = 1; 
