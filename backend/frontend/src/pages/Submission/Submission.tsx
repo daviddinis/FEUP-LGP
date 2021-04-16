@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { } from "react";
 import "pages/Table.scss";
 import Header from "components/Header/Header";
 import SubmissionBlock from "components/SubmissionBlock/SubmissionBlock";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
 import BackButton from "components/BackButton/BackButton";
-
-interface File {
-  _id: string;
-  path: string;
-  name: string;
-}
 
 interface Highlights {
   title: string;
@@ -17,7 +11,8 @@ interface Highlights {
 }
 
 interface Submission {
-  id: string;
+  id: string,
+  state?: number,
   user: string;
   documentName: string;
   type: string;
@@ -27,11 +22,12 @@ interface Submission {
 }
 
 function Submission(): JSX.Element {
-  const { id } = useParams();
+  //const { id } = useParams(); //TODO: use to get submission from backend
 
   //TODO get submission from backend
   const submission: Submission = {
     id: "1",
+    state: 90,
     user: "filipasenra",
     documentName:
       "anualreportdocuraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",

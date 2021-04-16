@@ -1,5 +1,6 @@
 import React from "react";
 import details from 'shared/icons/details.svg';
+import { stateToClass, stateToString } from "components/State/State";
 
 interface Submission {
     name: string,
@@ -7,24 +8,6 @@ interface Submission {
     format: string,
     state?: number,
     date: Date
-}
-
-function stateToClass(percentage: number | undefined) {
-    if(!percentage) return "analysing";
-    if(percentage < 0 || percentage > 100) throw new RangeError();
-    if(percentage < 50) return "bad";
-    if(percentage < 80) return "medium";
-
-    return "good";
-
-}
-
-function stateToString(percentage: number | undefined) {
-    if(!percentage) return "analysing";
-    if(percentage < 0 || percentage > 100) throw new RangeError();
-
-    return percentage + "%";
-
 }
 
 const submissionLineUser = (submission : Submission) : JSX.Element => {

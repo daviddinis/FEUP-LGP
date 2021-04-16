@@ -1,5 +1,6 @@
 import React from "react";
 import "./SubmissionBlock.scss";
+import { stateToClass, stateToString } from "components/State/State";
 
 interface Highlights {
   title: string;
@@ -8,6 +9,7 @@ interface Highlights {
 
 interface Submission {
   id: string;
+  state?: number,
   user: string;
   documentName: string;
   type: string;
@@ -17,13 +19,15 @@ interface Submission {
 }
 
 const SubmissionLine = (submission: Submission): JSX.Element => {
-  const exportHighlightedInfo = (e) => {
+  const exportHighlightedInfo = (/*e*/) => {
     //TODO
     console.log("Export button clicked!");
   };
 
   return (
     <div className="submission-block">
+    <div className="wrapper-inner-submisson-block">
+      <div className="inner-submisson-block">
       <header>
         <div className="box-title">
           <h2>
@@ -33,6 +37,9 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
         </div>
         <p className="date">
           <time>{submission.date.toLocaleDateString()}</time>
+        </p>
+        <p>
+         <b>Status: </b>{stateToString(submission.state)}
         </p>
       </header>
       <div className="highlights">
@@ -46,6 +53,9 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
         })}
       </div>
       <button onClick={exportHighlightedInfo}>Export</button>
+    </div>
+    </div>
+    <div className={"status " + stateToClass(submission.state)} />
     </div>
   );
 };

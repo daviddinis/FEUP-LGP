@@ -1,25 +1,36 @@
+$sizeOfStatus: 1.5em;
+$borderRadius: 12px;
+
+
 .submission-block {
-  border-radius: 12px;
-  background: rgb(246, 244, 249);
-  background: linear-gradient(
-    90deg,
-    rgba(246, 244, 249, 1) 0%,
-    rgba(246, 244, 249, 1) 97.5%,
-    rgba(74, 195, 243, 1) 97.5%,
-    rgba(74, 195, 243, 1) 100%
-  );
-  padding: 1.5em 4em 1.2em 2em;
+  display: flex;
+  margin-right: $sizeOfStatus;
 }
 
-.submission-block header {
+.submission-block .wrapper-inner-submisson-block {
+  width: 100%;
+}
+
+.submission-block .inner-submisson-block {
+  border-radius: $borderRadius 0px 0px $borderRadius;
+  background: rgb(246, 244, 249);
+  padding: 1.5em 2em 1.2em;
+}
+
+.submission-block .status {
+  border-radius: 0px $borderRadius $borderRadius 0px;
+  min-width: $sizeOfStatus;
+}
+
+.submission-block .inner-submisson-block header {
   margin-bottom: 3em;
 }
 
-.submission-block .box-title {
+.submission-block .inner-submisson-block .box-title {
   display: flow-root;
 }
 
-.submission-block header h2 {
+.submission-block .inner-submisson-block header h2 {
   font-family: Montserrat;
   color: #6a5b70;
   font-size: 18px;
@@ -33,38 +44,38 @@
   max-width: 80%;
 }
 
-.submission-block header .submission-author {
+.submission-block .inner-submisson-block header .submission-author {
   font-family: Montserrat;
   color: #6a5b70;
   float: right;
 }
 
-.submission-block header p.date {
+.submission-block .inner-submisson-block header p.date {
   font-size: 14px;
 }
 
-.submission-block p {
+.submission-block .inner-submisson-block p {
   color: #6a5b70;
   font-size: 16px;
   margin-top: 0;
 }
 
-.submission-block .highlights .highlight {
+.submission-block .inner-submisson-block .highlights .highlight {
   margin-bottom: 1.5em;
 }
 
-.submission-block .highlights .highlight h3 {
+.submission-block .inner-submisson-block .highlights .highlight h3 {
   font-family: Montserrat;
   color: #6a5b70;
   font-size: 16px;
   margin-bottom: 0.5em;
 }
 
-.submission-block .highlights {
+.submission-block .inner-submisson-block .highlights {
   margin-bottom: 3em;
 }
 
-.submission-block button {
+.submission-block .inner-submisson-block button {
   background-color: #8b478f;
   border: none;
   border-radius: 12px;
