@@ -5,6 +5,8 @@ import person from "shared/icons/person.svg";
 import Hamburger from "shared/icons/hamburger.svg";
 import HamburgerWhite from "shared/icons/hamburger_white.svg";
 import { SidebarData } from "components/Header/SidebarData";
+import {Link} from "react-router-dom";
+
 
 interface User {
   username: string;
@@ -41,11 +43,9 @@ const HeaderBase = (user: User): JSX.Element => {
           <ul className="side-bar-items">
             {SidebarData.map((item, index) => {
               return (
-                <li key={index} className={item.cName}>
-                  <a href={item.path}>
+                <Link to={item.path} key={index} className={item.cName}>
                     <p>{item.title}</p>
-                  </a>
-                </li>
+                </Link>
               );
             })}
           </ul>
