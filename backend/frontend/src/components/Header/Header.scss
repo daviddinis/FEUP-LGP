@@ -40,3 +40,18 @@ header.page-header nav {
 button{
     outline: none;
 }
+
+.go-back-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0 3rem;
+
+    & .arrow {
+        height: 25px;
+    }
+
+    & .username {
+        margin-left: 90px;
+    }
+}

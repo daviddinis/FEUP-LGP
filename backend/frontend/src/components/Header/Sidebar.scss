@@ -39,8 +39,16 @@
   transition: 350ms;
 }
 
+.go-back-container.active {
+  margin-left: 13.5em;
+}
+
 .page-title.active {
   margin-left: 8em;
+}
+  
+.go-back-container.active,
+.page-title.active {
   transition: 450ms;
   transition-delay: 50ms;
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "pages/Table.scss";
 import axios from "axios";
-import SubmissionLine from "components/SubmissionLineAdmin";
+import SubmissionLineUser from "components/SubmissionLineUser";
 import Header from "components/Header/Header";
 
 interface File {
@@ -12,12 +12,12 @@ interface File {
 
 interface Submission {
   id: string;
-  user: string;
+  name: string;
   documentName: string;
   type: string;
   format: string;
   date: Date;
-  isFlaged: boolean;
+  state: number,
 }
 
 function AdminFeed(): JSX.Element {
@@ -34,8 +34,8 @@ function AdminFeed(): JSX.Element {
   const submissions: Submission[] = [
     {
       id: "1",
-      isFlaged: true,
-      user: "filipasenra",
+      state: 5,
+      name: "filipasenra",
       documentName: "anualreportdocura",
       type: "extract",
       format: "pdf",
@@ -43,8 +43,8 @@ function AdminFeed(): JSX.Element {
     },
     {
       id: "2",
-      isFlaged: false,
-      user: "claudiasilva",
+      state: 10,
+      name: "claudiasilva",
       documentName: "IDClaudia",
       type: "pdf",
       format: "jpeg",
@@ -58,12 +58,12 @@ function AdminFeed(): JSX.Element {
 
     submissions.push({
       id,
-      isFlaged: false,
-      user: "pc",
+      name: "pc",
       documentName: name,
       type: "extract",
       format: "pdf",
       date: new Date("2012-01-30"),
+      state: 10,
     });
 
     console.log(submissions);
@@ -87,9 +87,11 @@ function AdminFeed(): JSX.Element {
           </thead>
 
           <tbody>
-            {submissions.map((submission) => {
-              return <SubmissionLine key={submission.id} {...submission} />;
-            })}
+            {submissions.map((submission) => (
+              <SubmissionLineUser
+                key={submission.id}
+                { ...submission } />
+            ))}
           </tbody>
         </table>
       </div>

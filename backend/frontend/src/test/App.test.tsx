@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import UserFeed from '../pages/UserFeed/UserFeed';
+import AdminUserDocs from '../pages/AdminUserDocs/AdminUserDocs';
 
 test('renders app name', () => {
-  render(<UserFeed />);
+  render(<AdminUserDocs />);
   const title = screen.getByText(/Know your customer on the news/i);
   expect(title).toBeInTheDocument();
 });

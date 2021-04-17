@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'index.css';
 import Admin from 'pages/AdminFeed/AdminFeed';
 import RegisteredUsers from 'pages/RegisteredUsers/RegisteredUsers';
+import AdminUserDocs from 'pages/AdminUserDocs/AdminUserDocs';
 import reportWebVitals from 'reportWebVitals';
 import Submission from 'pages/Submission/Submission';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
@@ -26,6 +27,9 @@ ReactDOM.render(
           </Route>
           <Route path="/submissions/:id">
             <Submission />
+          </Route>
+          <Route path="/">
+            <AdminUserDocs/>
           </Route>
         </Switch>
     </Router>

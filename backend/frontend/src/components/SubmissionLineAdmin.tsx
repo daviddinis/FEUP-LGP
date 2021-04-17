@@ -1,21 +1,28 @@
 import React from "react";
 import details from 'shared/icons/details.svg';
-import Flag from "./Flag/Flag";
+import Flag from './Flag/Flag';
+import flagSelected from 'shared/icons/flagSelected.svg';
 
 interface Submission {
-    user: string,
+    user?: string,
     documentName: string,
     type: string,
     format: string,
     date: Date,
-    isFlaged: boolean
+    isFlagged: boolean
 }
 
 const SubmissionLine = (submission : Submission): JSX.Element => {
     return (
         <tr className={'line submission'}>
-            <td><Flag flagged={submission.isFlaged} /></td>
-            <td>{submission.user}</td>
+            { submission.user &&
+                <>
+                    <td>
+                        <Flag flagged={submission.isFlagged} />
+                    </td>
+                    <td>{submission.user}</td>
+                </>
+             }
             <td>{submission.documentName}</td>
             <td>{submission.type}</td>
             <td>{submission.format}</td>

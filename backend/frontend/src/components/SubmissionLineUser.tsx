@@ -13,8 +13,12 @@ interface Submission {
 const submissionLineUser = (submission : Submission) : JSX.Element => {
     return (
         <tr className='line submission'>
-            <td><span className={"icon status " +  stateToClass(submission.state)}/></td>
-            <td>{stateToString(submission.state)}</td>
+            <td>
+                <div className={ 'status-column' }>
+                    <span className={"icon status " +  stateToClass(submission.state)}/> 
+                    {stateToString(submission.state)}
+                </div>
+            </td>
             <td>{submission.name}</td>
             <td>{submission.type}</td>
             <td>{submission.format}</td>

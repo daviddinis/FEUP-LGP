@@ -6,11 +6,14 @@ import Hamburger from "shared/icons/hamburger.svg";
 import HamburgerWhite from "shared/icons/hamburger_white.svg";
 import { SidebarData } from "components/Header/SidebarData";
 import {Link} from "react-router-dom";
+import arrow from 'shared/icons/arrow.svg';
 
 
 interface User {
   username: string;
   isAdmin: boolean;
+  withBackArrow?: boolean;
+  filesOwnerUserName?: string;
 }
 
 const HeaderBase = (user: User): JSX.Element => {
@@ -53,18 +56,26 @@ const HeaderBase = (user: User): JSX.Element => {
   }
 
   return (
-    <header className={"page-header"}>
-      {toogleSideBar}
+    <>
+      <header className={"page-header"}>
+        {toogleSideBar}
 
-      {sideBar}
-      <h1 className={sidebar ? "page-title active" : "page-title"}>Know your customer on the news</h1>
-      <nav>
-        <p className={"username"}>
-          {user.username}
-          <img className={"icon user"} src={person} />
-        </p>
-      </nav>
-    </header>
+        {sideBar}
+        <h1 className={`page-title ${ sidebar ? 'active' : '' }`}>Know your customer on the news</h1>
+        <nav>
+          <p className={"username"}>
+            {user.username}
+            <img className={"icon user"} src={person} />
+          </p>
+        </nav>
+      </header>
+      { user.withBackArrow && 
+        <div className={ `go-back-container ${ sidebar ? 'active' : '' }` }>
+          <img src={arrow} className="arrow" />
+          { user.filesOwnerUserName && <p className={ 'username' }>{user.filesOwnerUserName}</p> }
+        </div>  
+        }
+    </>
   );
 };
 
