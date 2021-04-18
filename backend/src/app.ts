@@ -25,6 +25,8 @@ app.use(cookieParser());
 
 app.get('/files/:id', DocumentController.read);
 app.post('/sendFile', upload.single('file'), DocumentController.submit);
+app.get('/userFiles/:id', DocumentController.userFiles);
+
 
 app.get('/users', UserController.list);
 app.post('/test-db', UserController.testDB)

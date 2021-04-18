@@ -84,9 +84,18 @@ export default class DocumentController {
             name: req.file.originalname,
             documentId: document.id,
             type: "KB",
-            extracted: null
+            extracted: null,
+            user: 1  //TODO mudar para id de quem submeteu
         })
 
         return res.status(200).json(file)
+    }
+
+    static async userFiles(req : any, res : any) {
+        const file : any = await File.find({"user" : req.params.id});
+        if (!file)
+            return res.status(404).send();
+
+        return res.status(200).json(file);
     }
 }
