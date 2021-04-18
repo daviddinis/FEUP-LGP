@@ -1,9 +1,17 @@
 .icon {
+  vertical-align: middle;
+}
+
+button {
   cursor: pointer
 }
 
 .content {
   margin: 5% 10%;
+}
+
+header {
+  display: flow-root;
 }
 
 body {
@@ -15,4 +23,10 @@ body {
 
 input:focus{
   outline: none;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  background: none;
 }

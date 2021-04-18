@@ -22,8 +22,8 @@ const HeaderBase = (user: User): JSX.Element => {
 
   if (user.isAdmin) {
     toogleSideBar = (
-      <button className={"navbar-toggle"} onClick={showSidebar}>
-        <img className={"icon hamburger"} src={Hamburger} />
+      <button className={"navbar-toggle icon hamburger"} onClick={showSidebar}>
+        <img src={Hamburger} />
       </button>
     );
 
@@ -33,11 +33,9 @@ const HeaderBase = (user: User): JSX.Element => {
           className={sidebar ? "side-bar active" : "side-bar"}
           onClick={showSidebar}
         >
-          <button className={"navbar-toggle"} onClick={showSidebar}>
+          <button className={"navbar-toggle icon hamburger"} onClick={showSidebar}>
             <img
-              className={"icon hamburger"}
               src={HamburgerWhite}
-              onClick={showSidebar}
             />
           </button>
           <ul className="side-bar-items">

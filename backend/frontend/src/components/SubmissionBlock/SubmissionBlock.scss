@@ -1,0 +1,87 @@
+$sizeOfStatus: 1.5em;
+$borderRadius: 12px;
+
+
+.submission-block {
+  display: flex;
+  margin-right: $sizeOfStatus;
+}
+
+.submission-block .wrapper-inner-submisson-block {
+  width: 100%;
+}
+
+.submission-block .inner-submisson-block {
+  border-radius: $borderRadius 0px 0px $borderRadius;
+  background: rgb(246, 244, 249);
+  padding: 1.5em 2em 1.2em;
+}
+
+.submission-block .status {
+  border-radius: 0px $borderRadius $borderRadius 0px;
+  min-width: $sizeOfStatus;
+}
+
+.submission-block .inner-submisson-block header {
+  margin-bottom: 3em;
+}
+
+.submission-block .inner-submisson-block .box-title {
+  display: flow-root;
+}
+
+.submission-block .inner-submisson-block header h2 {
+  font-family: Montserrat;
+  color: #6a5b70;
+  font-size: 18px;
+  margin-bottom: 0.3em;
+  margin-top: 0;
+  float: left;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+}
+
+.submission-block .inner-submisson-block header .submission-author {
+  font-family: Montserrat;
+  color: #6a5b70;
+  float: right;
+}
+
+.submission-block .inner-submisson-block header p.date {
+  font-size: 14px;
+}
+
+.submission-block .inner-submisson-block p {
+  color: #6a5b70;
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.submission-block .inner-submisson-block .highlights .highlight {
+  margin-bottom: 1.5em;
+}
+
+.submission-block .inner-submisson-block .highlights .highlight h3 {
+  font-family: Montserrat;
+  color: #6a5b70;
+  font-size: 16px;
+  margin-bottom: 0.5em;
+}
+
+.submission-block .inner-submisson-block .highlights {
+  margin-bottom: 3em;
+}
+
+.submission-block .inner-submisson-block button {
+  background-color: #8b478f;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5em 1.1em;
+
+  color: #f7f4f9;
+  font-family: Montserrat;
+  font-size: 15px;
+}
