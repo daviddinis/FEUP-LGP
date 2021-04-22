@@ -1,6 +1,7 @@
 import React from "react";
 import "./SubmissionBlock.scss";
 import { stateToClass, stateToString } from "components/State/State";
+import { CSVLink } from "react-csv";
 
 interface Highlights {
   title: string;
@@ -18,9 +19,29 @@ interface Submission {
   highlights: Highlights[];
 }
 
+const headers = [
+  { label: "id", key: "id" },
+  { label: "state", key: "state" },
+  { label: "Submission's User", key: "user" },
+  { label: "Document Name", key: "documentName" },
+  { label: "Type", key: "type" },
+  { label: "Format", key: "format" },
+  { label: "Submission Date", key: "date" },
+  { label: "Highlighted Information", key: "highlights" },
+];
+
 const SubmissionLine = (submission: Submission): JSX.Element => {
   const exportHighlightedInfo = (/*e*/) => {
     //TODO
+    const data = [
+      { id: submission.id, state: stateToString(submission.state), user: submission.user, documentName: submission.documentName,
+      type: submission.type, format: submission.format, date: submission.date.toLocaleDateString(), highlights: submission.highlights },
+    ];
+    const csvReport = {
+      data: data,
+      headers: headers,
+      filename: 'submission_details.csv'
+    };
     console.log("Export button clicked!");
   };
 
