@@ -17,7 +17,6 @@ const headers = [
 class ExportCSVButton extends Component {
   constructor(props) {
     super(props);
-    this.props = props;
     this.state = {
       data: []
     }
@@ -26,9 +25,10 @@ class ExportCSVButton extends Component {
 
   downloadReport = async () => {
     const { submission } = this.props;
+    var highlight = JSON.stringify(submission.highlights);
     const data = [
-        { id: submission.id, state: stateToString(submission.state), user: submission.user, documentName: submission.documentName,
-        type: submission.type, format: submission.format, date: submission.date.toLocaleDateString(), highlights: submission.highlights },
+        {id: submission.id, state: stateToString(submission.state), user: submission.user, documentName: submission.documentName,
+          type: submission.type, format: submission.format, date: submission.date.toLocaleDateString(), highlights: highlight}
       ];
     this.setState({ data: data }, () => {
       setTimeout(() => {
@@ -48,6 +48,7 @@ class ExportCSVButton extends Component {
           filename="submission_details.CSV"
           data={data}
           ref={this.csvLinkEl}
+          separator={";"}
         />
       </div>
     );
