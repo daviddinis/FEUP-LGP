@@ -26,7 +26,6 @@ class ExportCSVButton extends Component {
 
   downloadReport = async () => {
     const { submission } = this.props;
-    console.log("oi");
     const data = [
         { id: submission.id, state: stateToString(submission.state), user: submission.user, documentName: submission.documentName,
         type: submission.type, format: submission.format, date: submission.date.toLocaleDateString(), highlights: submission.highlights },
