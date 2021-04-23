@@ -39,13 +39,13 @@ class ExportCSVButton extends Component {
 
   render() {
     const { data } = this.state;
-
+    const { submission } = this.props;
     return (
       <div>
         <button onClick={this.downloadReport}>Export</button>
         <CSVLink
           headers={headers}
-          filename="submission_details.CSV"
+          filename= {submission.user + "_submission_details.CSV"} 
           data={data}
           ref={this.csvLinkEl}
           separator={";"}
