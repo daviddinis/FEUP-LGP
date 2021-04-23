@@ -15,6 +15,7 @@ const headers = [
   ];
 
 class ExportCSVButton extends Component {
+  // eslint-disable-next-line
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +24,7 @@ class ExportCSVButton extends Component {
     this.csvLinkEl = React.createRef();
   }
 
+  // eslint-disable-next-line
   downloadReport = async () => {
     const { submission } = this.props;
     var highlight = JSON.stringify(submission.highlights);
@@ -37,6 +39,7 @@ class ExportCSVButton extends Component {
     });
   }
 
+  // eslint-disable-next-line
   render() {
     const { data } = this.state;
     const { submission } = this.props;
