@@ -34,13 +34,15 @@ const ExportCSVButton = (submission: Submission): JSX.Element => {
 
     let strin = "";
     let cont = 0;
-    submission.highlights.forEach(function (highlight) {
+    submission.highlights.forEach(
+    highlight => {
         strin = strin + highlight.title + ": " + highlight.content;
         cont = cont + 1;
         if(cont < submission.highlights.length){
             strin = strin + "\n"
         }
-    });
+    }     
+    );
 
     const data = [
         {
