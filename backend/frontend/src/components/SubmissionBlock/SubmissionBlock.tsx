@@ -49,7 +49,7 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
           );
         })}
       </div>
-      <ExportCSVButton submission={submission}/>
+      <ExportCSVButton {...submission} />
     </div>
     </div>
     <div className={"status " + stateToClass(submission.state)} />
