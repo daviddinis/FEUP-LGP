@@ -1,24 +1,28 @@
 import React from "react";
 import details from 'shared/icons/details.svg';
 import Flag from "./Flag/Flag";
+import {stateToClass, stateToString} from "./State/State";
 
 interface Submission {
     user: string,
-    documentName: string,
+    isFlagged: boolean
+
+    name: string,
     type: string,
-    format: string,
+    state?: number,
     date: Date,
-    isFlaged: boolean
 }
 
 const SubmissionLine = (submission : Submission): JSX.Element => {
     return (
         <tr className={'line submission'}>
-            <td><Flag flagged={submission.isFlaged} /></td>
+            <td><Flag flagged={submission.isFlagged} /></td>
+            {/* TODO: Add state
+                <td><span className={"icon status " + stateToClass(submission.state)}/></td>
+                <td>{stateToString(submission.state)}</td>
+            */}
             <td>{submission.user}</td>
-            <td>{submission.documentName}</td>
             <td>{submission.type}</td>
-            <td>{submission.format}</td>
             <td>{(submission.date).toLocaleDateString()}</td>
             <td><img
               className={ 'icon details' }

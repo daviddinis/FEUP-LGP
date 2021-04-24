@@ -1,57 +1,26 @@
 import React, { useEffect, useState } from "react";
 import "pages/Table.scss";
 import axios from "axios";
-import SubmissionLine from "components/SubmissionLineAdmin";
+import SubmissionLineAdmin from "components/SubmissionLineAdmin";
 import Header from "components/Header/Header";
 
-interface File {
-  _id: string;
-  path: string;
-  name: string;
-}
-
-interface Submission {
-  id: string;
-  user: string;
-  documentName: string;
-  type: string;
-  format: string;
-  date: Date;
-  isFlaged: boolean;
+interface FileSubmission {
+  _id: string,
+  name: string,
+  type: string,
+  extracted: any[],
+  createdAt: Date,
+  isFlagged: boolean
 }
 
 function AdminFeed(): JSX.Element {
-  const [files, setUsers] = useState<File[]>([]);
+  const [files, setFiles] = useState<FileSubmission[]>([]);
 
   useEffect(() => {
-    axios.get("/files").then((res) => {
-      setUsers(res.data);
-      console.log(res.data);
-    });
-  }, []);
+    axios.get("/files").then((res) => setFiles(res.data));
+  }, [])
 
-  //TODO: erase submissions content after we have a seed in db
-  const submissions: Submission[] = [
-    {
-      id: "1",
-      isFlaged: true,
-      user: "filipasenra",
-      documentName: "anualreportdocura",
-      type: "extract",
-      format: "pdf",
-      date: new Date("2021-03-25"),
-    },
-    {
-      id: "2",
-      isFlaged: false,
-      user: "claudiasilva",
-      documentName: "IDClaudia",
-      type: "pdf",
-      format: "jpeg",
-      date: new Date("2021-03-21"),
-    },
-  ];
-
+  /*
   for (let i = 0; i !== files.length; i++) {
     const id = files[i]._id;
     const name = files[i].name;
@@ -69,6 +38,8 @@ function AdminFeed(): JSX.Element {
     console.log(submissions);
   }
 
+   */
+
   return (
     <div className="admin-feed">
       <Header username="gingerAle" isAdmin={true} />
@@ -78,17 +49,33 @@ function AdminFeed(): JSX.Element {
           <thead>
             <tr>
               <th></th>
-              <th>name</th>
-              <th>name</th>
+              {/* TODO: Add state
+                <th>status</th>
+                <th></th>
+              */}
+              <th>user</th>
               <th>type</th>
-              <th>format</th>
               <th>date</th>
+              <th></th>
             </tr>
           </thead>
 
           <tbody>
-            {submissions.map((submission) => {
-              return <SubmissionLine key={submission.id} {...submission} />;
+            {files.map((submission) => {
+              const percentage = submission.extracted ?
+                  100 * submission.extracted.filter(param => param.content).length / submission.extracted.length : undefined;
+
+              return (
+                  <SubmissionLineAdmin
+                      key={submission._id}
+                      state={percentage}
+                      name={submission.name}
+                      type={submission.type}
+                      date={new Date(submission.createdAt)}
+                      isFlagged={submission.isFlagged}
+                      user="Moaaas"
+                  />
+              );
             })}
           </tbody>
         </table>

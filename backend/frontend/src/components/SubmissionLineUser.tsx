@@ -5,7 +5,6 @@ import { stateToClass, stateToString } from "components/State/State";
 interface Submission {
     name: string,
     type: string,
-    format: string,
     state: number,
     date: Date
 }
@@ -17,7 +16,6 @@ const submissionLineUser = (submission : Submission) : JSX.Element => {
             <td>{stateToString(submission.state)}</td>
             <td>{submission.name}</td>
             <td>{submission.type}</td>
-            <td>{submission.format}</td>
             <td>{(submission.date).toLocaleDateString()}</td>
             <td><img
               className='icon details'

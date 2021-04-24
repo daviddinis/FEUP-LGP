@@ -1,4 +1,4 @@
-import React, {useCallback } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import { useDropzone } from "react-dropzone";
 import Header from "components/Header/Header";
 import "pages/UserFeed/UserFeed.scss";
@@ -7,24 +7,37 @@ import axios from "axios";
 import document from "shared/icons/document.svg";
 import SubmissionLineUser from "components/SubmissionLineUser";
 
+interface FileSubmission {
+  _id: number,
+  name: string,
+  type: string,
+  extracted: any[],
+  createdAt: Date
+}
+
 function UserFeed(): JSX.Element {
+  const [files, setFiles] = useState<FileSubmission[]>([]);
+
+  useEffect(() => {
+    axios.get("/files").then((res) => setFiles(res.data));
+  }, [])
 
   const onDrop = useCallback((_acceptedFiles) => {
     const formData = new FormData();
     formData.append("file", _acceptedFiles[0]);
-    const config = {
+
+    console.log(_acceptedFiles.length);
+
+    axios.post("/sendFile", formData, {
       headers: {
         "content-type": "multipart/form-data",
       },
-    };
-
-    axios.post("/sendFile", formData, config);
+    }).then((res) => {
+      setFiles((oldFiles) => oldFiles.concat([res.data]));
+    });
   }, []);
 
-  //TODO: only shows the latest uploaded files
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
-    onDrop,
-  });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
     <div className="user-page">
@@ -45,25 +58,25 @@ function UserFeed(): JSX.Element {
         <thead>
             <tr>
               <th>status</th>
-              <th></th>
+              <th/>
               <th>name</th>
               <th>type</th>
-              <th>format</th>
               <th>date</th>
-              <th></th>
             </tr>
           </thead>
 
           <tbody>
-            {acceptedFiles.map((submission) => {
+            {files.map((submission) => {
+              const percentage = submission.extracted ?
+                  100 * submission.extracted.filter(param => param.content).length / submission.extracted.length : undefined;
+
               return (
                 <SubmissionLineUser
-                  key={1} //TODO: change this for the submission id
-                  state={20} //TODO: change this for the submission state -> try with undefined or remove
+                  key={submission._id}
+                  state={percentage}
                   name={submission.name}
-                  type={"report"} //TODO: change this for the submission type (report, ID, etc)
-                  format={submission.type}
-                  date={new Date(submission.lastModified)} //TODO: this date shouldn't be of the file, but of the submission
+                  type={submission.type}
+                  date={new Date(submission.createdAt)}
                 />
               );
             })}
