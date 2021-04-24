@@ -32,14 +32,14 @@ const ExportCSVButton = (submission: Submission): JSX.Element => {
         { label: "Highlighted Information", key: "highlights" },
     ];
 
-    let highlights_str = "";
+    let highlightsSTR = "";
     let count = 0;
     submission.highlights.forEach(
         highlight => {
-            highlights_str = highlights_str + highlight.title + ": " + highlight.content;
+            highlightsSTR = highlightsSTR + highlight.title + ": " + highlight.content;
             count = count + 1;
             if (count < submission.highlights.length) {
-                highlights_str = highlights_str + "\n"
+                highlightsSTR = highlightsSTR + "\n"
             }
         }
     );
@@ -47,7 +47,7 @@ const ExportCSVButton = (submission: Submission): JSX.Element => {
     const data = [
         {
             id: submission.id, state: stateToString(submission.state), user: submission.user, documentName: submission.documentName,
-            type: submission.type, format: submission.format, date: submission.date.toLocaleDateString(), highlights: highlights_str
+            type: submission.type, format: submission.format, date: submission.date.toLocaleDateString(), highlights: highlightsSTR
         }
     ];
 
