@@ -1,12 +1,12 @@
 import React from "react";
 import details from 'shared/icons/details.svg';
 import Flag from "./Flag/Flag";
-import {stateToClass, stateToString} from "./State/State";
+import {Link} from "react-router-dom";
 
 interface Submission {
+    id: string,
     user: string,
-    isFlagged: boolean
-
+    isFlagged: boolean,
     name: string,
     type: string,
     state?: number,
@@ -24,9 +24,11 @@ const SubmissionLine = (submission : Submission): JSX.Element => {
             <td>{submission.user}</td>
             <td>{submission.type}</td>
             <td>{(submission.date).toLocaleDateString()}</td>
-            <td><img
-              className={ 'icon details' }
-               src={ details }/></td>
+            <td>
+                <Link to={"/submissions/" + submission.id}>
+                    <img className={ 'icon details' } src={ details }/>
+                </Link>
+            </td>
         </tr>
     )
 }

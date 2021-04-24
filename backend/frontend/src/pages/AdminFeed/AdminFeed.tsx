@@ -67,6 +67,7 @@ function AdminFeed(): JSX.Element {
 
               return (
                   <SubmissionLineAdmin
+                      id={submission._id}
                       key={submission._id}
                       state={percentage}
                       name={submission.name}

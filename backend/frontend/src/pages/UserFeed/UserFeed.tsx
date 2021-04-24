@@ -8,7 +8,7 @@ import document from "shared/icons/document.svg";
 import SubmissionLineUser from "components/SubmissionLineUser";
 
 interface FileSubmission {
-  _id: number,
+  _id: string,
   name: string,
   type: string,
   extracted: any[],
@@ -72,11 +72,12 @@ function UserFeed(): JSX.Element {
 
               return (
                 <SubmissionLineUser
-                  key={submission._id}
-                  state={percentage}
-                  name={submission.name}
-                  type={submission.type}
-                  date={new Date(submission.createdAt)}
+                    id={submission._id}
+                    key={submission._id}
+                    state={percentage}
+                    name={submission.name}
+                    type={submission.type}
+                    date={new Date(submission.createdAt)}
                 />
               );
             })}
