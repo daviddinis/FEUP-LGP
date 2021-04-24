@@ -8,14 +8,15 @@ interface Highlights {
 }
 
 interface Submission {
-  id: string;
-  state?: number,
-  user: string;
-  documentName: string;
+  _id: string;
+  path?: string,
+  name: string;
+  documentId: string;
   type: string;
-  format: string;
-  date: Date;
-  highlights: Highlights[];
+  extracted: Highlights[];
+  createdAt: string;
+  updatedAt: string;
+  __v: string;
 }
 
 const SubmissionLine = (submission: Submission): JSX.Element => {
@@ -31,19 +32,18 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
       <header>
         <div className="box-title">
           <h2>
-            <b>{submission.documentName}</b>
+            <b>{submission.name}</b>
           </h2>
-          <span className="submission-author">{submission.user}</span>
         </div>
         <p className="date">
-          <time>{submission.date.toLocaleDateString()}</time>
+          <time>{submission.createdAt}</time>
         </p>
         <p>
-         <b>Status: </b>{stateToString(submission.state)}
+         <b>Status: </b>100%
         </p>
       </header>
       <div className="highlights">
-        {submission.highlights.map((highlight, index) => {
+        {submission.extracted.map((highlight, index) => {
           return (
             <div key={index + 1} className="highlight">
               <h3>{highlight.title}</h3>
@@ -55,7 +55,6 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
       <button onClick={exportHighlightedInfo}>Export</button>
     </div>
     </div>
-    <div className={"status " + stateToClass(submission.state)} />
     </div>
   );
 };
