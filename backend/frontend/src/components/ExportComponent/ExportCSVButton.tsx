@@ -32,35 +32,33 @@ const ExportCSVButton = (submission: Submission): JSX.Element => {
         { label: "Highlighted Information", key: "highlights" },
     ];
 
-    let strin = "";
-    let cont = 0;
+    let highlights_str = "";
+    let count = 0;
     submission.highlights.forEach(
-    highlight => {
-        strin = strin + highlight.title + ": " + highlight.content;
-        cont = cont + 1;
-        if(cont < submission.highlights.length){
-            strin = strin + "\n"
+        highlight => {
+            highlights_str = highlights_str + highlight.title + ": " + highlight.content;
+            count = count + 1;
+            if (count < submission.highlights.length) {
+                highlights_str = highlights_str + "\n"
+            }
         }
-    }     
     );
 
     const data = [
         {
             id: submission.id, state: stateToString(submission.state), user: submission.user, documentName: submission.documentName,
-            type: submission.type, format: submission.format, date: submission.date.toLocaleDateString(), highlights: strin
+            type: submission.type, format: submission.format, date: submission.date.toLocaleDateString(), highlights: highlights_str
         }
     ];
 
     return (
-        <div>
-            <CSVLink
-                className="csv-link"
-                headers={headers}
-                filename={submission.user + "_submission_" + submission.id + "_details.CSV"}
-                data={data}
-                separator={";"}
-            >Export</CSVLink>
-        </div>
+        <CSVLink
+            className="csv-link"
+            headers={headers}
+            filename={submission.user + "_submission_" + submission.id + "_details.CSV"}
+            data={data}
+            separator={";"}
+        >Export</CSVLink>
     );
 };
 
