@@ -20,26 +20,6 @@ function AdminFeed(): JSX.Element {
     axios.get("/files").then((res) => setFiles(res.data));
   }, [])
 
-  /*
-  for (let i = 0; i !== files.length; i++) {
-    const id = files[i]._id;
-    const name = files[i].name;
-
-    submissions.push({
-      id,
-      isFlaged: false,
-      user: "pc",
-      documentName: name,
-      type: "extract",
-      format: "pdf",
-      date: new Date("2012-01-30"),
-    });
-
-    console.log(submissions);
-  }
-
-   */
-
   return (
     <div className="admin-feed">
       <Header username="gingerAle" isAdmin={true} />
