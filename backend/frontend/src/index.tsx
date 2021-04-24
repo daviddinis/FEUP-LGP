@@ -22,7 +22,7 @@ ReactDOM.render(
           <Route path="/user">
             <User/>
           </Route>
-          <Route path="/register-users">
+          <Route path="/registered-users">
             <RegisteredUsers />
           </Route>
           <Route path="/submissions/:id">
@@ -30,6 +30,9 @@ ReactDOM.render(
           </Route>
           <Route path="/users/:id/submissions">
             <AdminUserDocs/>
+          </Route>
+          <Route path="/">
+              <User/>
           </Route>
         </Switch>
     </Router>
