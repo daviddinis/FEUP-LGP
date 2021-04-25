@@ -1,6 +1,6 @@
 # Changelog
 
-### [1.2.0](https://github.com/LGP21-LGP4/KyCON/compare/v1.0.2...v1.0.3) (2021-04-9)
+### [1.2.0](https://github.com/LGP21-LGP4/KyCON/compare/v1.0.2...v1.0.3) (2021-04-23)
 
 #### New features
 
