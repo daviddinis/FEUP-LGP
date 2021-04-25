@@ -1,6 +1,7 @@
 import React from "react";
 import "./SubmissionBlock.scss";
 import { stateToClass, stateToString } from "components/State/State";
+import ExportCSVButton from "../ExportComponent/ExportCSVButton";
 
 interface Highlights {
   name: string;
@@ -18,10 +19,6 @@ interface Submission {
 
 
 const SubmissionLine = (submission: Submission): JSX.Element => {
-  const exportHighlightedInfo = (/*e*/) => {
-    //TODO
-    console.log("Export button clicked!");
-  };
 
   return (
     <div className="submission-block">
@@ -59,7 +56,7 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
           : <p>No Highlights</p>
         }
       </div>
-      <button onClick={exportHighlightedInfo}>Export</button>
+      <ExportCSVButton {...submission} />
     </div>
     </div>
     <div className={"status " + stateToClass(submission.state)} />
