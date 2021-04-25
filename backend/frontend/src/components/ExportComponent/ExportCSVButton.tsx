@@ -45,7 +45,6 @@ const ExportCSVButton = (submission: Submission): JSX.Element => {
             headers={headers}
             filename={submission.owner + "_submission_" + submission.type + "_details.CSV"}
             data={data}
-            /*separator={";"}*/
         >Export</CSVLink>
     );
 };
