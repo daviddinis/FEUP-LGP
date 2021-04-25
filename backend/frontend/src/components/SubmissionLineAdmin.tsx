@@ -12,6 +12,8 @@ interface Submission {
     isFlagged: boolean
 }
 
+
+
 const SubmissionLine = (submission : Submission): JSX.Element => {
     return (
         <tr className={'line submission'}>
@@ -22,7 +24,7 @@ const SubmissionLine = (submission : Submission): JSX.Element => {
                     </td>
                     <td>{submission.user}</td>
                 </>
-             }
+            }
             <td>{submission.documentName}</td>
             <td>{submission.type}</td>
             <td>{submission.format}</td>
