@@ -4,20 +4,19 @@ import { stateToClass, stateToString } from "components/State/State";
 import ExportCSVButton from "../ExportComponent/ExportCSVButton";
 
 interface Highlights {
-  title: string;
+  name: string;
   content: string;
 }
 
 interface Submission {
-  id: string;
-  state?: number,
-  user: string;
-  documentName: string;
-  type: string;
-  format: string;
-  date: Date;
-  highlights: Highlights[];
+  name: string,
+  type: string,
+  owner: string,
+  state: number,
+  date: Date,
+  extracted: Highlights[]
 }
+
 
 const SubmissionLine = (submission: Submission): JSX.Element => {
 
@@ -28,26 +27,34 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
       <header>
         <div className="box-title">
           <h2>
-            <b>{submission.documentName}</b>
+            <b>{submission.name}</b>
           </h2>
-          <span className="submission-author">{submission.user}</span>
+          <span className="submission-author">{submission.owner/*TODO*/}</span>
         </div>
         <p className="date">
-          <time>{submission.date.toLocaleDateString()}</time>
+          <time>{new Date(submission.date).toLocaleDateString()}</time>
         </p>
         <p>
          <b>Status: </b>{stateToString(submission.state)}
         </p>
       </header>
+      
       <div className="highlights">
-        {submission.highlights.map((highlight, index) => {
+        {
+          submission.extracted != null ?
+          submission.extracted.map((highlight, index) => {
+          if(highlight.content == null)
+            return( <></>)
+
           return (
             <div key={index + 1} className="highlight">
-              <h3>{highlight.title}</h3>
+              <h3>{highlight.name}</h3>
               <p>{highlight.content}</p>
             </div>
           );
-        })}
+          })
+          : <p>No Highlights</p>
+        }
       </div>
       <ExportCSVButton {...submission} />
     </div>

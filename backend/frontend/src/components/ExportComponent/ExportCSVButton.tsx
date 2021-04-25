@@ -4,19 +4,17 @@ import "./ExportCSVButton.scss";
 import { CSVLink } from "react-csv";
 
 interface Highlights {
-    title: string;
+    name: string;
     content: string;
 }
 
 interface Submission {
-    id: string;
-    state?: number,
-    user: string;
-    documentName: string;
-    type: string;
-    format: string;
-    date: Date;
-    highlights: Highlights[];
+    name: string,
+    type: string,
+    owner: string,
+    state: number,
+    date: Date,
+    extracted: Highlights[]
 }
 
 const ExportCSVButton = (submission: Submission): JSX.Element => {
@@ -24,8 +22,8 @@ const ExportCSVButton = (submission: Submission): JSX.Element => {
     const headers = [
         { label: "id", key: "id" },
         { label: "state", key: "state" },
-        { label: "Submission's User", key: "user" },
-        { label: "Document Name", key: "documentName" },
+        { label: "Submission's User", key: "owner" },
+        { label: "Document Name", key: "name" },
         { label: "Type", key: "type" },
         { label: "Format", key: "format" },
         { label: "Submission Date", key: "date" }
@@ -33,21 +31,21 @@ const ExportCSVButton = (submission: Submission): JSX.Element => {
 
     const data = [
         {
-            id: submission.id, state: stateToString(submission.state), user: submission.user, documentName: submission.documentName,
-            type: submission.type, format: submission.format, date: submission.date.toLocaleDateString()
+            owner: submission.owner, name: submission.name, state: stateToString(submission.state),
+            type: submission.type, date: submission.date.toLocaleDateString()
         }
     ];
 
-    submission.highlights.forEach((highlight) => {
-        headers.push({label:highlight.title, key: highlight.title});
-        data[0][highlight.title] = highlight.content;
+    submission.extracted.forEach((highlight) => {
+        headers.push({label:highlight.name, key: highlight.name});
+        data[0][highlight.name] = highlight.content;
     });
 
     return (
         <CSVLink
             className="csv-link"
             headers={headers}
-            filename={submission.user + "_submission_" + submission.id + "_details.CSV"}
+            filename={submission.owner + "_submission_" + submission.type + "_details.CSV"}
             data={data}
             /*separator={";"}*/
         >Export</CSVLink>
