@@ -20,12 +20,10 @@ interface Submission {
 const ExportCSVButton = (submission: Submission): JSX.Element => {
 
     const headers = [
-        { label: "id", key: "id" },
-        { label: "state", key: "state" },
         { label: "Submission's User", key: "owner" },
         { label: "Document Name", key: "name" },
+        { label: "state", key: "state" },
         { label: "Type", key: "type" },
-        { label: "Format", key: "format" },
         { label: "Submission Date", key: "date" }
     ];
 
