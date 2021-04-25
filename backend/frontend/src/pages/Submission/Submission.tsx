@@ -43,7 +43,7 @@ function Submission(): JSX.Element {
       <BackButton />
 
       <div className="content">
-        {submission != undefined ?
+        {submission !== undefined ?
         <SubmissionBlock name={submission.name} type={submission.type} owner="joao" state={getPercentage(submission.extracted)} date={new Date(submission.updatedAt)} extracted={submission.extracted} />
         : <></>}
       </div>
