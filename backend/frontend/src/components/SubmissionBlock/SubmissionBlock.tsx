@@ -3,21 +3,19 @@ import "./SubmissionBlock.scss";
 import { stateToClass, stateToString } from "components/State/State";
 
 interface Highlights {
-  title: string;
+  name: string;
   content: string;
 }
 
 interface Submission {
-  _id: string;
-  path?: string,
-  name: string;
-  documentId: string;
-  type: string;
-  extracted: Highlights[];
-  createdAt: string;
-  updatedAt: string;
-  __v: string;
+  name: string,
+  type: string,
+  owner: string,
+  state: number,
+  date: Date,
+  extracted: Highlights[]
 }
+
 
 const SubmissionLine = (submission: Submission): JSX.Element => {
   const exportHighlightedInfo = (/*e*/) => {
@@ -34,27 +32,37 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
           <h2>
             <b>{submission.name}</b>
           </h2>
+          <span className="submission-author">{submission.owner/*TODO*/}</span>
         </div>
         <p className="date">
-          <time>{submission.createdAt}</time>
+          <time>{new Date(submission.date).toLocaleDateString()}</time>
         </p>
         <p>
-         <b>Status: </b>100%
+         <b>Status: </b>{stateToString(submission.state)}
         </p>
       </header>
+      
       <div className="highlights">
-        {submission.extracted.map((highlight, index) => {
+        {
+          submission.extracted != null ?
+          submission.extracted.map((highlight, index) => {
+          if(highlight.content == null)
+            return( <></>)
+
           return (
             <div key={index + 1} className="highlight">
-              <h3>{highlight.title}</h3>
+              <h3>{highlight.name}</h3>
               <p>{highlight.content}</p>
             </div>
           );
-        })}
+          })
+          : <p>No Highlights</p>
+        }
       </div>
       <button onClick={exportHighlightedInfo}>Export</button>
     </div>
     </div>
+    <div className={"status " + stateToClass(submission.state)} />
     </div>
   );
 };

@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import "pages/Table.scss";
-
-//import { useParams } from "react-router-dom";
-
 import Header from "components/Header/Header";
 import SubmissionBlock from "components/SubmissionBlock/SubmissionBlock";
 import BackButton from "components/BackButton/BackButton";
 import { useParams } from "react-router";
+import { getPercentage } from "components/State/State";
 
 interface Highlights {
-  title: string;
+  name: string;
   content: string;
 }
+
 
 interface Submission {
   _id: string;
@@ -26,44 +25,18 @@ interface Submission {
   __v: string;
 }
 
+
 function Submission(): JSX.Element {
-  const { id } = useParams<any>(); //TODO: use to get submission from backend
-  const [submission, setSubmission] = useState<Submission>(
-    {
-      _id: "0",
-      path: "",
-      name: "",
-      documentId: "",
-      type: "",
-      extracted: [],
-      createdAt: "",
-      updatedAt: "",
-      __v: "",
-    }
-  );
+  const { id } = useParams<any>();
+ 
+  const [submission, setSubmission] = useState<Submission>();
 
   useEffect(() => {
     axios.get('/files/'+id).then(res => {
       setSubmission(res.data);
-      console.log(res.data);
     });
   }, []);
 
-  //TODO get submission from backend
-  /*const s: Submission = {
-    id: "1",
-    state: 100,
-    user: "filipasenra",
-    documentName:
-      "anualreportdocuraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    type: "extract",
-    format: "pdf",
-    date: new Date("2021-03-25"),
-    highlights: [
-      { title: "Address", content: "R. Dr. Roberto Frias, 4200-465 Porto" },
-      { title: "Phone number", content: "22 508 1400" },
-    ],
-  };*/
 
   return (
     <div className="submition-details">
@@ -72,7 +45,9 @@ function Submission(): JSX.Element {
       <BackButton />
 
       <div className="content">
-        <SubmissionBlock {...submission} />
+        {submission != undefined ?
+        <SubmissionBlock name={submission.name} type={submission.type} owner="joao" state={getPercentage(submission.extracted)} date={new Date(submission.updatedAt)} extracted={submission.extracted} />
+        : <></>}
       </div>
     </div>
   );
