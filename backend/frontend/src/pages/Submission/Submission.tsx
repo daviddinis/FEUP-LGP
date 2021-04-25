@@ -25,7 +25,6 @@ interface Submission {
   __v: string;
 }
 
-
 function Submission(): JSX.Element {
   const { id } = useParams<any>();
  
@@ -35,8 +34,7 @@ function Submission(): JSX.Element {
     axios.get('/files/'+id).then(res => {
       setSubmission(res.data);
     });
-  }, []);
-
+  }, [id]);
 
   return (
     <div className="submition-details">
