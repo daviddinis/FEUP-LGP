@@ -1,19 +1,28 @@
-import "./State.scss"
+import "./State.scss";
 
-export function stateToClass(percentage: number | undefined): string {
-    if(!percentage) return "analysing";
-    if(percentage < 0 || percentage > 100) throw new RangeError();
-    if(percentage < 50) return "bad";
-    if(percentage < 80) return "medium";
-
-    return "good";
-
+interface Highlights {
+    name: string;
+    content: string;
 }
 
-export function stateToString(percentage: number | undefined): string {
-    if(!percentage) return "analysing";
-    if(percentage < 0 || percentage > 100) throw new RangeError();
+export function stateToClass(percentage: number): string {
+  if (percentage < 0) return "analysing";
+  if (percentage < 50) return "bad";
+  if (percentage < 80) return "medium";
 
-    return percentage + "%";
+  return "good";
+}
 
+export function getPercentage(extractedInfo: Highlights[]): number {
+  if (!extractedInfo) return -1;
+  return (
+    (100 * extractedInfo.filter((param) => param.content).length) /
+    extractedInfo.length
+  );
+}
+
+export function stateToString(percentage: number): string {
+  if (percentage < 0) return "analysing";
+
+  return Math.min(percentage, 100) + "%";
 }

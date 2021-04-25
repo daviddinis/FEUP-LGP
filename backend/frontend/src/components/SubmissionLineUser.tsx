@@ -6,7 +6,7 @@ interface Submission {
     name: string,
     type: string,
     format: string,
-    state?: number,
+    state: number,
     date: Date
 }
 
