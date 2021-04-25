@@ -22,6 +22,7 @@ const SubmissionLine = (submission : Submission): JSX.Element => {
                 <td>{stateToString(submission.state)}</td>
             */}
             <td>{submission.user}</td>
+            <td>{submission.name}</td>
             <td>{submission.type}</td>
             <td>{(submission.date).toLocaleDateString()}</td>
             <td>

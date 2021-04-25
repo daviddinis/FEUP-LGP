@@ -28,15 +28,16 @@ function AdminFeed(): JSX.Element {
         <table className={"submissions"}>
           <thead>
             <tr>
-              <th></th>
+              <th/>
               {/* TODO: Add state
                 <th>status</th>
                 <th></th>
               */}
               <th>user</th>
+              <th>name</th>
               <th>type</th>
               <th>date</th>
-              <th></th>
+              <th/>
             </tr>
           </thead>
 

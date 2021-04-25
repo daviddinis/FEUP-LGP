@@ -26,8 +26,6 @@ function UserFeed(): JSX.Element {
     const formData = new FormData();
     formData.append("file", _acceptedFiles[0]);
 
-    console.log(_acceptedFiles.length);
-
     axios.post("/sendFile", formData, {
       headers: {
         "content-type": "multipart/form-data",
@@ -62,6 +60,7 @@ function UserFeed(): JSX.Element {
               <th>name</th>
               <th>type</th>
               <th>date</th>
+              <th/>
             </tr>
           </thead>
 
