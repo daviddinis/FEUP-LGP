@@ -35,8 +35,14 @@
   transition: 350ms;
 }
 
-.page-title {
+.page-title, .go-back-container {
   transition: 350ms;
+}
+  
+.go-back-container.active,
+.page-title.active {
+  transition: 450ms;
+  transition-delay: 50ms;
 }
 
 .go-back-container.active {
@@ -45,12 +51,6 @@
 
 .page-title.active {
   margin-left: 8em;
-}
-  
-.go-back-container.active,
-.page-title.active {
-  transition: 450ms;
-  transition-delay: 50ms;
 }
 
 .nav-text {

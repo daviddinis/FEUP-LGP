@@ -21,8 +21,7 @@ thead th {
   color: #701C74;
 }
 
-thead th:first-child,
-tbody td:first-child {
+thead th:first-child{
   padding-left: 0.7em;
 }
 
@@ -42,6 +41,7 @@ tr td:last-child {
 }
 
 .line {
+
   background: #F7F4F9;
   border-radius: 12px;
   
@@ -66,65 +66,33 @@ tr td:last-child {
 
 }
 
-tr > *:nth-child(1) {
-  width: 5%;
-}
-
-tr > *:nth-child(2) {
+tr :nth-child(2) {
   width: 20%;
 }
 
-tr > *:nth-child(3) {
+tr :nth-child(3) {
   width: 30%;
   max-width: 30%;
 }
 
-tr > *:nth-child(4) {
+tr :nth-child(4) {
   width: 15%;
 }
 
-tr > *:nth-child(5) {
+tr :nth-child(5) {
   width: 15%;
 }
 
-tr > *:nth-child(6) {
+tr :nth-child(6) {
   width: 10%;
-  text-align: right;
 }
 
-tr > *:nth-child(7) {
+tr :nth-child(7) {
   width: 5%;
 }
 
-table.submissions {
-  tr > *:nth-child(1) {
-    width: 20%;
-  }
-  
-  tr > *:nth-child(2) {
-    width: 30%;
-    max-width: 30%;
-  }
-  
-  tr > *:nth-child(3) {
-    width: 15%;
-  }
-  
-  tr > *:nth-child(4) {
-    width: 15%;
-  }
-  
-  tr > *:nth-child(5) {
-    width: 10%;
-  }
-  
-  tr > *:nth-child(6) {
-    width: 5%;
-  }
-}
-
-.icon {
-  vertical-align: middle;
+td:nth-child(7) {
+  text-align: right;
 }
 
 .icon.flag {
@@ -134,4 +102,12 @@ table.submissions {
 .icon.details {
   width: 24px;
   padding-right: 15px;
+}
+
+.icon.status {
+  display: block;
+  height: 24px;
+  width: 30px;
+  border-radius: 8px;
+  margin: 8px 10px;
 }

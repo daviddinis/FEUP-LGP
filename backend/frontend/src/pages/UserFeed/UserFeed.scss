@@ -61,22 +61,3 @@
 .user-page .page-title {
     color: white;
 }
-
-.admin-feed .status-column {
-    display: flex;
-    align-items: center;
-    width: min-content !important;
-    height: min-content !important;
-
-    & span {
-        margin-right: 20px;
-    }
-}
-
-.admin-feed .icon.status,
-.user-page .icon.status {
-    display: block;
-    height: 24px;
-    width: 30px;
-    border-radius: 8px;
-}

@@ -3,7 +3,6 @@ import axios from 'axios'
 import "pages/Table.scss";
 import Header from "components/Header/Header";
 import SubmissionBlock from "components/SubmissionBlock/SubmissionBlock";
-import BackButton from "components/BackButton/BackButton";
 import { useParams } from "react-router";
 import { getPercentage } from "components/State/State";
 
@@ -38,14 +37,12 @@ function Submission(): JSX.Element {
 
   return (
     <div className="submition-details">
-      <Header username="gingerAle" isAdmin={true} />
-
-      <BackButton />
+      <Header username="gingerAle" isAdmin={true} withBackArrow />
 
       <div className="content">
-        {submission !== undefined ?
+        {submission &&
         <SubmissionBlock name={submission.name} type={submission.type} owner="joao" state={getPercentage(submission.extracted)} date={new Date(submission.updatedAt)} extracted={submission.extracted} />
-        : <></>}
+        }
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "pages/Table.scss";
-import "pages/AdminUserDocs/AdminUserDocs.scss";
 import axios from "axios";
 import SubmissionLineUser from 'components/SubmissionLineUser';
 import Header from "components/Header/Header";
@@ -72,13 +71,15 @@ function AdminUserDocs(): JSX.Element {
         withBackArrow />
       <div className="content">
         <table className={"submissions"}>
-          <thead>
+        <thead>
             <tr>
               <th>status</th>
+              <th></th>
               <th>name</th>
               <th>type</th>
               <th>format</th>
               <th>date</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
