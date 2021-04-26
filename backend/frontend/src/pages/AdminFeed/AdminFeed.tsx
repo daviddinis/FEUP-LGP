@@ -55,7 +55,7 @@ function AdminFeed(): JSX.Element {
                 type={submission.type}
                 date={new Date(submission.createdAt)}
                 isFlagged={submission.isFlagged}
-                user={submission.user.username}
+                user={submission?.user?.username}
               />
             ))}
           </tbody>

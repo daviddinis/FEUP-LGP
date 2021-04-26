@@ -29,11 +29,14 @@ function RegisteredUsersPage(): JSX.Element {
     });
 
   const userItem = (user: User) => (
-      <Link className="user-item" key={user._id} to={`/users/${user._id}/submissions`}>
+      <div className="user-item" key={user._id}>
           <Flag flagged={user.flagged} />
           <img src={person} className="user-image" />
-          <p className="user-name">{user.username}</p>
-      </Link>
+
+          <Link to={`/users/${user._id}/submissions`}>
+              <p className="user-name">{user.username}</p>
+          </Link>
+      </div>
   );
 
   return (

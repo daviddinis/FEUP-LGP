@@ -43,7 +43,7 @@ function Submission(): JSX.Element {
                 <SubmissionBlock
                     name={submission.name}
                     type={submission.type}
-                    owner={submission.user.username}
+                    owner={submission?.user?.username}
                     state={getPercentage(submission.extracted)}
                     date={new Date(submission.createdAt)}
                     extracted={submission.extracted}
