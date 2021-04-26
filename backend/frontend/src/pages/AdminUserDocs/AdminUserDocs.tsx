@@ -26,7 +26,7 @@ function AdminUserDocs(): JSX.Element {
   const [files, setFiles] = useState<File[]>([]);
 
   useEffect(() => {
-    axios.get("/userFiles/" + id)
+    axios.get(`users/${id}/submissions`)
       .then((res) => {
           setFiles(res.data);
       })
@@ -47,12 +47,12 @@ function AdminUserDocs(): JSX.Element {
         <thead>
             <tr>
               <th>status</th>
-              <th></th>
+              <th/>
               <th>name</th>
               <th>type</th>
               <th>format</th>
               <th>date</th>
-              <th></th>
+              <th/>
             </tr>
           </thead>
 
@@ -60,12 +60,13 @@ function AdminUserDocs(): JSX.Element {
             {files.map((file) => {
               return (
                 <SubmissionLineUser
-                  key={file._id}
-                  name={file.name}
-                  type={file.type}
-                  format="pdf"
-                  date={new Date(file.createdAt)}
-                  state={getPercentage(file.extracted)} />
+                    id={file._id}
+                    key={file._id}
+                    name={file.name}
+                    type={file.type}
+                    date={new Date(file.createdAt)}
+                    state={getPercentage(file.extracted)}
+                />
               );
             })}
           </tbody>

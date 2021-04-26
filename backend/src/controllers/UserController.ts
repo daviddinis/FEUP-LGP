@@ -1,4 +1,5 @@
 import User from "../models/user";
+import File from "../models/file";
 
 export default class UserController {
     static async list(req: any, res : any) {
@@ -6,20 +7,11 @@ export default class UserController {
         return res.status(200).json(users);
     }
 
-    static async testDB(req: any, res: any) {
-        // Eventualmente apaga-se isto
-        const name = "NewName" + Math.random();
+    static async submissions(req : any, res : any) {
+        const file : any = await File.find({"user" : req.params.id});
+        if (!file)
+            return res.status(404).send();
 
-        const user = await User.create({
-            username: name
-        })
-
-        console.log(user)
-
-        const user2 = await User.find({
-            username: name
-        })
-
-        console.log(user2);
+        return res.status(200).json(file);
     }
 }

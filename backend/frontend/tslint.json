@@ -10,6 +10,7 @@
   ],
   "jsRules": {},
   "rules": {
+
     "no-trailing-whitespace": false,
     "quotemark": false,
     "ordered-imports": false,

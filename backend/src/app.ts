@@ -5,8 +5,6 @@ import config from './config';
 import path from 'path';
 
 import MongoClient from './models/index';
-import User from './models/user';
-import File from './models/file';
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' })
 
@@ -23,18 +21,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
+app.get('/files', DocumentController.list);
 app.get('/files/:id', DocumentController.read);
 app.post('/sendFile', upload.single('file'), DocumentController.submit);
-app.get('/userFiles/:id', DocumentController.userFiles);
 
-
+app.get('/users/:id/submissions', UserController.submissions);
 app.get('/users', UserController.list);
-app.post('/test-db', UserController.testDB)
 
-app.get('/files', async (req, res) => {
-  const files = await File.find();
-  return res.status(200).json(files);
-});
 
 app.listen(config.port, async () => {
   console.log("App is running on port " + config.port);

@@ -7,6 +7,11 @@ const userSchema = new mongoose.Schema(
 			unique: true,
 			required: true,
 		},
+		flagged: {
+			type: Boolean,
+			required: true,
+			default: false
+		}
 	},
 	{ timestamps: true }
 );

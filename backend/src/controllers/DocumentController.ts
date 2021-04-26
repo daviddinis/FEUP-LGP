@@ -1,8 +1,8 @@
 import File from "../models/file";
+import User from "../models/user";
 import DocParser from "../lib/DocParserAPI";
 import DataExtractor from "../lib/DataExtractor";
 import config from "../config";
-
 
 function extractParameterInfo(document: any, param: any) : string {
     const allStrings = DataExtractor.extractStringArray(document.all_data_regex);
@@ -63,8 +63,15 @@ async function updateFileWithExtractedInfo(file : any) {
 }
 
 export default class DocumentController {
+    static async list(req : any, res: any) {
+        const files = await File.find().populate('user');
+
+        return res.status(200).json(files);
+    }
+
     static async read(req : any, res : any) {
-        const file : any = await File.findById(req.params.id);
+        const file : any = await File.findById(req.params.id).populate('user');
+
         if (!file)
             return res.status(404).send();
 
@@ -75,9 +82,17 @@ export default class DocumentController {
     }
 
     static async submit(req : any, res : any) {
-        const document = { id: '087782204d4bf8cd57365b736d61e53b' }
-        // eventualmente teremos isto no docparser, mas por agora não há dinheiro
-        // const document = await DocParser.uploadDocument(config.docparserParserId , req.file.path)
+        // Se houver docparser no .env, usa o docparser
+        const document = config.docparserApiKey ?
+            await DocParser.uploadDocument(config.docparserParserId , req.file.path) :
+            { id: '087782204d4bf8cd57365b736d61e53b' };
+
+        async function GetRandomUserID() { // TODO: get logged in user
+            const allUsers : any[] = await User.find();
+            if (allUsers.length === 0)
+                return (await User.create({ username: "Johnny" }))._id;
+            return allUsers[Math.floor(Math.random() * allUsers.length)];
+        }
 
         const file = await File.create({
             path: req.file.path,
@@ -85,17 +100,9 @@ export default class DocumentController {
             documentId: document.id,
             type: "KB",
             extracted: null,
-            user: 1  //TODO mudar para id de quem submeteu
+            user: await GetRandomUserID()
         })
 
         return res.status(200).json(file)
-    }
-
-    static async userFiles(req : any, res : any) {
-        const file : any = await File.find({"user" : req.params.id});
-        if (!file)
-            return res.status(404).send();
-
-        return res.status(200).json(file);
     }
 }
