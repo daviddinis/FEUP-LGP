@@ -64,6 +64,10 @@ $borderRadius: 12px;
   margin-bottom: 1.5em;
 }
 
+.submission-block .inner-submisson-block .highlights .highlight-not-found {
+  color: #ed4337;
+}
+
 .submission-block .inner-submisson-block .highlights .highlight h3 {
   font-family: Montserrat;
   color: #6a5b70;
@@ -75,6 +79,7 @@ $borderRadius: 12px;
   margin-bottom: 3em;
 }
 
+
 .submission-block .inner-submisson-block button {
   background-color: #8b478f;
   border: none;
@@ -85,3 +90,4 @@ $borderRadius: 12px;
   font-family: Montserrat;
   font-size: 15px;
 }
+

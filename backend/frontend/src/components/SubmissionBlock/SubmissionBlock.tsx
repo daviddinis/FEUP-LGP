@@ -19,7 +19,6 @@ interface Submission {
 
 
 const SubmissionLine = (submission: Submission): JSX.Element => {
-
   return (
     <div className="submission-block">
     <div className="wrapper-inner-submisson-block">
@@ -42,18 +41,13 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
       <div className="highlights">
         {
           submission.extracted != null ?
-          submission.extracted.map((highlight, index) => {
-          if(highlight.content == null)
-            return( <></>)
-
-          return (
-            <div key={index + 1} className="highlight">
-              <h3>{highlight.name}</h3>
-              <p>{highlight.content}</p>
-            </div>
-          );
-          })
-          : <p>No Highlights</p>
+              submission.extracted.map((highlight, index) => (
+                  <div key={index + 1} className="highlight">
+                    <h3>{highlight.name}</h3>
+                    <p>{highlight.content || <strong className="highlight-not-found">Not Found!</strong>}</p>
+                  </div>
+              ))
+              : <p>No Highlights</p>
         }
       </div>
       <ExportCSVButton {...submission} />
