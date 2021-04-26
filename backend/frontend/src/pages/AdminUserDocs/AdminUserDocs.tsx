@@ -26,7 +26,7 @@ function AdminUserDocs(): JSX.Element {
   const [files, setFiles] = useState<File[]>([]);
 
   useEffect(() => {
-    axios.get("/userFiles/" + id)
+    axios.get(`users/${id}/submissions`)
       .then((res) => {
           setFiles(res.data);
       })

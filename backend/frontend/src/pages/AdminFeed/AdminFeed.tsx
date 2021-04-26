@@ -11,7 +11,10 @@ interface FileSubmission {
   type: string,
   extracted: any[],
   createdAt: Date,
-  isFlagged: boolean
+  isFlagged: boolean,
+  user: {
+    username: string
+  }
 }
 
 function AdminFeed(): JSX.Element {
@@ -52,7 +55,7 @@ function AdminFeed(): JSX.Element {
                 type={submission.type}
                 date={new Date(submission.createdAt)}
                 isFlagged={submission.isFlagged}
-                user="Moaaas"
+                user={submission.user.username}
               />
             ))}
           </tbody>
