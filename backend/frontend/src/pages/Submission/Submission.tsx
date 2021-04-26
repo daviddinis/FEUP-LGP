@@ -5,7 +5,6 @@ import Header from "components/Header/Header";
 import SubmissionBlock from "components/SubmissionBlock/SubmissionBlock";
 import { useParams } from "react-router";
 import { getPercentage } from "components/State/State";
-import BackButton from "components/BackButton/BackButton";
 
 interface Highlights {
   name: string;

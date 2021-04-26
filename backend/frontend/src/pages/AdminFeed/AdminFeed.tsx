@@ -3,6 +3,7 @@ import "pages/Table.scss";
 import axios from "axios";
 import SubmissionLineAdmin from "components/SubmissionLineAdmin";
 import Header from "components/Header/Header";
+import {getPercentage} from "../../components/State/State";
 
 interface FileSubmission {
   _id: string,
@@ -42,23 +43,18 @@ function AdminFeed(): JSX.Element {
           </thead>
 
           <tbody>
-            {files.map((submission) => {
-              const percentage = submission.extracted ?
-                  100 * submission.extracted.filter(param => param.content).length / submission.extracted.length : undefined;
-
-              return (
-                  <SubmissionLineAdmin
-                      id={submission._id}
-                      key={submission._id}
-                      state={percentage}
-                      name={submission.name}
-                      type={submission.type}
-                      date={new Date(submission.createdAt)}
-                      isFlagged={submission.isFlagged}
-                      user="Moaaas"
-                  />
-              );
-            })}
+            {files.map((submission) => (
+              <SubmissionLineAdmin
+                id={submission._id}
+                key={submission._id}
+                state={getPercentage(submission.extracted)}
+                name={submission.name}
+                type={submission.type}
+                date={new Date(submission.createdAt)}
+                isFlagged={submission.isFlagged}
+                user="Moaaas"
+              />
+            ))}
           </tbody>
         </table>
       </div>

@@ -6,6 +6,7 @@ import "pages/Table.scss";
 import axios from "axios";
 import document from "shared/icons/document.svg";
 import SubmissionLineUser from "components/SubmissionLineUser";
+import {getPercentage} from "../../components/State/State";
 
 interface FileSubmission {
   _id: string,
@@ -65,21 +66,16 @@ function UserFeed(): JSX.Element {
           </thead>
 
           <tbody>
-            {files.map((submission) => {
-              const percentage = submission.extracted ?
-                  100 * submission.extracted.filter(param => param.content).length / submission.extracted.length : undefined;
-
-              return (
+            {files.map((submission) => (
                 <SubmissionLineUser
                     id={submission._id}
                     key={submission._id}
-                    state={percentage}
+                    state={getPercentage(submission.extracted)}
                     name={submission.name}
                     type={submission.type}
                     date={new Date(submission.createdAt)}
                 />
-              );
-            })}
+            ))}
           </tbody>
         </table>
       </div>

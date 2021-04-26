@@ -27,7 +27,7 @@ const ExportCSVButton = (submission: Submission): JSX.Element => {
         { label: "Submission Date", key: "date" }
     ];
 
-    const data = [
+    const data : any[] = [
         {
             owner: submission.owner, name: submission.name, state: stateToString(submission.state),
             type: submission.type, date: submission.date.toLocaleDateString()

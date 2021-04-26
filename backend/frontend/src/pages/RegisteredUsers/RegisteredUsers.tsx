@@ -6,9 +6,10 @@ import person from "shared/icons/person.svg";
 import search from "shared/icons/search.svg";
 import Flag from "components/Flag/Flag";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 interface User {
-  id: string;
+  _id: string;
   username: string;
   flagged: boolean;
 }
@@ -28,11 +29,11 @@ function RegisteredUsersPage(): JSX.Element {
     });
 
   const userItem = (user: User) => (
-    <div className="user-item" key={user.id}>
-      <Flag flagged={user.flagged} />
-      <img src={person} className="user-image" />
-      <p className="user-name">{user.username}</p>
-    </div>
+      <Link className="user-item" key={user._id} to={`/users/${user._id}/submissions`}>
+          <Flag flagged={user.flagged} />
+          <img src={person} className="user-image" />
+          <p className="user-name">{user.username}</p>
+      </Link>
   );
 
   return (

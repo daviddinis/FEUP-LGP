@@ -11,7 +11,7 @@ export const SidebarData = [
   },
   {
     title: 'Registered Users',
-    path: '/registered-users',
+    path: '/users',
     cName: 'nav-text'
   },
 ];
