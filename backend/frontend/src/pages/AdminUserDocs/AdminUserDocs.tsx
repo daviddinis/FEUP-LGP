@@ -29,7 +29,6 @@ function AdminUserDocs(): JSX.Element {
     axios.get("/userFiles/" + id)
       .then((res) => {
           setFiles(res.data);
-          console.log(res.data)
       })
       .catch(({ message }) =>{
         console.log('Error while fetching data:', message);
