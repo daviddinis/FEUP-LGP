@@ -28,7 +28,7 @@ ReactDOM.render(
           <Route path="/submissions/:id">
             <Submission />
           </Route>
-          <Route path="/">
+          <Route path="/userDocs/:id">
             <AdminUserDocs/>
           </Route>
         </Switch>

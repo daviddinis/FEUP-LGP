@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "pages/Table.scss";
+import { useParams } from "react-router";
 import axios from "axios";
 import SubmissionLineUser from 'components/SubmissionLineUser';
 import Header from "components/Header/Header";
@@ -36,11 +37,12 @@ const mockUsers = [
 ]
 
 function AdminUserDocs(): JSX.Element {
+  const { id } = useParams<any>();
   const [userFiles, setUserFiles] = useState<File[]>(mockUsers);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
 
   useEffect(() => {
-    axios.get("/userFiles/1")
+    axios.get("/userFiles/" + id)
       .then((res) => {
         setUserFiles(res.data);
       })
@@ -60,7 +62,7 @@ function AdminUserDocs(): JSX.Element {
           state: 5,
         })
       ))
-  }, [userFiles]);
+  }, []);
 
   return (
     <div className="admin-feed">
