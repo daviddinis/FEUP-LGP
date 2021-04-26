@@ -42,7 +42,7 @@ function UserFeed(): JSX.Element {
 
       <div className="content">
         <table className={"submissions"}>
-          <thead>
+        <thead>
             <tr>
               <th>status</th>
               <th></th>

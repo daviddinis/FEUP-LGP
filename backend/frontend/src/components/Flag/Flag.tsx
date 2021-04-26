@@ -8,7 +8,6 @@ interface IFlag {
 }
 
 function Flag(OFlagged: IFlag): JSX.Element {
-
   const [flagged, setFlagged] = useState(OFlagged.flagged);
 
   function setFlag() {
@@ -18,11 +17,11 @@ function Flag(OFlagged: IFlag): JSX.Element {
 
   return (
     <button onClick={() => setFlag()}>
-    <img
-      src={flagged ? flagSelected : flag}
-      className="icon flag"
-    />
-  </button>
+      <img
+        src={flagged ? flagSelected : flag}
+        className="icon flag"
+      />
+    </button>
   );
 }
 
