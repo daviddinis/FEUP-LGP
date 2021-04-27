@@ -20,10 +20,11 @@ const dateRegex = new RegExp(
 
 class DataExtractor {
     public static regexes = {
-        INTEGER: /[1-9][0-9]*/i,
+        INTEGER: /[1-9][0-9]*/,
         DATE: dateRegex,
-        IDENTIFIER: /[0-9]+/i,
-        ALPHANUM: /[a-z0-9]+/i,
+        IDENTIFIER: /[0-9]+/,
+        ALPHANUM: /[A-Za-z0-9]+/,
+        SENTENCE: /[A-Za-z0-9].*/,
        // IDENTIFIER: /[0-9a-zA-Z]{6,}/ // min 6 characters
     }
 
