@@ -6,7 +6,7 @@ export const SidebarData = [
   },
   {
     title: 'Parameters / types',
-    path: '/',
+    path: '/parameters',
     cName: 'nav-text'
   },
   {
