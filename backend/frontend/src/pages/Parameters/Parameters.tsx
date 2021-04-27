@@ -28,6 +28,7 @@ function Parameters(): JSX.Element {
   return (
     <div className="add-type-page">
         <Modal
+            BackdropProps={{ style: { backgroundColor: "rgba(160, 155, 155, 0.2)" } }}
             open={openModal}
             onClose={handleModalClose}
             className="add-type-modal">
