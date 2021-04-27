@@ -9,6 +9,7 @@ import Submission from 'pages/Submission/Submission';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import User from 'pages/UserFeed/UserFeed';
 import Home from 'pages/HomePage/HomePage';
+import Parameters from 'pages/Parameters/Parameters';
 
 ReactDOM.render(
     <React.StrictMode>
