@@ -33,9 +33,6 @@ function Parameters(): JSX.Element {
             className="add-type-modal">
             {modalBody}
         </Modal>
-        <div className="add-type-modal">
-            
-      </div>
       <Header username="MillerGinger" isAdmin={true} />
       <div className="body-container">
           {/* TODO: Forçaaaa Mafaldaaaaaaaaa */}

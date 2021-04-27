@@ -29,6 +29,10 @@ ReactDOM.render(
                     <Admin/>
                 </Route>
 
+                <Route path="/parameters">
+                    <Parameters/>
+                </Route>
+
                 <Route path="/users/:id/submissions">
                     <AdminUserDocs/>
                 </Route>
