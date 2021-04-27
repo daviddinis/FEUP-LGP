@@ -20,14 +20,14 @@ function UserFeed(): JSX.Element {
   const [files, setFiles] = useState<FileSubmission[]>([]);
 
   useEffect(() => {
-    axios.get("/files").then((res) => setFiles(res.data));
+    axios.get("/api/files").then((res) => setFiles(res.data));
   }, [])
 
   const onDrop = useCallback((_acceptedFiles) => {
     const formData = new FormData();
     formData.append("file", _acceptedFiles[0]);
 
-    axios.post("/sendFile", formData, {
+    axios.post("/api/files/submit", formData, {
       headers: {
         "content-type": "multipart/form-data",
       },

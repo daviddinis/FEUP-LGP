@@ -21,7 +21,7 @@ function AdminFeed(): JSX.Element {
   const [files, setFiles] = useState<FileSubmission[]>([]);
 
   useEffect(() => {
-    axios.get("/files").then((res) => setFiles(res.data));
+    axios.get("/api/files").then((res) => setFiles(res.data));
   }, [])
 
   return (

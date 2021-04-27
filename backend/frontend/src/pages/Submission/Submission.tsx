@@ -29,7 +29,7 @@ function Submission(): JSX.Element {
     const [submission, setSubmission] = useState<Submission>();
 
     useEffect(() => {
-        axios.get('/files/' + id).then(res => {
+        axios.get('/api/files/' + id).then(res => {
             setSubmission(res.data);
         });
     }, [id]);

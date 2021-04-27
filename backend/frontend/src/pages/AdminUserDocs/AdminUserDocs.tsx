@@ -26,7 +26,7 @@ function AdminUserDocs(): JSX.Element {
   const [files, setFiles] = useState<File[]>([]);
 
   useEffect(() => {
-    axios.get(`users/${id}/submissions`)
+    axios.get(`/api/users/${id}/submissions`)
       .then((res) => {
           setFiles(res.data);
       })
@@ -50,7 +50,6 @@ function AdminUserDocs(): JSX.Element {
               <th/>
               <th>name</th>
               <th>type</th>
-              <th>format</th>
               <th>date</th>
               <th/>
             </tr>

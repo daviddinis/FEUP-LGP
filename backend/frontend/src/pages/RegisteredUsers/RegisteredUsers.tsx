@@ -19,7 +19,7 @@ function RegisteredUsersPage(): JSX.Element {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    axios.get("/users").then((res) => setUsers(res.data));
+    axios.get("/api/users").then((res) => setUsers(res.data));
   }, [])
 
   const searchUsers = (allUsers: User[]): User[] =>
