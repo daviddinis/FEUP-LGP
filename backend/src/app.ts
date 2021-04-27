@@ -21,12 +21,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-app.get('/files', DocumentController.list);
-app.get('/files/:id', DocumentController.read);
-app.post('/sendFile', upload.single('file'), DocumentController.submit);
+app.get('/api/files', DocumentController.list);
+app.get('/api/files/:id', DocumentController.read);
+app.post('/api/files/submit', upload.single('file'), DocumentController.submit);
 
-app.get('/users/:id/submissions', UserController.submissions);
-app.get('/users', UserController.list);
+app.get('/api/users/:id/submissions', UserController.submissions);
+app.get('/api/users', UserController.list);
 
 
 app.listen(config.port, async () => {
