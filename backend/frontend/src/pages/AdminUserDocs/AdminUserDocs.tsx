@@ -22,7 +22,7 @@ interface File {
 }
 
 function AdminUserDocs(): JSX.Element {
-  const { id } = useParams<any>();
+  const { id, username } = useParams<any>();
   const [files, setFiles] = useState<File[]>([]);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function AdminUserDocs(): JSX.Element {
       <Header 
         username="gingerAle"
         isAdmin={true}
-        filesOwnerUserName={ 'username' }
+        filesOwnerUserName={username}
         withBackArrow />
       <div className="content">
         <table className={"submissions"}>

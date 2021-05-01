@@ -33,7 +33,7 @@ function RegisteredUsersPage(): JSX.Element {
           <Flag flagged={user.flagged} />
           <img src={person} className="user-image" />
 
-          <Link to={`/users/${user._id}/submissions`}>
+          <Link to={`/users/${user.username}/${user._id}/submissions`}>
               <p className="user-name">{user.username}</p>
           </Link>
       </div>

@@ -24,10 +24,7 @@ ReactDOM.render(
                 <Route path="/admin">
                     <Admin/>
                 </Route>
-                <Route path="/home">
-                    <Home/>
-                </Route>
-                <Route path="/users/:id/submissions">
+                <Route path="/users/:username/:id/submissions">
                     <AdminUserDocs/>
                 </Route>
                 <Route path="/users">
