@@ -1,66 +1,8 @@
 import File from "../models/file";
 import User from "../models/user";
 import DocParser from "../lib/DocParserAPI";
-import DataExtractor from "../lib/DataExtractor";
+import DocumentValidator from "../lib/DocumentValidator";
 import config from "../config";
-
-function extractParameterInfo(document: any, param: any) : string {
-    const allStrings = DataExtractor.extractStringArray(document.all_data_regex);
-
-    const defaultExtractByKeywords = (keywords : RegExp[]) : string =>
-        DataExtractor.extractByKeywords(allStrings, keywords);
-
-    if (param.type === "Custom")
-        return defaultExtractByKeywords([new RegExp(param.keyword, "i")]);
-    else switch (param) {
-        case "Company Number": return defaultExtractByKeywords([/Company number/i]);
-        case "Company Address": return defaultExtractByKeywords([/Company address/i, /Office address/i, /address/i]);
-        case "Company Status": return defaultExtractByKeywords([/Company status/i]);
-        case "Company Type": return defaultExtractByKeywords([/Company type/i]);
-        case "Created On": return DataExtractor.extractByKeywords(allStrings, [/Created on/, /Incorporated on/i], {
-            regex: DataExtractor.regexes.DATE
-        });
-        case "SIREN": return DataExtractor.extractByKeywords(allStrings, [/SIREN/], {
-            regex: DataExtractor.regexes.IDENTIFIER
-        });
-        case "LEI": return DataExtractor.extractByKeywords(allStrings, [/LEI/], {
-            regex: DataExtractor.regexes.ALPHANUM
-        });
-        default:
-            console.error("Unknown parameter: " + param);
-            return null;
-    }
-}
-
-async function updateFileWithExtractedInfo(file : any) {
-    const fileParams : any = { // isto estaria guardado na DB, criado no backoffice, dps veremos melhor como é guardado
-        "KB": ["Company Number", "Company Address", "Company Status", "Company Type", "Created On"],
-        "PRCO": ["Company Name", "SIREN", "LEI", "CIB", "Company Address", { type: "Custom", keyword: "Date of authorisation"}],
-    }
-
-    const params : string[] = fileParams[file.type];
-
-    if (!params) {
-        console.error("Unknown document type: " + file.type);
-        return;
-    }
-
-    try {
-        const document = await DocParser.getParsedDocument(config.docparserParserId, file.documentId);
-
-        const extracted = params.map(param => ({
-            name: param,
-            content: extractParameterInfo(document, param) || null,
-        }))
-
-
-        await file.updateOne({ extracted });
-        file.extracted = extracted; // o updateOne nao atualiza o objeto :(
-    }
-    catch (err) {
-        console.error("Error fetching parser document, document is probably not yet processed.")
-    }
-}
 
 export default class DocumentController {
     static async list(req : any, res: any) {
@@ -75,8 +17,13 @@ export default class DocumentController {
         if (!file)
             return res.status(404).send();
 
-        if (file.extracted == null)
-            await updateFileWithExtractedInfo(file);
+       // if (file.extracted == null) {
+            const extracted = await DocumentValidator.parseExtractedInfo(file.type, file.documentId);
+            await file.updateOne({ extracted });
+
+            console.log(extracted)
+            file.extracted = extracted; // o updateOne nao atualiza o objeto :(
+      //  }
 
         return res.status(200).json(file);
     }
