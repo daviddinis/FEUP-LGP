@@ -28,14 +28,14 @@ const mockFile = {
       name: 'parameter_1',
       contraints: [
         {
-          name: 'constrant_1',
+          name: 'constraint_1',
           value: 'value',
         },
         {
-          name: 'constrant_1',
+          name: 'constraint_1',
           value: 'value',
         },{
-          name: 'constrant_1',
+          name: 'constraint_1',
           value: 'value',
         }
 
@@ -106,25 +106,25 @@ function Parameters(): JSX.Element {
       <Header username="MillerGinger" isAdmin={true} />
       <div className="body-container">
           {/* TODO: Forçaaaa Mafaldaaaaaaaaa */}
-          { fileTypes.map((fileType, index) => (
+          { fileTypes.map((fileType, fileTypeIndex) => (
             <div 
-              key={ `${fileType.name}-${index}` }
+              key={ `${fileType.name}-${fileTypeIndex}` }
               className="type-block"  >
               <header className="type-block-header">
                 <p className="type-name">{ fileType.name }</p>
-                <button className="trash-button" onClick={ () => handleOnRemoveFileType(Number(index)) }>
+                <button className="trash-button" onClick={ () => handleOnRemoveFileType(Number(fileTypeIndex)) }>
                   <img src={trash} className="trash-image" /></button>
               </header>
               <div className="type-block-content">
               {
-                fileType.parameters.map((parameter, index) => (
+                fileType.parameters.map((parameter, parameterIndex) => (
                   <Fragment 
-                  key={ `${parameter.name}-${index}` }>
+                  key={ `${parameter.name}-${parameterIndex}` }>
                     <p className="type-parameter">{ parameter.name }</p>
                     {
-                      parameter.contraints.map((constraint, index) => (
+                      parameter.contraints.map((constraint, contrainsIndex) => (
                         <p 
-                          key={ `${constraint.name}-${index}` }
+                          key={ `${constraint.name}-${contrainsIndex}` }
                           className="type-constraint" >
                           { constraint.name }
                         </p>
