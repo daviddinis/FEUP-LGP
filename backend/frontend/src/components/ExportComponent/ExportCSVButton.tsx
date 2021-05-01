@@ -1,6 +1,5 @@
 import React from "react";
 import { stateToString } from "components/State/State";
-import "./ExportCSVButton.scss";
 import { CSVLink } from "react-csv";
 
 interface Highlights {
@@ -41,11 +40,11 @@ const ExportCSVButton = (submission: Submission): JSX.Element => {
 
     return (
         <CSVLink
-            className="csv-link"
+            className="submission-button"
             headers={headers}
             filename={submission.owner + "_submission_" + submission.type + "_details.CSV"}
             data={data}
-        >Export</CSVLink>
+        >Export Data</CSVLink>
     );
 };
 

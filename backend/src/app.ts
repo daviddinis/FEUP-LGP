@@ -34,8 +34,10 @@ app.listen(config.port, async () => {
   await MongoClient.connect();
 })
 
-// Serve react app on production
+// Serve uploads folder
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
+// Serve react app on production
 if (config.environment === 'production') {
   const frontendBuildFolder = path.join(__dirname, '..', 'frontend', 'build');
   app.use(express.static(path.join(frontendBuildFolder)));
