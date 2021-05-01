@@ -131,36 +131,36 @@ export default class DocumentValidator {
             switch (constraint.constraint) {
                 case "lt":
                     if (toComparable(extracted) >= toComparable(constraintValue))
-                        return `Must be less than ${constraintValue}!`;
+                        return `Value is not less than ${constraintValue}`;
                     break;
                 case "gt":
                     if (toComparable(extracted) <= toComparable(constraintValue))
-                        return `Must be greater than ${constraintValue}!`;
+                        return `Value is not greater than ${constraintValue}`;
                     break;
                 case "lte":
                     if (toComparable(extracted) > toComparable(constraintValue))
-                        return `Must be less than or equal to ${constraintValue}!`;
+                        return `Value is not less than or equal to ${constraintValue}`;
                     break;
                 case "gte":
                     if (toComparable(extracted) < toComparable(constraintValue))
-                        return `Must be greater than or equal to ${constraintValue}!`;
+                        return `Value is not greater than or equal to ${constraintValue}`;
                     break;
                 case "eq":
                     if (extracted !== constraintValue)
-                        return `Must be equal to ${constraintValue}!`;
+                        return `Value is not equal to ${constraintValue}`;
                     break;
                 case "contains":
                     if (!extracted.includes(constraintValue))
-                        return `Must include "${constraintValue}"!`;
+                        return `"Does not include: "${constraintValue}"`;
                     break;
                 case "containsParam":
                     if (!extracted.includes(getExtractedParam(constraintValue)))
-                        return `Must include the parameter ${constraintValue}!`;
+                        return `Does not include the parameter: "${constraintValue}"`;
                     break;
                 case "oneOf":
                     const values : string[] = constraintValue.split(',');
                     if (!values.includes(extracted))
-                        return `Must be one of the following: ${values}`;
+                        return `Is not any of the following: ${values}`;
                     break;
                 default:
                     console.error("Unknown constraint type: " + constraint.constraint);

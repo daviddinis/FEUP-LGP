@@ -9,6 +9,7 @@ import {getPercentage} from "components/State/State";
 interface Highlights {
     name: string;
     content: string;
+    error: string;
 }
 
 

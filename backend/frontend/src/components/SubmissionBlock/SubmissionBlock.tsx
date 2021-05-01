@@ -6,6 +6,7 @@ import ExportCSVButton from "../ExportComponent/ExportCSVButton";
 interface Highlights {
   name: string;
   content: string;
+  error: string;
 }
 
 interface Submission {
@@ -44,7 +45,8 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
                 {submission.extracted.map((highlight, index) => (
                     <div key={index + 1} className="highlight">
                       <h3>{highlight.name}</h3>
-                      <p>{highlight.content || <strong className="highlight-not-found">Not Found!</strong>}</p>
+                      <p>{highlight.content || <strong className="highlight-error">Not Found!</strong>}</p>
+                      <p><strong className="highlight-error">{highlight.error}</strong></p>
 
                     </div>
                 ))}
