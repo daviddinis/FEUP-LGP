@@ -13,12 +13,12 @@ interface Constraint {
 
 interface Parameter {
   name: string,
-  contraints: Array<Constraint>
+  contraints: Constraint[],
 }
 
 interface FileType {
   name: string,
-  parameters: Array<Parameter>,
+  parameters: Parameter[],
 }
 
 const mockFile = {
