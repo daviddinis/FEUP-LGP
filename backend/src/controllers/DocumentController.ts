@@ -17,13 +17,12 @@ export default class DocumentController {
         if (!file)
             return res.status(404).send();
 
-       // if (file.extracted == null) {
+        if (file.extracted == null) {
             const extracted = await DocumentValidator.parseExtractedInfo(file.type, file.documentId);
             await file.updateOne({ extracted });
 
-            console.log(extracted)
             file.extracted = extracted; // o updateOne nao atualiza o objeto :(
-      //  }
+        }
 
         return res.status(200).json(file);
     }
