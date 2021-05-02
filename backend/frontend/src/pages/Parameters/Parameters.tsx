@@ -4,6 +4,8 @@ import Header from "components/Header/Header";
 import addType from "shared/icons/addtype_1.svg";
 import Modal from '@material-ui/core/Modal';
 
+import Para from "components/ParametersPopUp/ParameterPopUp";
+
 
 function Parameters(): JSX.Element {
     const [openModal, setModalOpen] = React.useState(false);
