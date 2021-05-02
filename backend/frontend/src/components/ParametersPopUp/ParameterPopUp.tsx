@@ -1,15 +1,16 @@
 import React from 'react';
 import AddPara from "components/ParametersPopUp/AddParameter";
+import "./ParametersPopUp.scss";
 
 function ParameterPopUp(): JSX.Element {
 
 
     return(
-        <div>
+        <div className="parameters-pop-up">
             <div>
-                <p>Add new parameter</p>
+                <h1>Add new parameter</h1>
 
-                <a>Save button</a>
+                <button>Save button</button>
             </div>
             <a>+ add new parameter</a>
 
