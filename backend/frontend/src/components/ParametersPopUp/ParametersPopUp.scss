@@ -1,14 +1,46 @@
-.parameters-pop-up {
-    background: linear-gradient(239.97deg, #701C74 1.01%, #914A7E 98.9%);
+
+.save-button{
+    margin-top: 3%;
+    margin-right: 25%;
+    font-family: Montserrat;
+    background-color: #EDEAEF;
+    color: #701C74, 100%;
+    border: none;
+    padding: 11px 31px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 70%;
+    border-radius: 12px;
 }
 
+.parameters-pop-up {
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(239.97deg, #701C74 1.01%, #914A7E 98.9%);
+    width: 464px;
+    height: 554px;
+    border-radius: 12px;
+}
+
+
+.submit-section{
+    padding-left: 7%;
+    padding-top: 3%;
+}
+
+
 h1 {
+    margin-top: -8%;
+    margin-left: 1%;
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
-
     color: white;
 }
 
@@ -18,13 +50,14 @@ h1 {
     height: 40px;
 }
 
+
 .parameter-submit{
     border-style: none;
     border-radius: 10px;
     font-weight: 400;
     font-size: 14px;
     color: white;
-    width: 32px;
+    width: 25px;
     height: 32px;
     align-self: flex-end;
     margin-top: 40px;

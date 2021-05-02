@@ -11,10 +11,11 @@ function ParameterPopUp(): JSX.Element {
 
         <Popup trigger={<button className="parameter-submit"><img src={addParameter} className="add-parameter-image" /></button>} position="right center">
                 <div className="parameters-pop-up">
-            <div>
-                <h1>Add new parameter</h1>
+            <div className="submit-section">
+            <button className="save-button">Save</button>
+                <h1 className="title-Popup">Add new parameter</h1>
 
-                <button>Save button</button>
+               
             </div>
             <a>+ add new parameter</a>
 
