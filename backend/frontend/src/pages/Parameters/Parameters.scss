@@ -6,6 +6,11 @@
 .add-type-page .body-container{
     margin-left: 50px;
     margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-template-rows: 320px; 
+    column-gap: 10px;
+    row-gap: 15px;
 }
 
 .add-type-button{
@@ -85,4 +90,77 @@
 .add-type-submit:hover{
     opacity: 0.9;
     cursor: pointer;
+}
+
+/************/
+.type-block{
+    background-color: #F7F4F9;
+    border-radius: 12px;
+    width: 308.63px;
+    height: 235.85px;
+    padding: 22.11px;
+    margin-left: 170px;
+    display: flex;
+    flex-direction: column;
+}
+
+.type-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: min-content;
+    
+    & .trash-image {
+        height: 20px;
+    }
+}
+
+.type-block-footer {
+    margin-top: auto;
+    height: 21.19px;
+    width: 22.11px;
+    align-self: flex-end;
+}
+
+.type-block-content {
+    margin: 19px 0;
+    flex-shrink: 1;
+    height: min-content;
+    overflow-y: auto;
+}
+
+// .container1 {
+//     grid-template-columns: 100px 50px 100px;
+//     grid-template-rows: 80px auto 80px; 
+//     column-gap: 10px;
+//     row-gap: 15px;
+// }
+
+.type-name{
+    margin: 0 !important;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 16px;
+    color: #6A5B70;
+}
+
+.type-parameter {
+    font-family: Montserrat;
+    font-size: 14px;
+    color: #701C74;
+    padding-left: 35.01px;
+}
+
+.type-constraint{
+    font-family: Anaheim;
+    font-size: 16px;
+    line-height: 10px;
+    color: #6A5B70;    
+    padding-left:62.65px;
+}
+
+@media (max-width: 1440px) {
+    .add-type-page .body-container{
+        grid-template-columns: repeat(2, 400px);
+    }
 }
