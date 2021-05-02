@@ -71,7 +71,7 @@ function Parameters(): JSX.Element {
     const handleModalOpen = () => {
         setModalOpen(true);
       };
-    
+
     const handleModalClose = () => {
         setModalOpen(false);
     };
@@ -81,6 +81,7 @@ function Parameters(): JSX.Element {
         handleOnAddFileType(inputRef.current.value);
         handleModalClose();
       } 
+
     
       return (
         <div className="add-type-popup">
@@ -137,7 +138,9 @@ function Parameters(): JSX.Element {
               }
               </div>
               <footer className="type-block-footer">
-                <img src={addParameter} className="add-parameter-image" />
+              <div className="add-parameter-button">
+              <Para/>
+              </div>
               </footer>
             </div>
           )) }
@@ -145,7 +148,6 @@ function Parameters(): JSX.Element {
       <div className="add-type-button">
         <button onClick={handleModalOpen}><img src={addType} className="add-type-image" /></button>
       </div>
-      <Para />
     </div>
   );
 }

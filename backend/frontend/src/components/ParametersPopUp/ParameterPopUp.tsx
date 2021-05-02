@@ -1,12 +1,16 @@
 import React from 'react';
 import AddPara from "components/ParametersPopUp/AddParameter";
 import "./ParametersPopUp.scss";
+import Popup from 'reactjs-popup';
+import addParameter from "shared/icons/addparameter.svg";
 
 function ParameterPopUp(): JSX.Element {
 
 
     return(
-        <div className="parameters-pop-up">
+
+        <Popup trigger={<button className="parameter-submit"><img src={addParameter} className="add-parameter-image" /></button>} position="right center">
+                <div className="parameters-pop-up">
             <div>
                 <h1>Add new parameter</h1>
 
@@ -20,6 +24,8 @@ function ParameterPopUp(): JSX.Element {
 
 
         </div>
+      </Popup>
+
     );
 }
 
