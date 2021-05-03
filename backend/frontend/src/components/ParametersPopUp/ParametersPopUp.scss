@@ -44,11 +44,54 @@ h1 {
     color: white;
 }
 
+.parameter-add-name{
+    margin-top: 4%;
+}
+
 .parameter-input {
+    margin-left:7%;
+    margin-top: 1%;
     background-color: white;
     border-radius: 12px;
     height: 40px;
+    width: 65%;
+    border: none;
+    color: #6A5B70;
 }
+
+.select-section{
+    width: 50%;
+    margin-top: -3%;
+}
+.parameter-select {
+    margin-left:27%;
+    background-color: white;
+    border-radius: 12px;
+    height: 40px;
+    width: 65%;
+    border: none;
+    color: #6A5B70;
+}
+
+.parameter-select-input{
+    margin-top:-17%;
+
+}
+
+
+.parameter-select-input-text{
+    margin-left:97%;
+    background-color: white;
+    border-radius: 12px;
+    height: 40px;
+    width: 41%;
+    border: none;
+    color: #6A5B70;
+    background-color: white;
+    color: #6A5B70;
+}
+
+
 
 
 .parameter-submit{
@@ -62,3 +105,76 @@ h1 {
     align-self: flex-end;
     margin-top: 40px;
 }
+
+.new-parameter-text{
+    margin-top: -21%;
+    margin-left: 19%;
+    font-family: Montserrat;
+    font-size: 12px;
+    color: #D4C0D8;
+    width: 120%;
+}
+
+.new-parameter{
+    margin-top: -7%;
+    margin-left: 7%;
+}
+
+.new-parameter-image{
+    margin-left:-80% ;
+    width: 100%;
+    color: #D4C0D8, 100%;
+    border-style: none;
+    color: white;
+    width: 21px;
+    height: 22px;
+    align-self: flex-end;
+    margin-top: 40px;
+}
+
+.parameter-name{
+    line-height: 17px;
+    margin-left: 7%;
+    font-family: Montserrat;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.constraints-text{
+    margin-left: 13%;
+    font-family: Montserrat;
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height: 17px;
+    font-weight: 400;
+    width: 161px;
+    height: 26px;
+}
+
+.new-constraint-text{
+    margin-top: -18%;
+    margin-left: 17%;
+    font-family: Montserrat;
+    font-size: 12px;
+    color: #D4C0D8;
+    width: 120%;
+}
+
+.new-constraint{
+    margin-top: -7%;
+    margin-left: 14%;
+}
+
+.new-constraint-image{
+    margin-left:-80% ;
+    width: 100%;
+    color: #D4C0D8, 100%;
+    border-style: none;
+    color: white;
+    width: 17px;
+    height: 18px;
+    align-self: flex-end;
+    margin-top: 40px;
+}
+
+
