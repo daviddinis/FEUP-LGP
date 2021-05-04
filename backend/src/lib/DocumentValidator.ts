@@ -6,52 +6,47 @@ import config from "../config";
 import { mongo } from "mongoose";
 
 export default class DocumentValidator {
-  private static extractParameterInfo(document: any, param: string): string {
-    const allStrings = DataExtractor.extractStringArray(
-      document.all_data_regex
-    );
+    private static extractParameterInfo(document: any, param: string) : string {
+        const allStrings = DataExtractor.extractStringArray(document.all_data_regex);
 
-    const defaultExtractByKeywords = (keywords: RegExp[]): string =>
-      DataExtractor.extractByKeywords(allStrings, keywords);
+        const defaultExtractByKeywords = (keywords : RegExp[]) : string =>
+            DataExtractor.extractByKeywords(allStrings, keywords,  { regex: DataExtractor.regexes.SENTENCE });
 
-    switch (param) {
-      case "Company Number":
-        return defaultExtractByKeywords([/Company number/i]);
-      case "Company Address":
-        return defaultExtractByKeywords([
-          /Company address/i,
-          /Office address/i,
-          /address/i,
-        ]);
-      case "Company Status":
-        return defaultExtractByKeywords([/Company status/i]);
-      case "Company Type":
-        return defaultExtractByKeywords([/Company type/i]);
-      case "Created On":
-        return DataExtractor.extractByKeywords(
-          allStrings,
-          [/Created on/, /Incorporated on/i],
-          {
-            regex: DataExtractor.regexes.DATE,
-          }
-        );
-      case "SIREN":
-        return DataExtractor.extractByKeywords(allStrings, [/SIREN/], {
-          regex: DataExtractor.regexes.IDENTIFIER,
-        });
-      case "LEI":
-        return DataExtractor.extractByKeywords(allStrings, [/LEI/], {
-          regex: DataExtractor.regexes.ALPHANUM,
-        });
-      default:
-        if (param.startsWith("$"))
-          // $ means custom parameter I guess?
-          return defaultExtractByKeywords([new RegExp(param.substr(1), "i")]);
+        switch (param) {
+            case "Company Number": return defaultExtractByKeywords([/Company number/i]);
+            case "Company Address": return defaultExtractByKeywords([/Company address/i, /Office address/i, /address/i]);
+            case "Company Status": return defaultExtractByKeywords([/Company status/i]);
+            case "Company Type": return defaultExtractByKeywords([/Company type/i]);
+            case "Created On": return DataExtractor.extractByKeywords(allStrings, [/Created on/, /Incorporated on/i], {
+                regex: DataExtractor.regexes.DATE
+            });
+            case "SIREN": return DataExtractor.extractByKeywords(allStrings, [/SIREN/], {
+                regex: DataExtractor.regexes.IDENTIFIER
+            });
+            case "LEI": return DataExtractor.extractByKeywords(allStrings, [/LEI/], {
+                regex: DataExtractor.regexes.ALPHANUM
+            });
+            default:
+                if (param.startsWith("$")) // $ means custom parameter I guess?
+                    return defaultExtractByKeywords([new RegExp(param.substr(1), "i")]);
 
-        console.error("Unknown parameter: " + param);
-        return null;
+                console.error("Unknown parameter: " + param);
+                return null;
+        }
     }
-  }
+        
+      /*
+        await Type.create( {
+            name: "KB",
+            parameters: [
+                { param: "Company Number", constraints: [{ constraint: "eq", value: "05747877" }] },
+                { param: "Company Address", constraints: [ { constraint: "containsParam", value: "Company Number"}] },
+                { param: "Company Status", constraints: [{ constraint: "oneOf", value: "Active,Inactive" }] },
+                { param: "Company Type", constraints: [{ constraint: "contains", value: "Company"}] },
+                { param: "Created On", constraints: [{ constraint: "contains", value: "2000"}] },
+            ]
+        });*/
+    
 
   static async parseExtractedInfo(typeName: string, documentId: string) {
 
