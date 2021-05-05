@@ -1,4 +1,5 @@
 interface ParseKeywordOptions {
+    range?: number[]
     maxDistance?: number,
     includeKeyword?: boolean,
     regex?: RegExp,
@@ -43,9 +44,12 @@ class DataExtractor {
     public extractAllByKeywords(keywords: RegExp[], options: ParseKeywordOptions = {}) : string[] {
         const lines = DataExtractor.removeEmptyLines(this.allStrs);
         const maxDistance = options.maxDistance || 1;
-
+        const [rangeMin, rangeMax] = options.range || [0, lines.length];
 
         return lines.reduce((prev, line, index) => {
+            if (index < rangeMin || index >= rangeMax)
+                return prev;
+
             for (const keyword of keywords) { // when/if weighting is added, dont stop when found?
                 const keywordMatch = line.match(keyword);
                 if (!keywordMatch)

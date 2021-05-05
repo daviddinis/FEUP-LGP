@@ -23,9 +23,9 @@ export default class DocumentValidator {
            // case "Gross Profit": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]); // Search income statement then Gross Profit
            // case "Profit": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]); // Search income statement then Gross Profit
             case "Date of Publication": return extractor.extractByKeywords([/./], {
-                maxDistance: 10,
+                range: [0, 100],
                 regex: DataExtractor.regexes.DATE
-            }); // Search any year in the first lines?
+            });
 
 
 
