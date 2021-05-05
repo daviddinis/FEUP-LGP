@@ -3,19 +3,32 @@ import DocParser from "../lib/DocParserAPI";
 import Type from "../models/type";
 import { IType } from "../models/type";
 import config from "../config";
-import { mongo } from "mongoose";
+
 
 export default class DocumentValidator {
     private static extractParameterInfo(document: any, param: string) : string {
         const extractor = new DataExtractor(document.all_data_regex);
-
-        //console.log(extractor.allStrs.slice(200, 300));
 
         const sentencesOnly = { regex: DataExtractor.regexes.SENTENCE };
 
         switch (param) {
             case "Board of Directors": return extractor.extractList([/Board of directors/i, /Directors/i])
             case "Executive Management": return extractor.extractList([/Executive management/i])
+            case "Profit (Text)": return extractor.extractParagraph([/Net profit/i, /Profit/i]);
+            case "Revenues (Text)": return extractor.extractParagraph([/Total revenue(s)?/i, /Revenue(s)?/i]);
+            case "Assets (Text)": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]);
+
+            //case "Total Assets": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]); // Search balance sheet then TOTAL ASSETS
+            //case "Total Liabilities": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]); // Search balance sheet then TOTAL LIABILITIES
+           // case "Gross Profit": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]); // Search income statement then Gross Profit
+           // case "Profit": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]); // Search income statement then Gross Profit
+            case "Date of Publication": return extractor.extractByKeywords([/./], {
+                maxDistance: 10,
+                regex: DataExtractor.regexes.DATE
+            }); // Search any year in the first lines?
+
+
+
             case "Company Number": return extractor.extractByKeywords([/Company number/i], sentencesOnly);
             case "Company Address": return extractor.extractByKeywords([/Company address/i, /Office address/i, /address/i], sentencesOnly);
             case "Company Status": return extractor.extractByKeywords([/Company status/i], sentencesOnly);
@@ -60,6 +73,14 @@ export default class DocumentValidator {
                     { param: "Company Status", constraints: [{ constraint: "oneOf", value: "Active,Inactive" }] },
                     { param: "Company Type", constraints: [{ constraint: "contains", value: "Company"}] },
                     { param: "Created On", constraints: [{ constraint: "contains", value: "2000"}] },
+
+                    { param: "Board of Directors", constraints: [] },
+                    { param: "Executive Management", constraints: [] },
+                    { param: "Profit (Text)", constraints: [] },
+                    { param: "Revenues (Text)", constraints: [] },
+                    { param: "Assets (Text)", constraints: [] },
+                    { param: "Date of Publication", constraints: [] },
+
                 ]
             },
             {
@@ -77,12 +98,13 @@ export default class DocumentValidator {
                 name: "AFCA",
                 parameters: [
                     { param: "Board of Directors", constraints: [] },
+                    { param: "Executive Management", constraints: [] },
                 ]
             }
         ]
 
         // const type = Type.findOne({ name : typeName });
-        const type = types[2];
+        const type = types[0];
 
         if (!type) {
             console.error("Unknown document type: " + typeName);

@@ -8,7 +8,7 @@ interface ParseKeywordOptions {
 // Regex maluco para datas
 const yearNums = '([\\d]{4}|[\\d]{2})';
 const monthNums = '[\\d]{1,2}';
-const dayNums = '[\\d]{1,2}';
+const dayNums = '[\\d]{1,2}(st|nd|rd)?';
 const sep = '\\s*(\\/|-|,| )\\s*'
 const monthNames = '(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\w*'
 const monthRegex = `(${monthNums}|${monthNames})`;
@@ -44,6 +44,7 @@ class DataExtractor {
         const lines = DataExtractor.removeEmptyLines(this.allStrs);
         const maxDistance = options.maxDistance || 1;
 
+
         return lines.reduce((prev, line, index) => {
             for (const keyword of keywords) { // when/if weighting is added, dont stop when found?
                 const keywordMatch = line.match(keyword);
@@ -73,31 +74,27 @@ class DataExtractor {
         }, []);
     }
 
+    public extractParagraph(keywords: RegExp[]) : string {
+       // console.log(this.allStrs)
+        for (const keyword of keywords) {
+            let result = this.allStrs.slice(DataExtractor.findPattern(this.allStrs, [keyword]));
+            result = result.slice(0, DataExtractor.findPattern(result, ["^$", "^$"]))
+
+            if (result.length > 0)
+                return DataExtractor.removeEmptyLines(result).join("\n");
+        }
+    }
+
 
     public extractList(keywords: RegExp[]) : string {
-
-        console.log(keywords)
-        const lines = this.allStrs;
-
         for (const keyword of keywords) {
-           // for (let i = 0; i < lines.length; i++) {
-           //     const line = lines[i];
-           //     if (!line.match(keyword))
-           //         continue;
+            let result = this.allStrs.slice(DataExtractor.findPattern(this.allStrs, [keyword]) + 1)
+            result = result.slice(DataExtractor.findPattern(result, [/.+/]));
+            result = result.slice(0, DataExtractor.findPattern(result, ["^$", "^$"]))
+            result = result.map(line => line.replace(/\s{2,}/, ", "))
 
-
-                let result = lines.slice(DataExtractor.findPattern(lines, [keyword]) + 1)
-                //let result = lines.slice(i + 1);
-                result = result.slice(DataExtractor.findPattern(result, [/.+/]));
-                console.log(result)
-                result = result.slice(0, DataExtractor.findPattern(result, ["^$", "^$"]))
-                console.log(result)
-
-
-                if (result.length > 0) {
-                    return DataExtractor.removeEmptyLines(result).join("\n");
-                }
-          //  }
+            if (result.length > 0)
+                return DataExtractor.removeEmptyLines(result).join("\n");
         }
     }
 
