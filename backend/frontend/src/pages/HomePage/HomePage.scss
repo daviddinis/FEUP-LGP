@@ -1,0 +1,88 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* include border and padding in element width and height */
+* {
+    box-sizing: border-box;
+  }
+
+.home-page {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  background: linear-gradient(135deg, #DBA18C 0%, #C1878F 6.06%, #9F608D 15.49%, #8D4C8E 22.65%, #894990 26.65%, #84458F 39.01%, #804994 50.9%, #79559E 62.61%, #7468B0 74.2%, #6E87C9 85.72%, #67AEEB 97.02%, rgba(100, 185, 244, 1) 100%);  
+}
+
+.home-page .home-header{
+  float: right;
+  margin-right: 50px;
+}
+.home-page .home-header .log-in {
+  display: inline-block;
+  margin-top: 1em;
+  background-color: transparent;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5em 1.1em;
+
+  color: #4D7CEF;
+  font-family: Montserrat;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.home-page .home-header .sign-up {
+  display: inline-block;
+  margin-top: 1em;
+  background-color: transparent;
+  border: solid;
+  border-radius: 12px;
+  padding: 0.5em 1.1em;
+
+  color: #f7f4f9;
+  font-family: Montserrat;
+  font-size: 15px;
+  text-decoration: none;
+
+}
+
+.home-page .home-body{
+  margin-left: 50px;
+  margin-top: 100px;
+  font-family: Montserrat;
+  color: white;
+}
+
+.home-page .home-body .emailArea{
+  margin-top: 40px;
+}
+
+.home-page .home-body .emailArea .emailInput{
+  border-radius: 12px;
+  background-color: #C0A0C5;
+  height: 40px;
+  color: white;
+  border: none;
+  width: 400px;
+}
+
+.home-page .home-body .emailArea .emailButton{
+  display: inline-block;
+  margin-top: 1em;
+  background-color: #56ACE1;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5em 1.1em;
+  height: 40px;
+  margin-left:12.5px;
+  color: #f7f4f9;
+  font-family: Montserrat;
+  font-size: 15px;
+  text-decoration: none;
+}
