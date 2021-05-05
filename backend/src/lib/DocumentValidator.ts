@@ -1,6 +1,7 @@
 import DataExtractor from "../lib/DataExtractor";
 import DocParser from "../lib/DocParserAPI";
 import Type from "../models/type";
+import { IType } from "../models/type";
 import config from "../config";
 import { mongo } from "mongoose";
 
@@ -53,63 +54,8 @@ export default class DocumentValidator {
   }
 
   static async parseExtractedInfo(typeName: string, documentId: string) {
-    /*
-        await Type.create( {
-            name: "KB",
-            parameters: [
-                { param: "Company Number", constraints: [{ constraint: "eq", value: "05747877" }] },
-                { param: "Company Address", constraints: [ { constraint: "containsParam", value: "Company Number"}] },
-                { param: "Company Status", constraints: [{ constraint: "oneOf", value: "Active,Inactive" }] },
-                { param: "Company Type", constraints: [{ constraint: "contains", value: "Company"}] },
-                { param: "Created On", constraints: [{ constraint: "contains", value: "2000"}] },
-            ]
-        });
-        */
 
-    const types = [
-      // TODO: Get types from DB
-      {
-        name: "KB",
-        parameters: [
-          {
-            param: "Company Number",
-            constraints: [{ constraint: "eq", value: "05747877" }],
-          },
-          {
-            param: "Company Address",
-            constraints: [
-              { constraint: "containsParam", value: "Company Number" },
-            ],
-          },
-          {
-            param: "Company Status",
-            constraints: [{ constraint: "oneOf", value: "Active,Inactive" }],
-          },
-          {
-            param: "Company Type",
-            constraints: [{ constraint: "contains", value: "Company" }],
-          },
-          {
-            param: "Created On",
-            constraints: [{ constraint: "contains", value: "2000" }],
-          },
-        ],
-      },
-      {
-        name: "KB",
-        parameters: [
-          { param: "Company Name", constraints: [] },
-          { param: "SIREN", constraints: [] },
-          { param: "LEI", constraints: [] },
-          { param: "CIB", constraints: [] },
-          { param: "Company Address", constraints: [] },
-          { param: "$Date of authorisation", constraints: [] },
-        ],
-      },
-    ];
-
-    // const type = Type.findOne({ name : typeName });
-    const type = types[0];
+    const type: IType = await Type.findOne({ name : "KB" }); //TODO: chanche to typeName
 
     if (!type) {
       console.error("Unknown document type: " + typeName);

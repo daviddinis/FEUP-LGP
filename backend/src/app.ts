@@ -11,6 +11,9 @@ const upload = multer({ dest: "uploads/" });
 import DocumentController from "./controllers/DocumentController";
 import UserController from "./controllers/UserController";
 import TypeController from "./controllers/TypeController";
+import DocumentValidator from "./lib/DocumentValidator";
+
+import seed from "./seed"
 
 const app = express();
 
@@ -20,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.get("/", (req: any, res: any) => res.status(200).json("Welcome to kycon"));
+app.get("/", (req: any, res: any) => res.status(200).json("Welcome to kyconaa"));
 
 app.get('/api/files', DocumentController.list);
 app.get('/api/files/:id', DocumentController.read);
@@ -34,6 +37,9 @@ app.put("/types/:id", upload.single("file"), TypeController.update);
 app.listen(config.port, async () => {
   console.log("App is running on port " + config.port);
   await MongoClient.connect();
+  //Comment following line to not seed
+  await seed();
+  
 });
 
 // Serve uploads folder
