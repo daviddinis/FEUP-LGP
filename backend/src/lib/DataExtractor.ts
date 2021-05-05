@@ -28,19 +28,23 @@ class DataExtractor {
        // IDENTIFIER: /[0-9a-zA-Z]{6,}/ // min 6 characters
     }
 
-    // Funcoes inventadas -- moas
-    static extractByKeywords(strs: string[], keywords: RegExp[], options: ParseKeywordOptions = {}) : string {
-        return this.extractAllByKeywords(strs, keywords, options)[0];
+    public allStrs: string[];
+
+    constructor(documentData : any[]) {
+        this.allStrs = documentData.map(item => item.key_0);
     }
 
 
-    static extractAllByKeywords(strs: string[], keywords: RegExp[], options: ParseKeywordOptions = {}) : string[] {
-        const lines = DataExtractor.removeEmptyLines(strs);
+    public extractByKeywords(keywords: RegExp[], options: ParseKeywordOptions = {}) : string {
+        return this.extractAllByKeywords(keywords, options)[0];
+    }
+
+
+    public extractAllByKeywords(keywords: RegExp[], options: ParseKeywordOptions = {}) : string[] {
+        const lines = DataExtractor.removeEmptyLines(this.allStrs);
         const maxDistance = options.maxDistance || 1;
 
-        //console.log(lines);
-
-        const linesCloseToKeywords = lines.reduce((prev, line, index) => {
+        return lines.reduce((prev, line, index) => {
             for (const keyword of keywords) { // when/if weighting is added, dont stop when found?
                 const keywordMatch = line.match(keyword);
                 if (!keywordMatch)
@@ -50,9 +54,8 @@ class DataExtractor {
 
                 if (options.includeKeyword) {
                     linesToAdd = lines.slice(index, index + maxDistance);
-                }
-                else {
-                    const afterKeyword : string = line.substr( line.indexOf(keywordMatch[0]) + keywordMatch[0].length);
+                } else {
+                    const afterKeyword: string = line.substr(line.indexOf(keywordMatch[0]) + keywordMatch[0].length);
                     if (DataExtractor.isEmptyLine(afterKeyword))
                         linesToAdd = lines.slice(index + 1, index + 1 + maxDistance)
                     else linesToAdd = [afterKeyword].concat(lines.slice(index + 1, index + maxDistance));
@@ -64,17 +67,60 @@ class DataExtractor {
                     const matches = cleaned.match(new RegExp(options.regex, 'g'))
                     if (matches)
                         return prev.concat(matches)
-                }
-                else return prev.concat([cleaned]);
+                } else return prev.concat([cleaned]);
             }
             return prev;
         }, []);
-
-        //   console.log(linesCloseToKeywords);
-        //
-
-        return linesCloseToKeywords;
     }
+
+
+    public extractList(keywords: RegExp[]) : string {
+
+        console.log(keywords)
+        const lines = this.allStrs;
+
+        for (const keyword of keywords) {
+           // for (let i = 0; i < lines.length; i++) {
+           //     const line = lines[i];
+           //     if (!line.match(keyword))
+           //         continue;
+
+
+                let result = lines.slice(DataExtractor.findPattern(lines, [keyword]) + 1)
+                //let result = lines.slice(i + 1);
+                result = result.slice(DataExtractor.findPattern(result, [/.+/]));
+                console.log(result)
+                result = result.slice(0, DataExtractor.findPattern(result, ["^$", "^$"]))
+                console.log(result)
+
+
+                if (result.length > 0) {
+                    return DataExtractor.removeEmptyLines(result).join("\n");
+                }
+          //  }
+        }
+    }
+
+    private static findPattern(strs: string[], pattern: RegExp[] | string[]) : number {
+        let i = 0;
+        let j = 0;
+        while (i < strs.length && j < pattern.length) {
+            if (strs[i].match(pattern[j])) {
+                i++;
+                j++;
+            }
+            else {
+                i = i - j + 1;
+                j = 0;
+            }
+        }
+
+       // if (j === pattern.length)
+            return i - j;
+        //else return -1;
+    }
+
+    /*
 
     static parseFinancialList(parsedData : any, keywords : string[]) {
 
@@ -101,10 +147,12 @@ class DataExtractor {
         return { line, name, values }
     }
 
+     */
 
-    public static extractStringArray(data: any[]) : string[] {
-        return data.map(item => item.key_0);
-    }
+
+   // public static extractStringArray(data: any[]) : string[] {
+    //    return data.map(item => item.key_0);
+    //}
 
 
     private static removeEmptyLines(strs: string[]) : string[]{
@@ -118,6 +166,8 @@ class DataExtractor {
     private static isEmptyLine(str : string) : boolean {
         return !str.match(/[a-z0-9]+/i);
     }
+
+
 }
 
 export default DataExtractor;
