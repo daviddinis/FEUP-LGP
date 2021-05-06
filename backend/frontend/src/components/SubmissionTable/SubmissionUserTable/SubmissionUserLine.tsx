@@ -2,7 +2,6 @@ import React from "react";
 import details from 'shared/icons/details.svg';
 import { stateToClass, stateToString } from "components/State/State";
 import {Link} from "react-router-dom";
-import "./SubmissionUserLine.scss";
 import UserSubmission from "models/UserSubmission";
 
 const submissionUserLine = (submission : UserSubmission) : JSX.Element => {

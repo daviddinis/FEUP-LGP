@@ -2,7 +2,6 @@ import React from "react";
 import details from 'shared/icons/details.svg';
 import Flag from "components/Flag/Flag";
 import {Link} from "react-router-dom";
-import "./SubmissionAdminLine.scss";
 import { stateToClass, stateToString } from "components/State/State";
 import Submission from "models/Submission";
 

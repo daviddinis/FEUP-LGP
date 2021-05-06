@@ -2,6 +2,7 @@ import React from "react";
 import SubmissionAdminLine from "./SubmissionAdminLine";
 import Submission from "models/Submission";
 import 'components/SubmissionTable/Table.scss';
+import "./SubmissionAdminTable.scss";
 
  interface ISubmissionAdminTable {
     submissions: Submission[]
