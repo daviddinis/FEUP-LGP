@@ -32,7 +32,8 @@ app.post('/api/files/submit', upload.single('file'), DocumentController.submit);
 app.get('/api/users/:id/submissions', UserController.submissions);
 app.get('/api/users', UserController.list);
 
-app.put("/types/:id", upload.single("file"), TypeController.update);
+app.put("api/types/:id", upload.single("file"), TypeController.update);
+app.delete("api/types/:id", upload.single("file"), TypeController.delete);
 
 app.listen(config.port, async () => {
   console.log("App is running on port " + config.port);
