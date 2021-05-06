@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios'
-import "pages/Table.scss";
 import Header from "components/Header/Header";
 import SubmissionBlock from "components/SubmissionBlock/SubmissionBlock";
 import {useParams} from "react-router";

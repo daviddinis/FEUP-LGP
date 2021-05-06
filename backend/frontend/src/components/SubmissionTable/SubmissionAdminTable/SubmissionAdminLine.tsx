@@ -1,20 +1,17 @@
 import React from "react";
 import details from 'shared/icons/details.svg';
-import { stateToClass, stateToString } from "components/State/State";
+import Flag from "components/Flag/Flag";
 import {Link} from "react-router-dom";
+import "./SubmissionAdminLine.scss";
+import { stateToClass, stateToString } from "components/State/State";
+import Submission from "models/Submission";
 
-interface Submission {
-    id: string,
-    name: string,
-    type: string,
-    state: number,
-    date: Date
-}
-
-const submissionLineUser = (submission : Submission) : JSX.Element => {
+const SubmissionAdminLine = (submission : Submission): JSX.Element => {
     return (
-        <tr className='line submission'>
-            <td><span className={"icon status " +  stateToClass(submission.state)}/></td>
+        <tr className={'line submission'}>
+            <td><Flag flagged={submission.isFlagged} /></td>
+            <td>{submission.user}</td>
+            <td><span className={"icon status " + stateToClass(submission.state)}/></td>
             <td>{stateToString(submission.state)}</td>
             <td>{submission.name}</td>
             <td>{submission.type}</td>
@@ -29,4 +26,4 @@ const submissionLineUser = (submission : Submission) : JSX.Element => {
 }
 
 
-export default submissionLineUser;
+export default SubmissionAdminLine;
