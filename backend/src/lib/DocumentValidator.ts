@@ -11,26 +11,31 @@ export default class DocumentValidator {
 
         const sentencesOnly = { regex: DataExtractor.regexes.SENTENCE };
 
-        switch (param) {
-            case "Board of Directors": return extractor.extractList([/Board of directors/i, /Directors/i])
-            case "Executive Management": return extractor.extractList([/Executive management/i])
-            case "Profit (Text)": return extractor.extractParagraph([/Net profit/i, /Profit/i]);
-            case "Revenues (Text)": return extractor.extractParagraph([/Total revenue(s)?/i, /Revenue(s)?/i]);
-            case "Assets (Text)": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]);
 
-            //case "Total Assets": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]); // Search balance sheet then TOTAL ASSETS
-            //case "Total Liabilities": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]); // Search balance sheet then TOTAL LIABILITIES
-           // case "Gross Profit": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]); // Search income statement then Gross Profit
-           // case "Profit": return extractor.extractParagraph([/Total (client)? assets/i, /Assets/i]); // Search income statement then Gross Profit
+        switch (param) {
+            case "Board of Directors": return extractor.extractList([/DIRECTORS$/i, /Board of directors$/i])
+            case "Executive Management": return extractor.extractList([/^Executive management$/i])
+            case "Profit (Text)": return extractor.extractParagraph([/Net profit/i, /Profit/i]);
+            case "Revenues (Text)": return extractor.extractParagraph([/Total revenue(s)?/i]);
+            case "Assets (Text)": return extractor.extractParagraph([/Total (client)? assets/i]);
+
+            case "Total Assets": return extractor.getFinancials(/BALANCE SHEET/i, /TOTAL ASSETS/i);
+            case "Total Liabilities": return extractor.getFinancials(/BALANCE SHEET/i, /TOTAL LIABILITIES/i);
+            case "Gross Profit": return extractor.getFinancials(/INCOME STATEMENT/i, /(Gross | Operating) Profit/i);
+            case "Profit": return extractor.getFinancials(/INCOME STATEMENT/i, /Profit/);
             case "Date of Publication": return extractor.extractByKeywords([/./], {
+                includeKeyword: true,
                 range: [0, 100],
                 regex: DataExtractor.regexes.DATE
             });
 
-
+            case "Country": return extractor.extractByKeywords([/Address/i, /./i], {
+                maxDistance: 200,
+                regex: DataExtractor.regexes.COUNTRY
+            });
 
             case "Company Number": return extractor.extractByKeywords([/Company number/i], sentencesOnly);
-            case "Company Address": return extractor.extractByKeywords([/Company address/i, /Office address/i, /address/i], sentencesOnly);
+            case "Company Address": return extractor.extractByKeywords([/Company address/i, /Office address/i], sentencesOnly);
             case "Company Status": return extractor.extractByKeywords([/Company status/i], sentencesOnly);
             case "Company Type": return extractor.extractByKeywords([/Company type/i], sentencesOnly);
             case "Created On": return extractor.extractByKeywords([/Created on/, /Incorporated on/i], {
@@ -79,7 +84,12 @@ export default class DocumentValidator {
                     { param: "Profit (Text)", constraints: [] },
                     { param: "Revenues (Text)", constraints: [] },
                     { param: "Assets (Text)", constraints: [] },
+                    { param: "Total Assets", constraints: [] },
+                    { param: "Total Liabilities", constraints: [] },
+                    { param: "Gross Profit", constraints: [] },
+                    { param: "Profit", constraints: [] },
                     { param: "Date of Publication", constraints: [] },
+                    { param: "Country", constraints: [] },
 
                 ]
             },

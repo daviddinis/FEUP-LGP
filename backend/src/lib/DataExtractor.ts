@@ -5,27 +5,18 @@ interface ParseKeywordOptions {
     regex?: RegExp,
 }
 
-
-// Regex maluco para datas
-const yearNums = '([\\d]{4}|[\\d]{2})';
-const monthNums = '[\\d]{1,2}';
-const dayNums = '[\\d]{1,2}(st|nd|rd)?';
-const sep = '\\s*(\\/|-|,| )\\s*'
-const monthNames = '(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\w*'
-const monthRegex = `(${monthNums}|${monthNames})`;
-const dateRegex = new RegExp(
-    `\\b${yearNums}${sep}${monthRegex}${sep}${dayNums}\\b` + '|' +
-    `\\b${dayNums}${sep}${monthRegex}${sep}${yearNums}\\b` + '|' +
-    `\\b${monthRegex}${sep}${dayNums}${sep}${yearNums}\\b`
-, 'g');
+const countryRegex = require("./CountryRegex")
+const dateRegex = require("./DateRegex")
 
 class DataExtractor {
     public static regexes = {
         INTEGER: /[1-9][0-9]*/,
+        DIGIT: /[0-9]/,
         DATE: dateRegex,
         IDENTIFIER: /[0-9]+/,
         ALPHANUM: /[A-Za-z0-9]+/,
         SENTENCE: /[A-Za-z0-9].*/,
+        COUNTRY: countryRegex
        // IDENTIFIER: /[0-9a-zA-Z]{6,}/ // min 6 characters
     }
 
@@ -37,7 +28,7 @@ class DataExtractor {
 
 
     public extractByKeywords(keywords: RegExp[], options: ParseKeywordOptions = {}) : string {
-        return this.extractAllByKeywords(keywords, options)[0];
+        return this.extractAllByKeywords(keywords, options)[0] || "";
     }
 
 
@@ -90,19 +81,20 @@ class DataExtractor {
     }
 
 
-    public extractList(keywords: RegExp[]) : string {
+    public extractList(keywords: RegExp[], lengthRange = [3, 100]) : string {
+        const [rangeMin, rangeMax] = lengthRange;
         for (const keyword of keywords) {
             let result = this.allStrs.slice(DataExtractor.findPattern(this.allStrs, [keyword]) + 1)
             result = result.slice(DataExtractor.findPattern(result, [/.+/]));
-            result = result.slice(0, DataExtractor.findPattern(result, ["^$", "^$"]))
-            result = result.map(line => line.replace(/\s{2,}/, ", "))
+            result = result.slice(0, DataExtractor.findPattern(result, [/^$/, /^$/]))
+            result = result.map(line => line.trim().replace(/\s{2,}/, ", "))
 
-            if (result.length > 0)
+            if (result.length >= rangeMin && result.length <= rangeMax)
                 return DataExtractor.removeEmptyLines(result).join("\n");
         }
     }
 
-    private static findPattern(strs: string[], pattern: RegExp[] | string[]) : number {
+    public static findPattern(strs: string[], pattern: RegExp[] | string[]) : number {
         let i = 0;
         let j = 0;
         while (i < strs.length && j < pattern.length) {
@@ -119,6 +111,23 @@ class DataExtractor {
        // if (j === pattern.length)
             return i - j;
         //else return -1;
+    }
+
+    public getFinancials(sheetName : RegExp, keyword: RegExp) : string {
+        this.allStrs = this.allStrs.slice(DataExtractor.findPattern(this.allStrs, [sheetName]));
+
+        const sheetLine = this.extractByKeywords([keyword], {
+            range: [0, 500],
+        })
+
+        // In the future, check for parenthesis around? For negative numbers
+
+        const startOfNumber = sheetLine.slice(sheetLine.search(DataExtractor.regexes.DIGIT));
+        const fullNumber = startOfNumber.slice(0, startOfNumber.search(/\s{2,}/));
+
+        const cleaned = fullNumber.replace(/['’,]/g, '')
+
+        return cleaned;
     }
 
     /*
