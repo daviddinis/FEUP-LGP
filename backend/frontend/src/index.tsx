@@ -34,7 +34,7 @@ ReactDOM.render(
                     <RegisteredUsers/>
                 </Route>
                 <Route path="/">
-                    <User/>
+                    <Home/>
                 </Route>
             </Switch>
         </Router>
