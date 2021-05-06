@@ -55,8 +55,18 @@ html, body {
 .home-page .home-body{
   margin-left: 50px;
   margin-top: 100px;
-  font-family: Montserrat;
   color: white;
+}
+
+.home-page .home-body .home-title{
+  font-family: Ubuntu;
+  font-weight: bold;
+}
+
+.home-page .home-body .home-text{
+  font-size: 15px;
+  font-family: Montserrat;
+  font-weight: lighter;
 }
 
 .home-page .home-body .emailArea{
@@ -64,6 +74,7 @@ html, body {
 }
 
 .home-page .home-body .emailArea .emailInput{
+  vertical-align:top;
   border-radius: 12px;
   background-color: #C0A0C5;
   height: 40px;
@@ -73,8 +84,8 @@ html, body {
 }
 
 .home-page .home-body .emailArea .emailButton{
+  vertical-align: top;
   display: inline-block;
-  margin-top: 1em;
   background-color: #56ACE1;
   border: none;
   border-radius: 12px;
@@ -85,4 +96,13 @@ html, body {
   font-family: Montserrat;
   font-size: 15px;
   text-decoration: none;
+}
+
+.home-page .home-body .emailArea .home-map{
+  margin-left: 60px;
+  margin-top: -50px;
+  border-radius: 12px;
+  padding: 0.5em 1.1em;
+  height: 400px;
+  font-size: 15px;
 }
