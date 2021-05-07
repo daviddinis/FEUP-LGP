@@ -60,32 +60,30 @@ h1 {
 }
 
 .select-section{
-    width: 50%;
     margin-top: -3%;
     margin-bottom: 5%;
+    display: flex;
 }
 .parameter-select {
-    margin-left:27%;
+    margin-left: 12%;
+    margin-right: 5%;
     background-color: white;
     border-radius: 12px;
     height: 40px;
-    width: 65%;
     border: none;
     color: #6A5B70;
 }
 
 .parameter-select-input{
-    margin-top:-17%;
-
+    flex-grow: 1;
 }
 
 
 .parameter-select-input-text{
-    margin-left:97%;
     background-color: white;
     border-radius: 12px;
     height: 40px;
-    width: 41%;
+    width: 60%;
     border: none;
     color: #6A5B70;
     background-color: white;
