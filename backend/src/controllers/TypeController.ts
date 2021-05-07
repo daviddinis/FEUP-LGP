@@ -18,4 +18,19 @@ export default class DocumentController {
 
     return res.status(204).send();
   }
+
+  static async list(req: any, res : any) {
+    const fileTypes = await Type.find();
+    return res.status(200).json(fileTypes);
+  }
+
+  static async add(req : any, res : any) {
+    const fileType = await Type.create({
+        name: req.name,
+        parameters: req.parameters,
+    })
+
+    return res.status(200).json(fileType)
+  }
+
 }
