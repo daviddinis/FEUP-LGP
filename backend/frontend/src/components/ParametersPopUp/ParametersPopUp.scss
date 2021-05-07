@@ -45,12 +45,12 @@ h1 {
 }
 
 .parameter-add-name{
-    margin-top: 4%;
+    margin-top: -1%;
 }
 
 .parameter-input {
     margin-left:7%;
-    margin-top: 1%;
+    margin-top: 3%;
     background-color: white;
     border-radius: 12px;
     height: 40px;
@@ -104,7 +104,6 @@ h1 {
     width: 25px;
     height: 32px;
     align-self: flex-end;
-    margin-top: 40px;
 }
 
 .new-parameter-text{
@@ -153,7 +152,7 @@ h1 {
 }
 
 .new-constraint-text{
-    margin-top: -18%;
+    margin-top: -36%;
     margin-left: 17%;
     font-family: Montserrat;
     font-size: 12px;
@@ -175,26 +174,26 @@ h1 {
     width: 17px;
     height: 18px;
     align-self: flex-end;
-    margin-top: 40px;
+    margin-top: 21px;
+    margin-bottom: 21px;
 }
 
 .scrollbar {
+    margin-right: 3%;
     margin-top: 3%;
     overflow-y:auto;
     height: 75%;
 }
   
-
-.submit-section::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
+::-webkit-scrollbar {
+    width: 9px;               /* width of the entire scrollbar */
   }
   
-  .submit-section::-webkit-scrollbar-track {
-    background: orange;        /* color of the tracking area */
+::-webkit-scrollbar-track {
+    background: none;        /* color of the tracking area */
   }
   
-  .submit-section::-webkit-scrollbar-thumb {
-    background-color: blue;    /* color of the scroll thumb */
+::-webkit-scrollbar-thumb {
+    background-color: white;    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid orange;  /* creates padding around scroll thumb */
   }

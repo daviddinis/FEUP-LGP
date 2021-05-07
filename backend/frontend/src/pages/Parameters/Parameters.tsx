@@ -144,7 +144,7 @@ function Parameters(): JSX.Element {
           )) }
       </div>
       <div className="add-type-button">
-        <button onClick={handleModalOpen}><img src={addType} className="add-type-image" />gug</button>
+        <button onClick={handleModalOpen}><img src={addType} className="add-type-image" /></button>
       </div>
     </div>
   );
