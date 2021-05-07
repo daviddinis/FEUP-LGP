@@ -178,4 +178,26 @@ h1 {
     margin-top: 40px;
 }
 
+.scrollbar {
+    margin-top: 3%;
+    overflow-y:auto;
+    height: 75%;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: red;
+}
 
+.submit-section::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  .submit-section::-webkit-scrollbar-track {
+    background: orange;        /* color of the tracking area */
+  }
+  
+  .submit-section::-webkit-scrollbar-thumb {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid orange;  /* creates padding around scroll thumb */
+  }
