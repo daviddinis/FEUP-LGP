@@ -1,5 +1,4 @@
 import config from '../config';
-import DataExtractor from './DataExtractor';
 
 
 // tslint:disable-next-line:no-var-requires

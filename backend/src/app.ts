@@ -11,7 +11,6 @@ const upload = multer({ dest: "uploads/" });
 import DocumentController from "./controllers/DocumentController";
 import UserController from "./controllers/UserController";
 import TypeController from "./controllers/TypeController";
-import DocumentValidator from "./lib/DocumentValidator";
 
 import seed from "./seed"
 
@@ -38,6 +37,7 @@ app.delete("/api/types/:id", TypeController.delete);
 app.listen(config.port, async () => {
   console.log("App is running on port " + config.port);
   await MongoClient.connect();
+
   //Comment following line to not seed
   await seed();
   

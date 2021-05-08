@@ -12,14 +12,14 @@ export default class DocumentController {
     }
 
     static async read(req : any, res : any) {
-        const file : any = await File.findById(req.params.id).populate('user');
+        const file: any = await File.findById(req.params.id).populate('user');
 
         if (!file)
             return res.status(404).send();
 
         if (file.extracted == null) {
             const extracted = await DocumentValidator.parseExtractedInfo(file.type, file.documentId);
-            await file.updateOne({ extracted });
+            await file.updateOne({extracted});
 
             file.extracted = extracted; // o updateOne nao atualiza o objeto :(
         }
@@ -28,10 +28,12 @@ export default class DocumentController {
     }
 
     static async submit(req : any, res : any) {
-        // Se houver docparser no .env, usa o docparser
-        const document = config.docparserApiKey ?
-            await DocParser.uploadDocument(config.docparserParserId , req.file.path) :
-            { id: '087782204d4bf8cd57365b736d61e53b' };
+        if (!config.docparserApiKey) {
+            console.log("Config file does not have docparser information, submission failed.");
+            return res.status(500).send();
+        }
+
+        const document = await DocParser.uploadDocument(config.docparserParserId , req.file.path);
 
         async function GetRandomUserID() { // TODO: get logged in user
             const allUsers : any[] = await User.find();
@@ -44,7 +46,7 @@ export default class DocumentController {
             path: req.file.path,
             name: req.file.originalname,
             documentId: document.id,
-            type: "KB", // TODO: Get type from request
+            type: "TestType", // TODO: Get type from request
             extracted: null,
             user: await GetRandomUserID()
         })
