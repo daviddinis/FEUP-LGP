@@ -7,10 +7,14 @@ import config from "../config";
 
 export default class DocumentValidator {
     private static extractParameterInfo(document: any, param: string) : string {
+        if (!document.all_data_regex) {
+            console.log("Document does not have an all_data_regex field")
+            return null;
+        }
+
         const extractor = new DataExtractor(document.all_data_regex);
 
         const sentencesOnly = { regex: DataExtractor.regexes.SENTENCE };
-
 
         switch (param) {
             case "Board of Directors": return extractor.extractList([/DIRECTORS$/i, /Board of directors$/i])
@@ -55,71 +59,6 @@ export default class DocumentValidator {
                 return null;
         }
     }
-        
-      /*
-        await Type.create( {
-            name: "KB",
-            parameters: [
-                { param: "Company Number", constraints: [{ constraint: "eq", value: "05747877" }] },
-                { param: "Company Address", constraints: [ { constraint: "containsParam", value: "Company Number"}] },
-                { param: "Company Status", constraints: [{ constraint: "oneOf", value: "Active,Inactive" }] },
-                { param: "Company Type", constraints: [{ constraint: "contains", value: "Company"}] },
-                { param: "Created On", constraints: [{ constraint: "contains", value: "2000"}] },
-            ]
-        });*/
-    
-/*
-        const types = [ // TODO: Get types from DB
-            {
-                name: "KB",
-                parameters: [
-                    { param: "Company Number", constraints: [{ constraint: "eq", value: "05747877" }] },
-                    { param: "Company Address", constraints: [ { constraint: "containsParam", value: "Company Number"}] },
-                    { param: "Company Status", constraints: [{ constraint: "oneOf", value: "Active,Inactive" }] },
-                    { param: "Company Type", constraints: [{ constraint: "contains", value: "Company"}] },
-                    { param: "Created On", constraints: [{ constraint: "contains", value: "2000"}] },
-
-                    { param: "Board of Directors", constraints: [] },
-                    { param: "Executive Management", constraints: [] },
-                    { param: "Profit (Text)", constraints: [] },
-                    { param: "Revenues (Text)", constraints: [] },
-                    { param: "Assets (Text)", constraints: [] },
-                    { param: "Total Assets", constraints: [] },
-                    { param: "Total Liabilities", constraints: [] },
-                    { param: "Gross Profit", constraints: [] },
-                    { param: "Profit", constraints: [] },
-                    { param: "Date of Publication", constraints: [] },
-                    { param: "Country", constraints: [] },
-
-                ]
-            },
-            {
-                name: "KB",
-                parameters: [
-                    { param: "Company Name", constraints: [] },
-                    { param: "SIREN", constraints: [] },
-                    { param: "LEI", constraints: [] },
-                    { param: "CIB", constraints: [] },
-                    { param: "Company Address", constraints: [] },
-                    { param: "$Date of authorisation", constraints: [] },
-                ]
-            },
-            {
-                name: "AFCA",
-                parameters: [
-                    { param: "Board of Directors", constraints: [] },
-                    { param: "Executive Management", constraints: [] },
-                ]
-            }
-        ]
-
-        // const type = Type.findOne({ name : typeName });
-        const type = types[0];
-
-        if (!type) {
-            console.error("Unknown document type: " + typeName);
-            return null;
-        }*/
 
   static async parseExtractedInfo(typeName: string, documentId: string) {
 
@@ -152,19 +91,13 @@ export default class DocumentValidator {
 
       return allExtracted;
     } catch (err) {
-      console.error(
-        "Error fetching parser document, document is probably not yet processed."
-      );
+      console.error("Error fetching parser document, document is probably not yet processed.");
 
       return null;
     }
   }
 
-  private static validateParam(
-    extracted: string,
-    constraints: any[],
-    allExtracted: any[]
-  ) {
+  private static validateParam(extracted: string, constraints: any[], allExtracted: any[]) {
     if (extracted === null) return null;
 
     const getExtractedParam = (paramName: string) => {
@@ -178,7 +111,7 @@ export default class DocumentValidator {
     for (const constraint of constraints) {
       const constraintValue = constraint.value;
 
-      const toComparable =val => {
+      const toComparable = val => {
         if (val instanceof Date) return val.getTime();
         if (!isNaN(val)) return Number(val);
         return val;
