@@ -19,7 +19,7 @@ function AddParameter(): JSX.Element {
 
     const addConstraint = () => {
         const newFileType = {
-          name: "",
+          name: "a",
           value: "",
         }
         
@@ -34,10 +34,11 @@ function AddParameter(): JSX.Element {
         updateConstraint(newFileTypes);
     }
 
-    function handleChange(e: { target: { value: any; }; }) {
-        console.log(e.target.value);
-
-
+    const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+        const value = e.target.value;
+        const array = [...constraintArray];
+        array[index].value = value;
+        updateConstraint(array);
     }
 
     return(
@@ -48,7 +49,6 @@ function AddParameter(): JSX.Element {
             <div>
                 <p className="constraints-text">Constraints</p>
                 {constraintArray.map((c, index) => {
-                    console.log(constraintArray.length);
                     return(
                     <div key={ `${c.name}-${index}`} className="select-section">
                         <select className="parameter-select">
@@ -59,7 +59,7 @@ function AddParameter(): JSX.Element {
                         </select>
                             
                         <div className="parameter-select-input"> 
-                            <input className="parameter-select-input-text" type="text" value={c.value} onChange={handleChange}/>
+                            <input className="parameter-select-input-text" type="text" value={c.value} onChange={e => handleValueChange(e, index)}/>
                         </div>
                     
                         <button onClick={() => removeConstraint(Number(index))}><img src={trash} className="trash-image" /></button>

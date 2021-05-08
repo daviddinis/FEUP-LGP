@@ -25,7 +25,7 @@ function ParameterPopUp(): JSX.Element {
     }
 
     return(
-        <Popup trigger={<button className="parameter-submit"><img src={addParameterIcon} className="add-parameter-image" /></button>} position="right center">
+        <div>
         <div>
             <div className="parameters-pop-up">
                 <div className="submit-section">
@@ -43,7 +43,7 @@ function ParameterPopUp(): JSX.Element {
 
             </div>
         </div>
- </Popup>
+ </div>
     ); 
 }
 
