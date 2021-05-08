@@ -55,7 +55,7 @@ export default class DocumentValidator {
 
   static async parseExtractedInfo(typeName: string, documentId: string) {
 
-    const type: IType = await Type.findOne({ name : "KB" }); //TODO: chanche to typeName
+    const type: IType = await Type.findOne({ name : typeName });
 
     if (!type) {
       console.error("Unknown document type: " + typeName);
