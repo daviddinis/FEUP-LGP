@@ -105,7 +105,6 @@ function Parameters(): JSX.Element {
         </Modal>
       <Header username="MillerGinger" isAdmin={true} />
       <div className="body-container">
-          {/* TODO: Forçaaaa Mafaldaaaaaaaaa */}
           { fileTypes.map((fileType, fileTypeIndex) => (
             <div 
               key={ `${fileType.name}-${fileTypeIndex}` }
