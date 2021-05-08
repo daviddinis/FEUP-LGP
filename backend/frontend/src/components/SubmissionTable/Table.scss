@@ -21,10 +21,6 @@ thead th {
   color: #701C74;
 }
 
-thead th:first-child{
-  padding-left: 0.7em;
-}
-
 .td {
   vertical-align: middle;
   border: solid 1px #000;
@@ -67,44 +63,25 @@ tr td:last-child {
 
 }
 
-tr :nth-child(2) {
-  width: 20%;
-}
-
-tr :nth-child(3) {
-  width: 45%;
-  max-width: 45%;
-}
-
-tr :nth-child(4) {
-  width: 15%;
-}
-
-tr :nth-child(5) {
-  width: 10%;
-}
-
-tr :nth-child(6) {
-  width: 5%;
-}
-
-td:nth-child(6) {
-  text-align: right;
-}
-
-.icon.flag {
+tr > :nth-child(1) {
   padding-left: 20px;
+}
+
+tr > :last-child {
+  padding-right: 15px;
 }
 
 .icon.details {
   width: 24px;
-  padding-right: 15px;
 }
 
 .icon.status {
   display: block;
   height: 24px;
-  width: 30px;
+  width: 30px !important;
   border-radius: 8px;
-  margin: 8px 10px;
+}
+
+tr > :last-child {
+  width: 24px;
 }

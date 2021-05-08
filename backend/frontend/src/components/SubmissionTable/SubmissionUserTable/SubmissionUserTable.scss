@@ -1,0 +1,20 @@
+.submissions.user tr > :nth-child(1) {
+  width: 40px;
+}
+
+.submissions.user tr > :nth-child(2) {
+  width: 20%;
+}
+
+.submissions.user tr > :nth-child(3) {
+  width: 40%;
+  max-width: 40%;
+}
+
+.submissions.user tr > :nth-child(4) {
+  width: 10%;
+}
+
+.submissions.user tr > :nth-child(5) {
+  width: 10%;
+}

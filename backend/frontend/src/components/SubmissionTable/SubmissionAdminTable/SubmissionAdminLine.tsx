@@ -1,27 +1,17 @@
 import React from "react";
 import details from 'shared/icons/details.svg';
-import Flag from "./Flag/Flag";
+import Flag from "components/Flag/Flag";
 import {Link} from "react-router-dom";
+import { stateToClass, stateToString } from "components/State/State";
+import Submission from "models/Submission";
 
-interface Submission {
-    id: string,
-    user: string,
-    isFlagged: boolean,
-    name: string,
-    type: string,
-    state?: number,
-    date: Date,
-}
-
-const SubmissionLine = (submission : Submission): JSX.Element => {
+const SubmissionAdminLine = (submission : Submission): JSX.Element => {
     return (
         <tr className={'line submission'}>
             <td><Flag flagged={submission.isFlagged} /></td>
-            {/* TODO: Add state
-                <td><span className={"icon status " + stateToClass(submission.state)}/></td>
-                <td>{stateToString(submission.state)}</td>
-            */}
             <td>{submission.user}</td>
+            <td><span className={"icon status " + stateToClass(submission.state)}/></td>
+            <td>{stateToString(submission.state)}</td>
             <td>{submission.name}</td>
             <td>{submission.type}</td>
             <td>{(submission.date).toLocaleDateString()}</td>
@@ -35,4 +25,4 @@ const SubmissionLine = (submission : Submission): JSX.Element => {
 }
 
 
-export default SubmissionLine;
+export default SubmissionAdminLine;
