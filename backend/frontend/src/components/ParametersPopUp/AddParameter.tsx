@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./ParametersPopUp.scss";
 import newParameter from  "shared/icons/newParameter.svg";
-import trash from "shared/icons/caixote lixo.svg";
+import trash from "shared/icons/delete.svg";
 
 interface Constraint {
     name: string,
