@@ -23,8 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.get("/", (req: any, res: any) => res.status(200).json("Welcome to kyconaa"));
-
 app.get('/api/files', DocumentController.list);
 app.get('/api/files/:id', DocumentController.read);
 app.post('/api/files/submit', upload.single('file'), DocumentController.submit);
