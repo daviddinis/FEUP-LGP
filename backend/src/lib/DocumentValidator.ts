@@ -68,7 +68,7 @@ export default class DocumentValidator {
         documentId
       );
 
-      const allExtracted = type.parameters.map((typeParam) => ({
+      const allExtracted = type.parameters.map(typeParam => ({
         name: typeParam.param,
         content: this.extractParameterInfo(document, typeParam.param) || null,
         constraints: typeParam.constraints,
@@ -110,7 +110,7 @@ export default class DocumentValidator {
     for (const constraint of constraints) {
       const constraintValue = constraint.value;
 
-      const toComparable = (val) => {
+      const toComparable =val => {
         if (val instanceof Date) return val.getTime();
         if (!isNaN(val)) return Number(val);
         return val;
