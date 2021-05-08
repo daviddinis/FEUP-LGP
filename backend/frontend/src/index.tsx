@@ -8,6 +8,7 @@ import reportWebVitals from 'reportWebVitals';
 import Submission from 'pages/Submission/Submission';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import User from 'pages/UserFeed/UserFeed';
+import Home from 'pages/HomePage/HomePage';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -23,7 +24,9 @@ ReactDOM.render(
                 <Route path="/admin">
                     <Admin/>
                 </Route>
-
+                <Route path="/home">
+                    <Home/>
+                </Route>
                 <Route path="/users/:id/submissions">
                     <AdminUserDocs/>
                 </Route>
@@ -31,7 +34,7 @@ ReactDOM.render(
                     <RegisteredUsers/>
                 </Route>
                 <Route path="/">
-                    <User/>
+                    <Home/>
                 </Route>
             </Switch>
         </Router>
