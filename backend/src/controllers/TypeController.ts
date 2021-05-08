@@ -1,6 +1,6 @@
 import Type from "../models/type";
 
-export default class DocumentController {
+export default class TypeController {
   static async update(req: any, res: any) {
 
     const type = await Type.findByIdAndUpdate(req.params.id, req.body, {runValidators: true});
