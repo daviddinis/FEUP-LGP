@@ -44,7 +44,7 @@ export default class DocumentController {
             path: req.file.path,
             name: req.file.originalname,
             documentId: document.id,
-            type: "KB",
+            type: "KB", // TODO: Get type from request
             extracted: null,
             user: await GetRandomUserID()
         })

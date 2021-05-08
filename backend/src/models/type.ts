@@ -1,4 +1,19 @@
-import mongoose from 'mongoose';
+import mongoose, { Model, model, Document } from 'mongoose';
+
+export interface IType extends Document {
+	name: string;
+	parameters: [{ 
+		param: string,
+		constraints: [
+			{
+				constraint: {
+					type: string,
+					enum: ["lt", "gt", "lte", "gte", "eq", "oneOf", "contains", "containsParam"],
+				},
+				value: string
+			},
+		], }];
+  }
 
 const typeSchema = new mongoose.Schema(
     {
@@ -22,6 +37,6 @@ const typeSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-const type = mongoose.model('type', typeSchema);
+const type: Model<IType> = model('type', typeSchema);
 
 export default type;
