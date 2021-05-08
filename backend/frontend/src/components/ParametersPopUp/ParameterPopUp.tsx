@@ -36,6 +36,11 @@ function ParameterPopUp(): JSX.Element {
     const [constraintArray, updateConstraints] = useState<Constraint[]>([constraintMockFile]);
     
     const addParameter = () => {
+        const newPara = {
+            name: "",
+            constraints: []
+        };
+
         const newParameters = [...parametersArray, parameterMockFile];
 
         updateParameters(newParameters);
@@ -57,15 +62,19 @@ function ParameterPopUp(): JSX.Element {
     }
 
     const addConstraint = (pindex: number) => {
-        const newFileType = {
+        const newConstraint = {
             parameter: pindex,
             select: "  double chocolate",
             value: "",
         }
         
-        const newFileTypes = [...constraintArray, newFileType];
+        const newConstraints = [...constraintArray, newConstraint];
 
-        updateConstraints(newFileTypes);
+        updateConstraints(newConstraints);
+        
+        const temp = parametersArray;
+        temp[pindex].constraints.push(newConstraint);
+        updateParameters(temp);
     }
 
     const removeConstraint = (index: number) => {
