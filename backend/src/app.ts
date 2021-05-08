@@ -34,8 +34,8 @@ app.get('/api/users', UserController.list);
 
 app.get('/api/types', TypeController.list);
 app.get('/api/types/add', TypeController.add);
-app.put("api/types/:id", upload.single("file"), TypeController.update);
-app.delete("api/types/:id", upload.single("file"), TypeController.delete);
+app.put("/api/types/:id", TypeController.update);
+app.delete("/api/types/:id", TypeController.delete);
 
 app.listen(config.port, async () => {
   console.log("App is running on port " + config.port);
