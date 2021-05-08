@@ -82,11 +82,12 @@ $borderRadius: 12px;
 }
 
 
-.submission-block .inner-submisson-block button {
+.submission-block .inner-submisson-block .submission-button {
   background-color: #8b478f;
   border: none;
   border-radius: 12px;
   padding: 0.5em 1.1em;
+  margin-right: 10px;
 
   color: #f7f4f9;
   font-family: Montserrat;

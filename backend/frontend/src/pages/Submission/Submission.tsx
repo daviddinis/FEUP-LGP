@@ -17,6 +17,7 @@ interface Submission {
     _id: string;
     name: string;
     type: string;
+    path: string;
     extracted: Highlights[];
     createdAt: string;
     user: {
@@ -35,6 +36,7 @@ function Submission(): JSX.Element {
         });
     }, [id]);
 
+
     return (
         <div className="submition-details">
             <Header username="gingerAle" isAdmin={true} withBackArrow/>
@@ -45,6 +47,7 @@ function Submission(): JSX.Element {
                     name={submission.name}
                     type={submission.type}
                     owner={submission?.user?.username}
+                    original={submission.path}
                     state={getPercentage(submission.extracted)}
                     date={new Date(submission.createdAt)}
                     extracted={submission.extracted}

@@ -2,6 +2,7 @@ import React from "react";
 import "./SubmissionBlock.scss";
 import { stateToClass, stateToString } from "components/State/State";
 import ExportCSVButton from "../ExportComponent/ExportCSVButton";
+import DownloadButton from "../DownloadButton/DownloadButton";
 
 interface Highlights {
   name: string;
@@ -13,13 +14,14 @@ interface Submission {
   name: string,
   type: string,
   owner: string,
+  original: string
   state: number,
   date: Date,
   extracted: Highlights[]
 }
 
 
-const SubmissionLine = (submission: Submission): JSX.Element => {
+const SubmissionBlock = (submission: Submission): JSX.Element => {
   return (
     <div className="submission-block">
       <div className="wrapper-inner-submisson-block">
@@ -51,6 +53,7 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
                     </div>
                 ))}
                 <ExportCSVButton {...submission} />
+                <DownloadButton url={"/" + submission.original} filename={submission.name}/>
               </> : <p>No Highlights</p>
             }
           </div>
@@ -61,4 +64,4 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
   );
 };
 
-export default SubmissionLine;
+export default SubmissionBlock;
