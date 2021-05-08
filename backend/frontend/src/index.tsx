@@ -9,6 +9,7 @@ import Submission from 'pages/Submission/Submission';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import User from 'pages/UserFeed/UserFeed';
 import Home from 'pages/HomePage/HomePage';
+import Parameters from 'pages/Parameters/Parameters';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -24,6 +25,11 @@ ReactDOM.render(
                 <Route path="/admin">
                     <Admin/>
                 </Route>
+
+                <Route path="/parameters">
+                    <Parameters/>
+                </Route>
+
                 <Route path="/users/:username/:id/submissions">
                     <AdminUserDocs/>
                 </Route>
