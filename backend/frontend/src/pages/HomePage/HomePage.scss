@@ -1,16 +1,3 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-}
-
-/* include border and padding in element width and height */
-* {
-    box-sizing: border-box;
-  }
-
 .home-page {
   height: 100%;
   width: 100%;
@@ -31,7 +18,7 @@ html, body {
   border-radius: 12px;
   padding: 0.5em 1.1em;
 
-  color: #4D7CEF;
+  color: #4AC4F4;
   font-family: Montserrat;
   font-size: 15px;
   text-decoration: none;
@@ -42,8 +29,9 @@ html, body {
   margin-top: 1em;
   background-color: transparent;
   border: solid;
+  border-width: thin;
   border-radius: 12px;
-  padding: 0.5em 1.1em;
+  padding: 0.5em 1em;
 
   color: #f7f4f9;
   font-family: Montserrat;
@@ -69,11 +57,11 @@ html, body {
   font-weight: lighter;
 }
 
-.home-page .home-body .emailArea{
+.home-page .home-body .email-area{
   margin-top: 40px;
 }
 
-.home-page .home-body .emailArea .emailInput{
+.home-page .home-body .email-area .email-input{
   vertical-align:top;
   border-radius: 12px;
   background-color: #C0A0C5;
@@ -81,9 +69,10 @@ html, body {
   color: white;
   border: none;
   width: 400px;
+  padding: 0.5em 1.1em;
 }
 
-.home-page .home-body .emailArea .emailButton{
+.home-page .home-body .email-area .email-button{
   vertical-align: top;
   display: inline-block;
   background-color: #56ACE1;
@@ -98,7 +87,7 @@ html, body {
   text-decoration: none;
 }
 
-.home-page .home-body .emailArea .home-map{
+.home-page .home-body .email-area .home-map{
   margin-left: 60px;
   margin-top: -50px;
   border-radius: 12px;
