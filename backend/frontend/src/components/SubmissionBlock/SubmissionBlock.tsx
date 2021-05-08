@@ -37,7 +37,10 @@ const SubmissionBlock = (submission: Submission): JSX.Element => {
               <time>{new Date(submission.date).toLocaleDateString()}</time>
             </p>
             <p>
-             <b>Status: </b>{stateToString(submission.state)}
+              <b>Status: </b>{stateToString(submission.state)}
+            </p>
+            <p>
+              <b>Type: </b>{submission.type}
             </p>
           </header>
 
