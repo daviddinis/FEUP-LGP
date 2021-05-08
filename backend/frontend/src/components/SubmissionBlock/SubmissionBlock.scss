@@ -58,13 +58,14 @@ $borderRadius: 12px;
   color: #6a5b70;
   font-size: 16px;
   margin-top: 0;
+  margin-bottom: 0.25em;
 }
 
 .submission-block .inner-submisson-block .highlights .highlight {
   margin-bottom: 1.5em;
 }
 
-.submission-block .inner-submisson-block .highlights .highlight-not-found {
+.submission-block .inner-submisson-block .highlights .highlight-error {
   color: #ed4337;
 }
 
@@ -73,6 +74,7 @@ $borderRadius: 12px;
   color: #6a5b70;
   font-size: 16px;
   margin-bottom: 0.5em;
+  margin-top: 2em;
 }
 
 .submission-block .inner-submisson-block .highlights {
