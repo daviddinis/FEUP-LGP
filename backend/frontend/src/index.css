@@ -45,9 +45,6 @@ html, body {
   overflow: hidden;
 }
 
-* {
-    box-sizing: border-box;
-  }
 
 /*Change the placeholders color */
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
