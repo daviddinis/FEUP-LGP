@@ -15,6 +15,10 @@ Team: LGP4C
 
 ## Setup
 
+### **Documentation**
+
+#### [Wiki](https://github.com/LGP21-LGP4/KyCON/wiki)
+
 ### **Development**
 
 First, make sure you have your node dependencies up to date, by running `npm install` on both the backend and frontend folder. Then, you will need a valid .env file on the backend folder (you may use .env.template as a reference).
