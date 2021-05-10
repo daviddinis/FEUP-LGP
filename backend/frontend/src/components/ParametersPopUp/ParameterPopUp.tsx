@@ -132,12 +132,12 @@ function ParameterPopUp(): JSX.Element {
                 <div className="scrollbar">
                     {parametersArray.map((p, pindex) => {
                         return(
-                        <div key={ `${p.name}-${pindex}`} className="parameter-div">
+                        <div key={ `${p}-${pindex}`} className="parameter-div">
                             <label className="parameter-name">Parameter name</label>
                             <div>  
                                 <input className="parameter-input" type="text" placeholder="parameter name" value={p.name} onChange={e => handleNameChange(e, pindex)}/>
                                 <button onClick={() => removeParameter(Number(pindex))}>
-                                    <img src={trash} className="trash-image" />
+                                    <img src={trash} className="trash-paramter-image" />
                                 </button>
                             </div> 
                                 
