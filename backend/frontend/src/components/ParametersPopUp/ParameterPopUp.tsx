@@ -150,10 +150,14 @@ function ParameterPopUp(): JSX.Element {
                                         return(
                                         <div key={ `${c.select}-${index}`} className="select-section">
                                             <select value={c.select} className="parameter-select" onChange={e => handleSelectChange(e, index)}>
-                                                <option value="  double chocolate"> Double Chocolate</option>
-                                                <option value="  vanilla"> Vanilla</option>
-                                                <option value="  strawberry"> Strawberry</option>
-                                                <option value="  caramel"> Caramel</option>
+                                                <option value="  lt"> Less </option>
+                                                <option value="  gt"> Greater </option>
+                                                <option value="  lte"> Less or Equal </option>
+                                                <option value="  gte"> Greater or Equal</option>
+                                                <option value="  eq"> Equal </option>
+                                                <option value="  oneOf"> One of </option>
+                                                <option value="  contains"> Contains </option>
+                                                <option value="  containsParam"> Contains Parameter </option>
                                             </select>
                                                         
                                             <div className="parameter-select-input"> 
