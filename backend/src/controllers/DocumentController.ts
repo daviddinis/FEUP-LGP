@@ -46,7 +46,7 @@ export default class DocumentController {
             path: req.file.path,
             name: req.file.originalname,
             documentId: document.id,
-            type: "TestType", // TODO: Get type from request
+            type: "AFCA", // TODO: Get type from request
             extracted: null,
             user: await GetRandomUserID()
         })

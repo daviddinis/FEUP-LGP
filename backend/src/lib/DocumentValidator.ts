@@ -38,6 +38,7 @@ export default class DocumentValidator {
                 regex: DataExtractor.regexes.COUNTRY
             });
 
+            case "Company Name": return extractor.extractByKeywords([/Company name/i, /Registered name/i], sentencesOnly);
             case "Company Number": return extractor.extractByKeywords([/Company number/i], sentencesOnly);
             case "Company Address": return extractor.extractByKeywords([/Company address/i, /Office address/i], sentencesOnly);
             case "Company Status": return extractor.extractByKeywords([/Company status/i], sentencesOnly);
@@ -45,11 +46,17 @@ export default class DocumentValidator {
             case "Created On": return extractor.extractByKeywords([/Created on/, /Incorporated on/i], {
                 regex: DataExtractor.regexes.DATE
             });
+            case "Date of Registration": return extractor.extractByKeywords([/Date of registration/i, /Date of authorisation/i], {
+                regex: DataExtractor.regexes.DATE
+            });
             case "SIREN": return extractor.extractByKeywords([/SIREN/], {
                 regex: DataExtractor.regexes.IDENTIFIER
             });
             case "LEI": return extractor.extractByKeywords([/LEI/], {
                 regex: DataExtractor.regexes.ALPHANUM
+            });
+            case "CIB": return extractor.extractByKeywords([/CIB/], {
+                regex: DataExtractor.regexes.IDENTIFIER
             });
             default:
                 if (param.startsWith("$")) // $ means custom parameter I guess?
@@ -140,7 +147,7 @@ export default class DocumentValidator {
           break;
         case "contains":
           if (!extracted.includes(constraintValue))
-            return `"Does not include: "${constraintValue}"`;
+            return `Does not include: "${constraintValue}"`;
           break;
         case "containsParam":
           if (!extracted.includes(getExtractedParam(constraintValue)))

@@ -11,6 +11,9 @@ const upload = multer({ dest: "uploads/" });
 import DocumentController from "./controllers/DocumentController";
 import UserController from "./controllers/UserController";
 import TypeController from "./controllers/TypeController";
+import AuthController from "./controllers/AuthController";
+
+import User from "./models/user"
 
 import seed from "./seed"
 
@@ -21,6 +24,13 @@ app.use(logger(config.loggerLevel));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+AuthController.useSession(app);
+
+app.get('/api/auth/check', AuthController.check)
+app.post('/api/auth/login', AuthController.login)
+app.post('/api/auth/register', AuthController.register)
+app.post('/api/auth/logout', AuthController.logout)
 
 app.get('/api/files', DocumentController.list);
 app.get('/api/files/:id', DocumentController.read);
