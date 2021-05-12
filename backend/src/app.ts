@@ -27,12 +27,6 @@ app.use(cookieParser());
 
 AuthController.useSession(app);
 
-app.get('/api/test', async (req, res) => {
-  const a = await User.find();
-
-  return res.status(200).json(a);
-});
-
 app.get('/api/auth/check', AuthController.check)
 app.post('/api/auth/login', AuthController.login)
 app.post('/api/auth/register', AuthController.register)
