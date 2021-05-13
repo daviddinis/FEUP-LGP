@@ -22,6 +22,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: actions/cache@v2
         with:
           path: '**/backend/node_modules'
@@ -35,13 +38,15 @@ jobs:
         run: |
           cd backend
           npm run build
-      
 
   build_frontend:
     runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: actions/cache@v2
         with:
           path: '**/backend/frontend/node_modules'
@@ -54,29 +59,16 @@ jobs:
       - name: Build
         run: |
           cd backend/frontend
-          npm run build
-
-  
-
-  database:
-    # The type of runner that the job will run on
-    runs-on: self-hosted
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Build the database
-        run: |
-          cd backend
-          docker-compose up -d
-          
+          npm run build         
           
   linter_frontend:
     runs-on: self-hosted
     needs: [build_frontend]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: actions/cache@v2
         with:
           path: '**/backend/frontend/node_modules'
@@ -92,6 +84,9 @@ jobs:
     needs: [build_backend]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: actions/cache@v2
         with:
           path: '**/backend/node_modules'
@@ -106,26 +101,35 @@ jobs:
     needs: [build_frontend]
     steps:
       - uses: actions/checkout@v2
-      - name: audit frontend
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: audit frontend 
         run: |
           cd backend/frontend
-          npm audit
+          npm audit --audit-level=high
 
   audit_backend:
     runs-on: self-hosted
     needs: [build_backend]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - name: audit backend
         run: |
           cd backend
-          npm audit
+          npm audit --audit-level=high
 
   test_frontend:
     runs-on: self-hosted
     needs: [build_frontend]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: actions/cache@v2
         with:
           path: '**/backend/frontend/node_modules'
@@ -140,6 +144,9 @@ jobs:
     needs: [build_backend]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: actions/cache@v2
         with:
           path: '**/backend/node_modules'
