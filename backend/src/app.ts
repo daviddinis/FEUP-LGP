@@ -49,7 +49,7 @@ app.listen(config.port, async () => {
   await MongoClient.connect();
 
   //Comment following line to not seed
-  await seed();
+  //await seed();
   
 });
 
