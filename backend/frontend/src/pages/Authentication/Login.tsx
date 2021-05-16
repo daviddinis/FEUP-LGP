@@ -2,6 +2,7 @@ import React from 'react';
 import "pages/Authentication/Authentication.scss";
 import PropTypes from 'prop-types';
 import map from 'shared/images/mapa1.svg';
+import { Link } from "react-router-dom";
 
 interface LoginParams {
     _id: string;
@@ -33,7 +34,7 @@ function LogginPage(): JSX.Element {
           <button type="submit">Log in</button>
         </form>
       </div>
-      <button>New here? Create account</button>
+      <Link to={ '/login' } className={ 'signup-link' } >New here? Create account</Link>
     </div>
   );
 }
