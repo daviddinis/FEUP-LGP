@@ -41,7 +41,11 @@ body {
 }
 
 
-.login-page button{
+.signup-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: rgba(112, 28, 116, 0.8);
     border-radius: 12px;
     font-family: Montserrat;

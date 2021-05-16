@@ -1,13 +1,14 @@
 import React from "react";
 import "pages/HomePage/HomePage.scss";
 import map from 'shared/images/mapa.svg';
+import { Link } from "react-router-dom";
 
 function AdminFeed(): JSX.Element {
   return (
     <div className='home-page'>
       <header className="home-header">
-      <button className = "log-in">Log in</button>
-        <button className="sign-up">Sign Up</button>
+      <Link to={ '/login' } className="log-in">Log in</Link>
+      <Link to={ '' }className="sign-up">Sign Up</Link>
       </header>
       <body className="home-body">
         <h1 className="home-title">Know your costumer on the news</h1>
