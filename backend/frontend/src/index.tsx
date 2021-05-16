@@ -39,7 +39,7 @@ ReactDOM.render(
                     <RegisteredUsers/>
                 </PrivateRoute>
                 <PrivateRoute path="/login">
-                    <Login/>
+                    <Login setUser={ (args) => { console.log(args)} }/>
                 </PrivateRoute>
                 <Route path="/">
                     <Home/>
