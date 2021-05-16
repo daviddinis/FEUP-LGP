@@ -136,15 +136,15 @@ function Parameters(): JSX.Element {
               }
               </div>
               <footer className="type-block-footer">
-              <div className="add-parameter-button">
-                <Para/>
-              </div>
+                <div className="add-parameter-button">
+                  <Para/>
+                </div>
               </footer>
             </div>
           )) }
       </div>
       <div className="add-type-button">
-        <button onClick={handleModalOpen}><img src={addType} className="add-type-image" /></button>
+        <button onClick={handleModalOpen}><img src={addType} className="add-type-image" />hjguj</button>
       </div>
     </div>
   );

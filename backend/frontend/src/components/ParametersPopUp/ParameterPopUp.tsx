@@ -31,9 +31,16 @@ const parameterMockFile = {
 
 function ParameterPopUp(): JSX.Element {
 
+    const [fileType, updateFileType] = useState<string>("");
     const [parametersArray, updateParameters] = useState<Parameter[]>([parameterMockFile]);
     const [constraintArray, updateConstraints] = useState<Constraint[]>([constraintMockFile]);
     
+    const handleFileTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        const file = value;
+        updateFileType(file);
+    }
+
     const addParameter = () => {
 
         const constraint = {
@@ -75,9 +82,6 @@ function ParameterPopUp(): JSX.Element {
         const value = e.target.value;        
         const array = [...parametersArray];
         array[index].name = value;
-        array.forEach(element => {
-            console.log(element.name);
-        });
         updateParameters(array);
     }
 
@@ -122,8 +126,8 @@ function ParameterPopUp(): JSX.Element {
         <div>
             <div className="parameters-pop-up">
                 <div className="submit-section">
+                    <input className="file-type" type="text" value={fileType} onChange={e => handleFileTypeChange(e)}/>
                     <button className="save-button">Save</button>
-                    <h1 className="title-Popup">Add new parameter</h1>
                 </div>
                     
                 <button className="new-parameter" onClick={addParameter}>
