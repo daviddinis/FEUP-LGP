@@ -2,23 +2,26 @@ import React from "react";
 import "./SubmissionBlock.scss";
 import { stateToClass, stateToString } from "components/State/State";
 import ExportCSVButton from "../ExportComponent/ExportCSVButton";
+import DownloadButton from "../DownloadButton/DownloadButton";
 
 interface Highlights {
   name: string;
   content: string;
+  error: string;
 }
 
 interface Submission {
   name: string,
   type: string,
   owner: string,
+  original: string
   state: number,
   date: Date,
   extracted: Highlights[]
 }
 
 
-const SubmissionLine = (submission: Submission): JSX.Element => {
+const SubmissionBlock = (submission: Submission): JSX.Element => {
   return (
     <div className="submission-block">
       <div className="wrapper-inner-submisson-block">
@@ -34,7 +37,10 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
               <time>{new Date(submission.date).toLocaleDateString()}</time>
             </p>
             <p>
-             <b>Status: </b>{stateToString(submission.state)}
+              <b>Status: </b>{stateToString(submission.state)}
+            </p>
+            <p>
+              <b>Type: </b>{submission.type}
             </p>
           </header>
 
@@ -44,11 +50,13 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
                 {submission.extracted.map((highlight, index) => (
                     <div key={index + 1} className="highlight">
                       <h3>{highlight.name}</h3>
-                      <p>{highlight.content || <strong className="highlight-not-found">Not Found!</strong>}</p>
+                      <p>{highlight.content || <strong className="highlight-error">Not Found!</strong>}</p>
+                      <p><strong className="highlight-error">{highlight.error}</strong></p>
 
                     </div>
                 ))}
                 <ExportCSVButton {...submission} />
+                <DownloadButton url={"/" + submission.original} filename={submission.name}/>
               </> : <p>No Highlights</p>
             }
           </div>
@@ -59,4 +67,4 @@ const SubmissionLine = (submission: Submission): JSX.Element => {
   );
 };
 
-export default SubmissionLine;
+export default SubmissionBlock;

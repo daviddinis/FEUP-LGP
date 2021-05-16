@@ -19,7 +19,7 @@ function RegisteredUsersPage(): JSX.Element {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    axios.get("/users").then((res) => setUsers(res.data));
+    axios.get("/api/users").then((res) => setUsers(res.data));
   }, [])
 
   const searchUsers = (allUsers: User[]): User[] =>
@@ -33,7 +33,7 @@ function RegisteredUsersPage(): JSX.Element {
           <Flag flagged={user.flagged} />
           <img src={person} className="user-image" />
 
-          <Link to={`/users/${user._id}/submissions`}>
+          <Link to={`/users/${user.username}/${user._id}/submissions`}>
               <p className="user-name">{user.username}</p>
           </Link>
       </div>

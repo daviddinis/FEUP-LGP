@@ -2,16 +2,9 @@ import React from "react";
 import details from 'shared/icons/details.svg';
 import { stateToClass, stateToString } from "components/State/State";
 import {Link} from "react-router-dom";
+import UserSubmission from "models/UserSubmission";
 
-interface Submission {
-    id: string,
-    name: string,
-    type: string,
-    state: number,
-    date: Date
-}
-
-const submissionLineUser = (submission : Submission) : JSX.Element => {
+const submissionUserLine = (submission : UserSubmission) : JSX.Element => {
     return (
         <tr className='line submission'>
             <td><span className={"icon status " +  stateToClass(submission.state)}/></td>
@@ -29,4 +22,4 @@ const submissionLineUser = (submission : Submission) : JSX.Element => {
 }
 
 
-export default submissionLineUser;
+export default submissionUserLine;

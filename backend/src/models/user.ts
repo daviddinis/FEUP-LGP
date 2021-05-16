@@ -7,7 +7,18 @@ const userSchema = new mongoose.Schema(
 			unique: true,
 			required: true,
 		},
+		email: {
+			type: String,
+			unique: true,
+			required: true,
+		},
+		passwordDigest: String,
 		flagged: {
+			type: Boolean,
+			required: true,
+			default: false
+		},
+		isAdmin: {
 			type: Boolean,
 			required: true,
 			default: false
@@ -15,6 +26,12 @@ const userSchema = new mongoose.Schema(
 	},
 	{ timestamps: true }
 );
+
+userSchema.methods.toJSON = function() {
+	const obj : any = this.toObject();
+	delete obj.passwordDigest;
+	return obj;
+}
 
 const user = mongoose.model('User', userSchema);
 

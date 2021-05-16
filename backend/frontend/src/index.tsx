@@ -8,14 +8,11 @@ import reportWebVitals from 'reportWebVitals';
 import Submission from 'pages/Submission/Submission';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import User from 'pages/UserFeed/UserFeed';
+import Home from 'pages/HomePage/HomePage';
 import Parameters from 'pages/Parameters/Parameters';
 
 ReactDOM.render(
     <React.StrictMode>
-        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'></link>
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic,latin' rel='stylesheet'
-              type='text/css'/>
-        <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'></link>
         <Router>
             <Switch>
                 <Route path="/user">
@@ -33,14 +30,14 @@ ReactDOM.render(
                     <Parameters/>
                 </Route>
 
-                <Route path="/users/:id/submissions">
+                <Route path="/users/:username/:id/submissions">
                     <AdminUserDocs/>
                 </Route>
                 <Route path="/users">
                     <RegisteredUsers/>
                 </Route>
                 <Route path="/">
-                    <Parameters/>
+                    <Home/>
                 </Route>
             </Switch>
         </Router>

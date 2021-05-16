@@ -24,5 +24,5 @@ export function getPercentage(extractedInfo: Highlights[]): number {
 export function stateToString(percentage: number): string {
   if (percentage < 0) return "analysing";
 
-  return Math.min(percentage, 100) + "%";
+  return Math.min(Math.round(percentage), 100) + "%";
 }

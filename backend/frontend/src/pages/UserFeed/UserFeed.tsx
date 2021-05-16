@@ -2,11 +2,11 @@ import React, {useCallback, useEffect, useState} from "react";
 import { useDropzone } from "react-dropzone";
 import Header from "components/Header/Header";
 import "pages/UserFeed/UserFeed.scss";
-import "pages/Table.scss";
 import axios from "axios";
 import document from "shared/icons/document.svg";
-import SubmissionLineUser from "components/SubmissionLineUser";
-import {getPercentage} from "../../components/State/State";
+import SubmissionUserTable from "components/SubmissionTable/SubmissionUserTable/SubmissionUserTable";
+import UserSubmission from "models/UserSubmission";
+import { getPercentage } from "components/State/State";
 
 interface FileSubmission {
   _id: string,
@@ -20,14 +20,14 @@ function UserFeed(): JSX.Element {
   const [files, setFiles] = useState<FileSubmission[]>([]);
 
   useEffect(() => {
-    axios.get("/files").then((res) => setFiles(res.data));
+    axios.get("/api/files").then((res) => setFiles(res.data));
   }, [])
 
   const onDrop = useCallback((_acceptedFiles) => {
     const formData = new FormData();
     formData.append("file", _acceptedFiles[0]);
 
-    axios.post("/sendFile", formData, {
+    axios.post("/api/files/submit", formData, {
       headers: {
         "content-type": "multipart/form-data",
       },
@@ -35,6 +35,17 @@ function UserFeed(): JSX.Element {
       setFiles((oldFiles) => oldFiles.concat([res.data]));
     });
   }, []);
+
+  const submissions: UserSubmission[] = [];
+
+  files.forEach((file) => submissions.push({
+    id: file._id,
+    name: file.name,
+    type: file.type,
+    date: new Date(file.createdAt),
+    state: getPercentage(file.extracted),
+  }));
+
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
@@ -53,32 +64,8 @@ function UserFeed(): JSX.Element {
       </header>
 
       <div className="content">
-        <table className={"submissions"}>
-        <thead>
-            <tr>
-              <th>status</th>
-              <th/>
-              <th>name</th>
-              <th>type</th>
-              <th>date</th>
-              <th/>
-            </tr>
-          </thead>
-
-          <tbody>
-            {files.map((submission) => (
-                <SubmissionLineUser
-                    id={submission._id}
-                    key={submission._id}
-                    state={getPercentage(submission.extracted)}
-                    name={submission.name}
-                    type={submission.type}
-                    date={new Date(submission.createdAt)}
-                />
-            ))}
-          </tbody>
-        </table>
-      </div>
+        <SubmissionUserTable submissions={submissions}/>
+        </div>
     </div>
   );
 }

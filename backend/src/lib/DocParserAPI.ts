@@ -1,5 +1,4 @@
 import config from '../config';
-import DataExtractor from './DataExtractor';
 
 
 // tslint:disable-next-line:no-var-requires
@@ -35,56 +34,6 @@ class DocParserAPI {
 		return this.client.uploadFileByPath(parserId, filePath, {
 			remote_id: 'test',
 		});
-	}
-
-	//
-
-	static async TestDocParser() {
-		const parser = new DocParserAPI();
-
-		await DocParserAPI.ping();
-
-		console.log(await DocParserAPI.getParsers());
-
-		const parserId = 'cvzcwokujphi';
-		// const documentId = 'bc7dab2bb30b39d7991ce3557713a2cc'; // AFCA
-		const documentId = '087782204d4bf8cd57365b736d61e53b'; // KB
-
-		const data = await DocParserAPI.getParsedDocument(parserId, documentId);
-
-
-		const strings = DataExtractor.extractStringArray(data.all_data_regex);
-		console.log(DataExtractor.extractByKeywords(strings, [/address/i], {
-			maxDistance: 1,
-		}))
-
-		console.log(DataExtractor.extractByKeywords(strings, [/company number/i], {
-			maxDistance: 1,
-			regex: /[0-9]{4,}/i, // minimum 4 digits
-		}))
-
-
-		console.log(DataExtractor.extractByKeywords(strings, [/company/i], {
-			maxDistance: 1,
-			includeKeyword: true,
-		}))
-
-		console.log(DataExtractor.extractByKeywords(strings, [/created on/, /incorporated on/i], {
-			maxDistance: 1,
-			regex: DataExtractor.regexes.DATE
-		}))
-
-		console.log(DataExtractor.extractByKeywords(strings, [/.*/], {
-			maxDistance: 1,
-			regex: DataExtractor.regexes.DATE
-		}))
-
-		console.log('2020-19-20 2020 Mar 29  March, 29, 200 29 April 29'.match(DataExtractor.regexes.DATE))
-
-
-
-		// console.log(extractor.parseFinancialList(data.assets, ['total', 'assets']));
-
 	}
 }
 
