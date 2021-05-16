@@ -38,7 +38,7 @@ ReactDOM.render(
                     <RegisteredUsers/>
                 </Route>
                 <Route path="/login">
-                    <Login/>
+                    <Login setUser={ (args) => { console.log(args)} }/>
                 </Route>
                 <Route path="/">
                     <Home/>
