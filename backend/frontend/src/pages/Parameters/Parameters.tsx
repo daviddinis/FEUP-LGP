@@ -7,13 +7,14 @@ import Modal from '@material-ui/core/Modal';
 import Para from "components/ParametersPopUp/ParameterPopUp";
 
 interface Constraint {
+  parameter: number,
   name: string,
   value: string,
 }
 
 interface Parameter {
   name: string,
-  contraints: Constraint[],
+  constraints: Constraint[],
 }
 
 interface FileType {
@@ -26,17 +27,20 @@ const mockFile = {
   parameters: [
     {
       name: 'parameter_1',
-      contraints: [
+      constraints: [
         {
-          name: 'constraint_1',
-          value: 'value',
+          parameter: 0,
+          name: '  lt',
+          value: '0',
         },
         {
-          name: 'constraint_1',
-          value: 'value',
+          parameter: 0,
+          name: '  lt',
+          value: '1',
         },{
-          name: 'constraint_1',
-          value: 'value',
+          parameter: 0,
+          name: '  lt',
+          value: '2',
         }
 
       ]
@@ -123,12 +127,12 @@ function Parameters(): JSX.Element {
                   key={ `${parameter.name}-${parameterIndex}` }>
                     <p className="type-parameter">{ parameter.name }</p>
                     {
-                      parameter.contraints.map((constraint, contrainsIndex) => (
-                        <p 
-                          key={ `${constraint.name}-${contrainsIndex}` }
-                          className="type-constraint" >
+                      parameter.constraints.map((constraint, contrainsIndex) => (
+                        <div key={ `${constraint.name}-${contrainsIndex}` }>
+                        <p className="type-constraint" >
                           { constraint.name }
                         </p>
+                        <p>{constraint.value}</p></div>
                       ))
                     }
                   </Fragment>
@@ -137,7 +141,7 @@ function Parameters(): JSX.Element {
               </div>
               <footer className="type-block-footer">
                 <div className="add-parameter-button">
-                  <Para/>
+                  <Para file={fileType}/>
                 </div>
               </footer>
             </div>
