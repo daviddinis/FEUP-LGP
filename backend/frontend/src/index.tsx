@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import User from 'pages/UserFeed/UserFeed';
 import Home from 'pages/HomePage/HomePage';
 import Parameters from 'pages/Parameters/Parameters';
+import Login from 'pages/Login/Login';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -35,6 +36,9 @@ ReactDOM.render(
                 </Route>
                 <Route path="/users">
                     <RegisteredUsers/>
+                </Route>
+                <Route path="/login">
+                    <Login/>
                 </Route>
                 <Route path="/">
                     <Home/>

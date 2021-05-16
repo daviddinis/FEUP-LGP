@@ -1,0 +1,92 @@
+body {
+    background: linear-gradient(135deg, #DBA18C 0%, #C1878F 6.06%, #9F608D 15.49%, #8D4C8E 22.65%, #894990 26.65%, #84458F 39.01%, #804994 50.9%, #79559E 62.61%, #7468B0 74.2%, #6E87C9 85.72%, #67AEEB 97.02%, rgba(100, 185, 244, 1) 100%) !important;
+}
+
+.page-title {
+    float:left;
+    font-family: Ubuntu;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #ffffff;
+}
+
+.login-map {
+    position: absolute;
+    bottom: 73px;
+    right: 63px;
+    display: block;
+}
+
+.text-login{
+    font-family: Montserrat;
+    font-size: 20px;
+    color: #F7F4F9;
+    padding-top: 150px;
+    padding-left: 241px;
+}
+
+.loginContent{
+    background: rgba(247, 244, 249, 0.6);
+    border-radius: 10px;
+    width: 368px;
+    height: 303px;
+    margin-left: 241px;
+}
+
+.login-page {
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+
+.login-page button{
+    background: rgba(112, 28, 116, 0.8);
+    border-radius: 12px;
+    font-family: Montserrat;
+    color: #F7F4F9;
+    text-align: center;
+    width: 368px;
+    height: 40px;
+    margin-left: 241px;
+    margin-top: 19px;
+}
+
+.struct-form {
+    padding: 25px 34px;
+}
+
+.struct-form input{
+    background: rgba(247, 244, 249, 0.5);
+    border-radius: 12px;
+    width: 100%;
+    height: 40px;
+    border: rgba(247, 244, 249, 0.5);
+    margin-bottom: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+    box-sizing: border-box;
+    
+}
+
+.struct-form p {
+    color: #701C74;
+    font-family: Montserrat;
+}
+
+.struct-form button{
+    width: 106px;
+    height: 40px;
+
+    background: rgba(74, 196, 244, 0.8);
+    border-radius: 12px;
+
+    font-family: Montserrat;
+    color: #F7F4F9;
+    text-align: center;
+
+    font-size: 16px;
+    margin-top: 12px;
+    margin-left: 98px;
+}
