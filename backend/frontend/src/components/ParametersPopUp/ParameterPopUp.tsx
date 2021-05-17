@@ -114,7 +114,7 @@ function ParameterPopUp(props: {file: fileType}): JSX.Element {
 
     return(
         <Popup trigger={<button className="parameter-submit"><img src={addParameterIcon} className="add-parameter-image" /></button>} position="right center">
-        {(close: React.MouseEventHandler<HTMLButtonElement> | undefined) => (
+        {(close: React.MouseEventHandler<HTMLButtonElement> | undefined) => ( 
 
         <div>
             <div className="parameters-pop-up">
@@ -146,7 +146,7 @@ function ParameterPopUp(props: {file: fileType}): JSX.Element {
                                         return(
                                         <div key={ `${c.constraint}-${index}`} className="select-section">
                                             <select value={c.constraint} className="parameter-select" onChange={e => handleSelectChange(e, index, pindex)}>
-                                                <option value="lt"> Less </option>
+                                                <option value="lt"> Less</option>
                                                 <option value="gt"> Greater </option>
                                                 <option value="lte"> Less or Equal </option>
                                                 <option value="gte"> Greater or Equal</option>
