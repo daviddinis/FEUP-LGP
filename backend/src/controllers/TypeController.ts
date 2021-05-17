@@ -7,7 +7,7 @@ export default class TypeController {
 
     if (!type) return res.status(404).send();
 
-    return res.status(204).send();
+    return res.status(204).json(type);
   }
 
   static async delete(req: any, res: any) {

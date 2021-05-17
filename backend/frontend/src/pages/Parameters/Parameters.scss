@@ -152,12 +152,18 @@
     padding-left: 35.01px;
 }
 
-.type-constraint{
+.type-constraint > p{
     font-family: Anaheim;
     font-size: 16px;
     line-height: 10px;
     color: #6A5B70;    
+}
+
+.type-constraint p:nth-child(1){
     padding-left:62.65px;
+}
+.type-constraint p:nth-child(2){
+    padding-left:90.65px;
 }
 
 @media (max-width: 1440px) {

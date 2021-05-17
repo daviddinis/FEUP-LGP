@@ -13,13 +13,12 @@ interface fileType {
 }
 
 interface Constraint {
-    parameter: number,
-    name: string,
+    constraint: string,
     value: string,
 }
 
 interface Parameter {
-  name: string,
+  param: string,
   constraints: Constraint[],
 }
 
@@ -27,11 +26,17 @@ function ParameterPopUp(props: {file: fileType}): JSX.Element {
 
     const [fileType, updateFileType] = useState<string>(props.file.name);
     const [parametersArray, updateParameters] = useState<Parameter[]>(props.file.parameters);
-    const [constraintArray, updateConstraints] = useState<Constraint[]>([]);
-
     
-    const Save = () => {
-        axios.put('/api/types/1', {name: fileType, parameters: parametersArray});
+    const save = () => {
+        axios.put('/api/types/60a29550c20e2f32c06166f1', {name: fileType, parameters: parametersArray})
+        .then(response => {
+          console.log("Status: ", response.status);
+          console.log("Data: ", response.data);
+        }).catch(error => {
+          console.error('Something went wrong!', error);
+        });
+
+        close;
     }
 
     const handleFileTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,12 +49,12 @@ function ParameterPopUp(props: {file: fileType}): JSX.Element {
 
         const constraint = {
             parameter: parametersArray.length,
-            name: "  lt",
+            constraint: "lt",
             value: "" 
         }
 
         const newPara = {
-            name: "",
+            param: "",
             constraints: [constraint]
         };
 
@@ -67,14 +72,14 @@ function ParameterPopUp(props: {file: fileType}): JSX.Element {
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const value = e.target.value;        
         const array = [...parametersArray];
-        array[index].name = value;
+        array[index].param = value;
         updateParameters(array);
     }
 
     const addConstraint = (pindex: number) => {
         const newConstraint = {
             parameter: pindex,
-            name: "  lt",
+            constraint: "  lt",
             value: "",
         }
         
@@ -94,7 +99,7 @@ function ParameterPopUp(props: {file: fileType}): JSX.Element {
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>, index: number, pindex: number) => {
         const p = [...parametersArray];
         const value = e.target.value;
-        p[pindex].constraints[index].name = value;
+        p[pindex].constraints[index].constraint = value;
         
         updateParameters(p);
     }
@@ -109,12 +114,14 @@ function ParameterPopUp(props: {file: fileType}): JSX.Element {
 
     return(
         <Popup trigger={<button className="parameter-submit"><img src={addParameterIcon} className="add-parameter-image" /></button>} position="right center">
+        {(close: React.MouseEventHandler<HTMLButtonElement> | undefined) => (
+
         <div>
             <div className="parameters-pop-up">
                 <div className="submit-section">
                     <input className="file-type" type="text" value={fileType} onChange={e => handleFileTypeChange(e)}/>
-                    <button className="save-button" onClick={Save}>Save</button>
-                </div>
+                    <button className="save-button" onClick={save}>Save</button>
+                </div> 
                     
                 <button className="new-parameter" onClick={addParameter}>
                     <img src={newParameterIcon} className="new-parameter-image" /> 
@@ -127,7 +134,7 @@ function ParameterPopUp(props: {file: fileType}): JSX.Element {
                         <div key={ `${p}-${pindex}`} className="parameter-div">
                             <label className="parameter-name">Parameter name</label>
                             <div>  
-                                <input className="parameter-input" type="text" placeholder="parameter name" value={p.name} onChange={e => handleNameChange(e, pindex)}/>
+                                <input className="parameter-input" type="text" placeholder="parameter name" value={p.param} onChange={e => handleNameChange(e, pindex)}/>
                                 <button onClick={() => removeParameter(Number(pindex))}>
                                     <img src={trash} className="trash-paramter-image" />
                                 </button>
@@ -137,16 +144,16 @@ function ParameterPopUp(props: {file: fileType}): JSX.Element {
                                 <p className="constraints-text">Constraints</p>
                                 {p.constraints.map((c, index) => {
                                         return(
-                                        <div key={ `${c.name}-${index}`} className="select-section">
-                                            <select value={c.name} className="parameter-select" onChange={e => handleSelectChange(e, index, pindex)}>
-                                                <option value="  lt"> Less </option>
-                                                <option value="  gt"> Greater </option>
-                                                <option value="  lte"> Less or Equal </option>
-                                                <option value="  gte"> Greater or Equal</option>
-                                                <option value="  eq"> Equal </option>
-                                                <option value="  oneOf"> One of </option>
-                                                <option value="  contains"> Contains </option>
-                                                <option value="  containsParam"> Contains Parameter </option>
+                                        <div key={ `${c.constraint}-${index}`} className="select-section">
+                                            <select value={c.constraint} className="parameter-select" onChange={e => handleSelectChange(e, index, pindex)}>
+                                                <option value="lt"> Less </option>
+                                                <option value="gt"> Greater </option>
+                                                <option value="lte"> Less or Equal </option>
+                                                <option value="gte"> Greater or Equal</option>
+                                                <option value="eq"> Equal </option>
+                                                <option value="oneOf"> One of </option>
+                                                <option value="contains"> Contains </option>
+                                                <option value="containsParam"> Contains Parameter </option>
                                             </select>
                                                         
                                             <div className="parameter-select-input"> 
@@ -166,6 +173,7 @@ function ParameterPopUp(props: {file: fileType}): JSX.Element {
                 </div>
             </div>
         </div>
+        )}
         </Popup>
 
     ); 

@@ -7,13 +7,12 @@ import Modal from '@material-ui/core/Modal';
 import Para from "components/ParametersPopUp/ParameterPopUp";
 
 interface Constraint {
-  parameter: number,
-  name: string,
+  constraint: string,
   value: string,
 }
 
 interface Parameter {
-  name: string,
+  param: string,
   constraints: Constraint[],
 }
 
@@ -26,20 +25,17 @@ const mockFile = {
   name: 'file_type_1',
   parameters: [
     {
-      name: 'parameter_1',
+      param: 'parameter_1',
       constraints: [
         {
-          parameter: 0,
-          name: '  lt',
+          constraint: 'lt',
           value: '0',
         },
         {
-          parameter: 0,
-          name: '  lt',
+          constraint: 'lt',
           value: '1',
         },{
-          parameter: 0,
-          name: '  lt',
+          constraint: 'lt',
           value: '2',
         }
 
@@ -115,7 +111,7 @@ function Parameters(): JSX.Element {
             <div 
               key={ `${fileType.name}-${fileTypeIndex}` }
               className="type-block"  >
-              <header className="type-block-header">
+              <header className="type-block-header"> 
                 <p className="type-name">{ fileType.name }</p>
                 <button className="trash-button" onClick={ () => handleOnRemoveFileType(Number(fileTypeIndex)) }>
                   <img src={trash} className="trash-image" /></button>
@@ -124,15 +120,16 @@ function Parameters(): JSX.Element {
               {
                 fileType.parameters.map((parameter, parameterIndex) => (
                   <Fragment 
-                  key={ `${parameter.name}-${parameterIndex}` }>
-                    <p className="type-parameter">{ parameter.name }</p>
+                  key={ `${parameter.param}-${parameterIndex}` }>
+                    <p className="type-parameter">{ parameter.param }</p>
                     {
                       parameter.constraints.map((constraint, contrainsIndex) => (
-                        <div key={ `${constraint.name}-${contrainsIndex}` }>
-                        <p className="type-constraint" >
-                          { constraint.name }
-                        </p>
-                        <p>{constraint.value}</p></div>
+                        <div key={ `${constraint.constraint}-${contrainsIndex}`} className="type-constraint">
+                          <p>
+                            { constraint.constraint }
+                          </p>
+                          <p>{constraint.value}</p>
+                        </div>
                       ))
                     }
                   </Fragment>
@@ -148,7 +145,7 @@ function Parameters(): JSX.Element {
           )) }
       </div>
       <div className="add-type-button">
-        <button onClick={handleModalOpen}><img src={addType} className="add-type-image" />hjguj</button>
+        <button onClick={handleModalOpen}><img src={addType} className="add-type-image" /></button>
       </div>
     </div>
   );
