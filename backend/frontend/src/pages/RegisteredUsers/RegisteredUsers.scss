@@ -1,86 +1,104 @@
-.registered-users-page .registered-users-page{
-    position: relative;
-    min-height: 100vh;
+.registered-users-page .registered-users-page {
+  position: relative;
+  min-height: 100vh;
 }
 
-.registered-users-page .body-container{
-    margin-left: 50px;
-    margin-top: 50px;
+.registered-users-page .body-container {
+  margin-left: 50px;
+  margin-top: 50px;
 }
 
 .registered-users-page .users-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin-right: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-right: 300px;
 }
 
-.registered-users-page .user-item{
-    width: 180px;
-    margin-left: 15%;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 5px;
+.registered-users-page .user-item {
+  width: 180px;
+  margin-left: 15%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
 }
 
-.registered-users-page .user-image{
-    background-color: #F7F4F9;
-    border-radius: 12px;
-    width: 24px;
-    height: 24px;
-    padding: 8px;
-    margin-right: 6px;
+.registered-users-page .user-image {
+  background-color: #f7f4f9;
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+  margin-right: 6px;
 }
 
-.registered-users-page .user-name{
-    font-family: Anaheim;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    align-self: center;
-    color: #6A5B70;
+.registered-users-page .user-name {
+  font-family: Anaheim;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  align-self: center;
+  color: #6a5b70;
 }
 
-.registered-users-page .search-bar{
-    background-color: rgba(247, 244, 249, 0.5);
-    width: 300px;
-    border-radius: 12px;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: row;
-    margin-left: 8%;
-
+.registered-users-page .search-bar {
+  background-color: rgba(247, 244, 249, 0.5);
+  width: 300px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  margin-right: 5%;
 }
 
-.registered-users-page .search-bar .search-image{
-    width: 18px;
-    margin-right: 12px;
-    align-self: center;
-    margin-left: 15px;
+.registered-users-page .search-bar .search-image {
+  width: 18px;
+  margin-right: 12px;
+  align-self: center;
+  margin-left: 15px;
 }
 
-.registered-users-page .search-bar  .search-name{
-    font-family: Anaheim;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 40px;
-    color: rgba(106, 91, 112, 0.5);
-    border-style: none;
-    background-color: transparent;
-    width: 80%;
+.registered-users-page .search-bar .search-name {
+  font-family: Anaheim;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 40px;
+  color: rgba(106, 91, 112, 0.5);
+  border-style: none;
+  background-color: transparent;
+  width: 80%;
 }
 
-.registered-users-page .search-bar  .search-name::placeholder{
-    font-family: Anaheim;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 35px;
-    color: rgba(106, 91, 112, 0.5);
+.registered-users-page .search-bar .search-name::placeholder {
+  font-family: Anaheim;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 35px;
+  color: rgba(106, 91, 112, 0.5);
 }
 
-.registered-users-page .icon.flag{
-    margin-right: 15px;
+.registered-users-page .body-container header {
+  display: flex;
+  align-items: center;
+  margin-left: 8%;
+  margin-bottom: 50px;
+}
+
+.registered-users-page .icon.flag {
+  margin-right: 15px;
+}
+
+.registered-users-page .checkbox .icon.checkbox {
+  margin-right: 0.6em;
+}
+
+.registered-users-page .checkbox .icon.checkbox.selected {
+  margin-top: -1px;
+  margin-right: 0.5em;
+}
+
+.registered-users-page button.checkbox:active {
+  color: inherit;
 }
