@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Flag.scss";
 import flag from "shared/icons/flag.svg";
 import flagSelected from "shared/icons/flagSelected.svg";
-import { updateUserFlag } from "./Api";
+import { updateUserFlag } from "./ApiCallFlag";
 
 interface IFlag {
   flagged: boolean

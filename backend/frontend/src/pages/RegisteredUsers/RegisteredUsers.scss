@@ -3,25 +3,18 @@
   min-height: 100vh;
 }
 
-.registered-users-page .body-container {
-  margin-left: 50px;
-  margin-top: 50px;
-}
-
 .registered-users-page .users-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin-right: 300px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 4em;
+  margin-right: 130px;
+  margin-left: 5%;
 }
 
 .registered-users-page .user-item {
-  width: 180px;
-  margin-left: 15%;
   display: flex;
   flex-direction: row;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .registered-users-page .user-image {
@@ -79,10 +72,9 @@
   color: rgba(106, 91, 112, 0.5);
 }
 
-.registered-users-page .body-container header {
+.registered-users-page .content header {
   display: flex;
   align-items: center;
-  margin-left: 8%;
   margin-bottom: 50px;
 }
 
@@ -101,4 +93,16 @@
 
 .registered-users-page button.checkbox:active {
   color: inherit;
+}
+
+@media (max-width: 1200px) {
+    .registered-users-page .users-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+@media (max-width: 1000px) {
+  .registered-users-page .users-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

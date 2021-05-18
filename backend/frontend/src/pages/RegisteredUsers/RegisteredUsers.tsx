@@ -10,7 +10,7 @@ import checkbox from "shared/icons/checkbox.svg";
 import checkboxSelected from "shared/icons/checkboxSelected.svg";
 import flag from "shared/icons/flag.svg";
 import flagSelected from "shared/icons/flagSelected.svg";
-import { updateUserFlag } from "components/Flag/Api";
+import { updateUserFlag } from "components/Flag/ApiCallFlag";
 
 interface User {
   _id: string;
@@ -87,7 +87,7 @@ function RegisteredUsersPage(): JSX.Element {
   return (
     <div className="registered-users-page">
       <Header username="Miller" isAdmin={true} />
-      <div className="body-container">
+      <div className="body-container content">
         <header>
           <div className="search-bar">
             <img src={search} className="search-image" />
