@@ -44,7 +44,9 @@ function UserFeed(): JSX.Element {
       },
     }).then((res) => {
       setFiles((oldFiles) => [res.data].concat(oldFiles));
+      setPopupOpen(false)
     });
+
   };
 
   const submissions: UserSubmission[] = files.map(file => ({
@@ -58,11 +60,13 @@ function UserFeed(): JSX.Element {
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
+
       <div className="user-page">
         <header className={"header"}>
           <Header username="gingerAle" isAdmin={false}/>
 
-          {isPopupOpen && <SelectTypePopup onSubmit={onSubmit}/>}
+
+          <SelectTypePopup onSubmit={onSubmit} onClose={() => setPopupOpen(false)} isOpen={isPopupOpen}/>
 
           <div {...getRootProps({className: "dropzone"})}>
             <input {...getInputProps()} />
