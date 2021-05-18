@@ -26,7 +26,7 @@ function RegisteredUsersPage(): JSX.Element {
 
   function setFlag(id: string) {
     const filteredUsers = originalUsers.filter((val) => {
-      if (val._id == id) val.flagged = !val.flagged;
+      if (val._id === id) val.flagged = !val.flagged;
       return val;
     });
 
@@ -41,14 +41,14 @@ function RegisteredUsersPage(): JSX.Element {
     });
   }, []);
 
-  function setCheck(originalUsers: User[]) {
+  function setCheck() {
     setChecked(!checked);
     const updatedChecked = !checked;
 
     let filteredUsers = originalUsers;
     if (updatedChecked) {
       filteredUsers = originalUsers.filter((val) => {
-        if (val.flagged == updatedChecked) return val;
+        if (val.flagged === updatedChecked) return val;
       });
     }
 
@@ -56,7 +56,7 @@ function RegisteredUsersPage(): JSX.Element {
   }
 
   const customCheckBox = (
-    <button onClick={() => setCheck(originalUsers)} className="checkbox">
+    <button onClick={() => setCheck()} className="checkbox">
       <img
         src={checked ? checkboxSelected : checkbox}
         className={checked ? "icon checkbox selected" : "icon checkbox"}
