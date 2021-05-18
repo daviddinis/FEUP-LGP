@@ -40,7 +40,7 @@ app.get('/api/users/:id/submissions', UserController.submissions);
 app.get('/api/users', UserController.list);
 
 app.get('/api/types', TypeController.list);
-app.get('/api/types/add', TypeController.add);
+app.post('/api/types/add', TypeController.add);
 app.put("/api/types/:id", TypeController.update);
 app.delete("/api/types/:id", TypeController.delete);
 
