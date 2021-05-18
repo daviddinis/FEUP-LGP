@@ -160,7 +160,6 @@ function ParameterPopUp(props: { file: fileType }): JSX.Element {
             <div className="new-parameter-text">add new parameter</div>
           </button>
 
-          <div className="">
             {parametersArray.map((p, pindex) => {
               return (
                 <div key={`${p}-${pindex}`} className="parameters">
@@ -238,7 +237,6 @@ function ParameterPopUp(props: { file: fileType }): JSX.Element {
               );
             })}
           </div>
-        </div>
       )}
     </Popup>
   );
