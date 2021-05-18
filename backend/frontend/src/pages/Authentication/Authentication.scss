@@ -1,14 +1,12 @@
-body {
-    background: linear-gradient(135deg, #DBA18C 0%, #C1878F 6.06%, #9F608D 15.49%, #8D4C8E 22.65%, #894990 26.65%, #84458F 39.01%, #804994 50.9%, #79559E 62.61%, #7468B0 74.2%, #6E87C9 85.72%, #67AEEB 97.02%, rgba(100, 185, 244, 1) 100%) !important;
-}
 
-.page-title {
+.title-page {
     float:left;
     font-family: Ubuntu;
     font-weight: bold;
     font-size: 24px;
-    line-height: 28px;
     color: #ffffff;
+    margin-top: 40px;
+    margin-left: 50px;
 }
 
 .login-map {
@@ -26,7 +24,7 @@ body {
     padding-left: 241px;
 }
 
-.loginContent{
+.login-content{
     background: rgba(247, 244, 249, 0.6);
     border-radius: 10px;
     width: 368px;
@@ -35,6 +33,7 @@ body {
 }
 
 .login-page {
+    background: linear-gradient(135deg, #DBA18C 0%, #C1878F 6.06%, #9F608D 15.49%, #8D4C8E 22.65%, #894990 26.65%, #84458F 39.01%, #804994 50.9%, #79559E 62.61%, #7468B0 74.2%, #6E87C9 85.72%, #67AEEB 97.02%, rgba(100, 185, 244, 1) 100%) !important;
     overflow: hidden;
     height: 100vh;
     position: relative;
@@ -43,14 +42,12 @@ body {
 
 .signup-link {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: rgba(112, 28, 116, 0.8);
     border-radius: 12px;
     font-family: Montserrat;
     color: #F7F4F9;
-    text-align: center;
     width: 368px;
     height: 40px;
     margin-left: 241px;
@@ -88,7 +85,6 @@ body {
 
     font-family: Montserrat;
     color: #F7F4F9;
-    text-align: center;
 
     font-size: 16px;
     margin-top: 12px;
