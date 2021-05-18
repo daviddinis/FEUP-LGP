@@ -2,14 +2,10 @@ $popup_width: 50vh;
 $popup_height: 50vh;
 
 .parameter-submit {
-  border-style: none;
-  border-radius: 10px;
-  font-weight: 400;
-  font-size: 14px;
-  color: white;
   width: 25px;
-  height: 32px;
-  align-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .parameters-pop-up {

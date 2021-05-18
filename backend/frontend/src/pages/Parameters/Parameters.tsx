@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Parameters.scss";
 import Header from "components/Header/Header";
 import addType from "shared/icons/addtype_1.svg";
@@ -102,21 +102,20 @@ function Parameters(): JSX.Element {
         {modalBody()}
       </Modal>
       <Header username="MillerGinger" isAdmin={true} />
-      <div className="body-container">
+      <div className="body-container content">
         {fileTypes.map((fileType, fileTypeIndex) => (
           <div key={`${fileType.name}-${fileTypeIndex}`} className="type-block">
-            <header className="type-block-header">
+            <header>
               <p className="type-name">{fileType.name}</p>
               <button
-                className="trash-button"
                 onClick={() => handleOnRemoveFileType(Number(fileTypeIndex))}
               >
-                <img src={trash} className="trash-image" />
+                <img src={trash} className="icon trash" />
               </button>
             </header>
             <div className="type-block-content">
               {fileType.parameters && fileType.parameters.map((parameter, parameterIndex) => (
-                <Fragment key={`${parameter.param}-${parameterIndex}`}>
+                <div key={`${parameter.param}-${parameterIndex}`}>
                   <p className="type-parameter">{parameter.param}</p>
                   {parameter.constraints.map((constraint, contrainsIndex) => (
                     <div
@@ -127,22 +126,18 @@ function Parameters(): JSX.Element {
                       <p>{constraint.value}</p>
                     </div>
                   ))}
-                </Fragment>
+                </div >
               ))}
             </div>
-            <footer className="type-block-footer">
-              <div className="add-parameter-button">
+              <div className="add-parameter">
                 <ParametersPopUp file={fileType} />
               </div>
-            </footer>
           </div>
         ))}
       </div>
-      <div className="add-type-button">
-        <button onClick={handleModalOpen}>
-          <img src={addType} className="add-type-image" />
+        <button className="add-type" onClick={handleModalOpen}>
+          <img src={addType} className="icon add-type" />
         </button>
-      </div>
     </div>
   );
 }
