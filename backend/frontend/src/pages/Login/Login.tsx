@@ -52,12 +52,12 @@ function LogginPage({ setUser }: Props): JSX.Element {
   return (
     <div className="login-page">
       <img className={ 'login-map' } src={ map }/>
-      <h1 className="page-title">
+      <h1 className="title-page">
         Know your customer on the news
       </h1>
       <p className="text-login">Log in</p>
 
-      <div className="loginContent">
+      <div className="login-content">
         <form className="struct-form">
           <p>username or email</p>
           <input id="username"/>
