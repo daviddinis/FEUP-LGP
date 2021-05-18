@@ -25,7 +25,7 @@ interface Parameter {
 function ParameterPopUp(props: { file: fileType }): JSX.Element {
   const [fileType, updateFileType] = useState<string>(props.file.name);
   const [parametersArray, updateParameters] = useState<Parameter[]>(
-    props.file.parameters
+    props.file.parameters ? props.file.parameters : []
   );
 
   const save = () => {

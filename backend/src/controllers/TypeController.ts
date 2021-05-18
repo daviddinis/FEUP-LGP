@@ -25,9 +25,14 @@ export default class TypeController {
   }
 
   static async add(req : any, res : any) {
+    
+    if(!req.body.name || !req.body.parameters) {
+      return res.status(400).send("Body must have name and parameters");
+    }
+    
     const fileType = await Type.create({
-        name: req.name,
-        parameters: req.parameters,
+        name: req.body.name,
+        parameters: req.body.parameters,
     })
 
     return res.status(200).json(fileType)
