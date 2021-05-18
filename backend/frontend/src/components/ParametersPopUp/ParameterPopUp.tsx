@@ -23,6 +23,30 @@ interface Parameter {
   constraints: Constraint[];
 }
 
+const availableParams = [
+  "Date of Publication",
+  "Board of Directors",
+  "Executive Management",
+  "Profit (Text)",
+  "Revenues (Text)",
+  "Assets (Text)",
+  "Total Assets",
+  "Total Liabilities",
+  "Gross Profit",
+  "Profit",
+  "Country",
+  "Company Name",
+  "Company Number",
+  "Company Address",
+  "Company Status",
+  "Company Type",
+  "Created On",
+  "Date of Registration",
+  "SIREN",
+  "LEI",
+  "CIB"
+]
+
 function ParameterPopUp(props: { file: FileType }): JSX.Element {
   const [fileType, updateFileType] = useState<string>(props.file.name);
   const [parametersArray, updateParameters] = useState<Parameter[]>(
@@ -51,7 +75,7 @@ function ParameterPopUp(props: { file: FileType }): JSX.Element {
 
   const addParameter = () => {
     const newPara = {
-      param: "",
+      param: availableParams[0],
       constraints: [],
     };
 
@@ -69,7 +93,7 @@ function ParameterPopUp(props: { file: FileType }): JSX.Element {
   };
 
   const handleNameChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLSelectElement>,
     index: number
   ) => {
     const value = e.target.value;
@@ -157,13 +181,11 @@ function ParameterPopUp(props: { file: FileType }): JSX.Element {
               <div key={`${p}-${pindex}`} className="parameters">
                 <p>Parameter name</p>
                 <div>
-                  <input
-                    className="parameter"
-                    type="text"
-                    placeholder="parameter name"
-                    value={p.param}
-                    onChange={(e) => handleNameChange(e, pindex)}
-                  />
+                  <select value={p.param} onChange={(e) => handleNameChange(e, pindex)}>
+                    <option value="" disabled>Select Parameter</option>
+                    {availableParams.map(str => (<option key={str} value={str}>{str}</option>))}
+                  </select>
+
                   <button onClick={() => removeParameter(Number(pindex))}>
                     <img src={Trash} className="icon trash" />
                   </button>
