@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import newParameterIcon from "shared/icons/newParameter.svg";
+import newParameter from "shared/icons/newParameter.svg";
 import axios from "axios";
 import "./ParametersPopUp.scss";
 import Popup from "reactjs-popup";
 import Trash from "shared/icons/delete.svg";
-import newParameter from "shared/icons/newParameter.svg";
 import addParameterIcon from "shared/icons/addparameter.svg";
 
-interface fileType {
+interface FileType {
   _id: string;
   name: string;
   parameters: Parameter[];
@@ -23,7 +23,7 @@ interface Parameter {
   constraints: Constraint[];
 }
 
-function ParameterPopUp(props: { file: fileType }): JSX.Element {
+function ParameterPopUp(props: { file: FileType }): JSX.Element {
   const [fileType, updateFileType] = useState<string>(props.file.name);
   const [parametersArray, updateParameters] = useState<Parameter[]>(
     props.file.parameters ? props.file.parameters : []
@@ -45,21 +45,14 @@ function ParameterPopUp(props: { file: fileType }): JSX.Element {
   };
 
   const handleFileTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    const file = value;
+    const file = e.target.value;
     updateFileType(file);
   };
 
   const addParameter = () => {
-    const constraint = {
-      parameter: parametersArray.length,
-      constraint: "lt",
-      value: "",
-    };
-
     const newPara = {
       param: "",
-      constraints: [constraint],
+      constraints: [],
     };
 
     const newParameters = [...parametersArray, newPara];
@@ -88,7 +81,7 @@ function ParameterPopUp(props: { file: fileType }): JSX.Element {
   const addConstraint = (pindex: number) => {
     const newConstraint = {
       parameter: pindex,
-      constraint: "  lt",
+      constraint: "lt",
       value: "",
     };
 

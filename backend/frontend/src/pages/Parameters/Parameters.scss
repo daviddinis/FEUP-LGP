@@ -93,6 +93,7 @@ button.add-type:hover {
   border-radius: 12px;
   padding: 22.11px;
   display: grid;
+  grid-template-rows: auto 1fr auto;
   flex-direction: column;
 }
 
@@ -110,8 +111,6 @@ button.add-type:hover {
 
 .type-block-content {
   margin: 5% 0;
-  flex-shrink: 1;
-  height: 85%;
   overflow-y: auto;
   padding-left: 8%;
 }
@@ -145,12 +144,12 @@ button.add-type:hover {
 
 @media (max-width: 1000px) {
   .add-type-page .body-container {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 550px) {
     .add-type-page .body-container {
-      grid-template-columns: repeat(1, auto);
+      grid-template-columns: repeat(1, 1fr);
     }
   }
