@@ -8,6 +8,7 @@ import newParameter from "shared/icons/newParameter.svg";
 import addParameterIcon from "shared/icons/addparameter.svg";
 
 interface fileType {
+  _id: string;
   name: string;
   parameters: Parameter[];
 }
@@ -28,21 +29,19 @@ function ParameterPopUp(props: { file: fileType }): JSX.Element {
     props.file.parameters ? props.file.parameters : []
   );
 
-  const save = () => {
-    axios
-      .put("/api/types/60a29550c20e2f32c06166f1", {
+  const save = async () => {
+
+    try {
+    await axios
+      .put(`/api/types/${props.file._id}`, {
         name: fileType,
         parameters: parametersArray,
-      })
-      .then((response) => {
-        console.log("Status: ", response.status);
-        console.log("Data: ", response.data);
-      })
-      .catch((error) => {
-        console.error("Something went wrong!", error);
       });
 
-    close;
+      location.reload();
+    }catch(error) {
+        console.error("Something went wrong!", error);
+    }
   };
 
   const handleFileTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -160,83 +159,74 @@ function ParameterPopUp(props: { file: fileType }): JSX.Element {
             <div className="new-parameter-text">add new parameter</div>
           </button>
 
-            {parametersArray.map((p, pindex) => {
-              return (
-                <div key={`${p}-${pindex}`} className="parameters">
-                  <p>Parameter name</p>
-                  <div>
-                    <input
-                      className="parameter"
-                      type="text"
-                      placeholder="parameter name"
-                      value={p.param}
-                      onChange={(e) => handleNameChange(e, pindex)}
-                    />
-                    <button onClick={() => removeParameter(Number(pindex))}>
-                      <img src={Trash} className="icon trash" />
-                    </button>
-                  </div>
-
-                  <div className="constraints">
-                    <p>Constraints</p>
-                    {p.constraints.map((c, index) => {
-                      return (
-                        <div
-                          key={`${c.constraint}-${index}`}
-                          className="select-section"
-                        >
-                          <select
-                            value={c.constraint}
-                            onChange={(e) =>
-                              handleSelectChange(e, index, pindex)
-                            }
-                          >
-                            <option value="lt"> Less</option>
-                            <option value="gt"> Greater </option>
-                            <option value="lte"> Less or Equal </option>
-                            <option value="gte"> Greater or Equal</option>
-                            <option value="eq"> Equal </option>
-                            <option value="oneOf"> One of </option>
-                            <option value="contains"> Contains </option>
-                            <option value="containsParam">
-                              {" "}
-                              Contains Parameter{" "}
-                            </option>
-                          </select>
-
-                            <input
-                              type="text"
-                              value={c.value}
-                              onChange={(e) =>
-                                handleValueChange(e, index, pindex)
-                              }
-                            />
-
-                          <button
-                            onClick={() => removeConstraint(index, pindex)}
-                          >
-                            <img src={Trash} className="icon trash" />
-                          </button>
-                        </div>
-                      );
-                    })}
-                    <button
-                      onClick={() => addConstraint(pindex)}
-                      className="new-constraint"
-                    >
-                      <img
-                        src={newParameter}
-                        className="icon new"
-                      />
-                      <div className="new-constraint-text">
-                        add new constraint
-                      </div>
-                    </button>
-                  </div>
+          {parametersArray.map((p, pindex) => {
+            return (
+              <div key={`${p}-${pindex}`} className="parameters">
+                <p>Parameter name</p>
+                <div>
+                  <input
+                    className="parameter"
+                    type="text"
+                    placeholder="parameter name"
+                    value={p.param}
+                    onChange={(e) => handleNameChange(e, pindex)}
+                  />
+                  <button onClick={() => removeParameter(Number(pindex))}>
+                    <img src={Trash} className="icon trash" />
+                  </button>
                 </div>
-              );
-            })}
-          </div>
+
+                <div className="constraints">
+                  <p>Constraints</p>
+                  {p.constraints.map((c, index) => {
+                    return (
+                      <div
+                        key={`${c.constraint}-${index}`}
+                        className="select-section"
+                      >
+                        <select
+                          value={c.constraint}
+                          onChange={(e) => handleSelectChange(e, index, pindex)}
+                        >
+                          <option value="lt"> Less</option>
+                          <option value="gt"> Greater </option>
+                          <option value="lte"> Less or Equal </option>
+                          <option value="gte"> Greater or Equal</option>
+                          <option value="eq"> Equal </option>
+                          <option value="oneOf"> One of </option>
+                          <option value="contains"> Contains </option>
+                          <option value="containsParam">
+                            {" "}
+                            Contains Parameter{" "}
+                          </option>
+                        </select>
+
+                        <input
+                          type="text"
+                          value={c.value}
+                          onChange={(e) => handleValueChange(e, index, pindex)}
+                        />
+
+                        <button onClick={() => removeConstraint(index, pindex)}>
+                          <img src={Trash} className="icon trash" />
+                        </button>
+                      </div>
+                    );
+                  })}
+                  <button
+                    onClick={() => addConstraint(pindex)}
+                    className="new-constraint"
+                  >
+                    <img src={newParameter} className="icon new" />
+                    <div className="new-constraint-text">
+                      add new constraint
+                    </div>
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       )}
     </Popup>
   );
