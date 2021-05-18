@@ -1,231 +1,222 @@
+.parameter-submit {
+  border-style: none;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  color: white;
+  width: 25px;
+  height: 32px;
+  align-self: flex-end;
+}
+
 .parameters-pop-up {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(239.97deg, #701C74 1.01%, #914A7E 98.9%);
-    width: 464px;
-    height: 554px;
-    border-radius: 12px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(239.97deg, #701c74 1.01%, #914a7e 98.9%);
+  width: 464px;
+  height: 554px;
+  border-radius: 12px;
 }
 
-.save-button{
-    font-family: Montserrat;
-    background-color: #EDEAEF;
-    color: #701C74, 100%;
-    border: none;
-    padding: 11px 31px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 12px;
+.parameters-pop-up .save-button {
+  font-family: Montserrat;
+  background-color: #edeaef;
+  color: #701c74, 100%;
+  border: none;
+  padding: 11px 31px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 12px;
 }
 
-input {
-    padding-left: 3%;
-    padding-right: 3%;
+.parameters-pop-up input {
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
-.file-type{
-    width: 50%;
-    border-radius: 12px;
+.parameters-pop-up .file-type {
+  width: 50%;
+  border-radius: 12px;
 }
 
-
-.submit-section{
-    margin: 5% 7%;
-    display: flex;
-    justify-content: space-between;
+.parameters-pop-up .submit-section {
+  margin: 5% 7%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.trash-image{
-    margin-left: -100px;
-
+.parameters-pop-up .trash-image {
+  margin-left: -100px;
 }
 
-h1 {
-    margin-top: -8%;
-    margin-left: 1%;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
-    color: white;
+.parameters-pop-up h1 {
+  margin-top: -8%;
+  margin-left: 1%;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: white;
 }
 
-.parameter-add-name{
-    margin-top: -1%;
+.parameters-pop-up .parameter-add-name {
+  margin-top: -1%;
 }
 
-.trash-paramter-image{
-    margin-left: 19px;
+.parameters-pop-up .trash-paramter-image {
+  margin-left: 19px;
 }
 
-.parameter-input {
-    margin-left:7%;
-    margin-top: 3%;
-    background-color: white;
-    border-radius: 12px;
-    height: 40px;
-    width: 65%;
-    border: none;
-    color: #6A5B70;
+.parameters-pop-up .parameter-input {
+  margin-left: 7%;
+  margin-top: 3%;
+  background-color: white;
+  border-radius: 12px;
+  height: 40px;
+  width: 65%;
+  border: none;
+  color: #6a5b70;
 }
 
-.select-section{
-    margin-top: -3%;
-    margin-bottom: 5%;
-    display: flex;
-}
-.parameter-select {
-    margin-left: 12%;
-    margin-right: 5%;
-    background-color: white;
-    border-radius: 12px;
-    height: 40px;
-    border: none;
-    color: #6A5B70;
-    text-align: center;
+.parameters-pop-up .select-section {
+  margin-top: -3%;
+  margin-bottom: 5%;
+  display: flex;
 }
 
-.parameter-select-input{
-    flex-grow: 1;
+.parameters-pop-up .parameter-select {
+  margin-left: 12%;
+  margin-right: 5%;
+  background-color: white;
+  border-radius: 12px;
+  height: 40px;
+  border: none;
+  color: #6a5b70;
+  text-align: center;
 }
 
-
-.parameter-select-input-text{
-    background-color: white;
-    border-radius: 12px;
-    height: 40px;
-    width: 60%;
-    border: none;
-    color: #6A5B70;
-    background-color: white;
+.parameters-pop-up .parameter-select-input {
+  flex-grow: 1;
 }
 
-.file-type{
-    background-color: white;
-    font-size: 15px;
-    border-radius: 12px;
-    height: 40px;
-    width: 60%;
-    border: none;
-    color: #6A5B70;
-    background-color: white;
-
+.parameters-pop-up .parameter-select-input-text {
+  background-color: white;
+  border-radius: 12px;
+  height: 40px;
+  width: 60%;
+  border: none;
+  color: #6a5b70;
+  background-color: white;
 }
 
-
-
-
-.parameter-submit{
-    border-style: none;
-    border-radius: 10px;
-    font-weight: 400;
-    font-size: 14px;
-    color: white;
-    width: 25px;
-    height: 32px;
-    align-self: flex-end;
+.parameters-pop-up .file-type {
+  background-color: white;
+  font-size: 15px;
+  border-radius: 12px;
+  height: 40px;
+  width: 60%;
+  border: none;
+  color: #6a5b70;
+  background-color: white;
 }
 
-.new-parameter-text{
-    margin-top: -21%;
-    margin-left: 19%;
-    font-family: Montserrat;
-    font-size: 12px;
-    color: #D4C0D8;
-    width: 120%;
+.parameters-pop-up .new-parameter-text {
+  margin-top: -21%;
+  margin-left: 19%;
+  font-family: Montserrat;
+  font-size: 12px;
+  color: #d4c0d8;
+  width: 120%;
 }
 
-.new-parameter{
-    margin-top: -7%;
-    margin-left: 7%;
+.parameters-pop-up .new-parameter {
+  margin-top: -7%;
+  margin-left: 7%;
 }
 
-.new-parameter-image{
-    margin-left:-80% ;
-    width: 100%;
-    color: #D4C0D8, 100%;
-    border-style: none;
-    color: white;
-    width: 21px;
-    height: 22px;
-    align-self: flex-end;
-    margin-top: 40px;
+.parameters-pop-up .new-parameter-image {
+  margin-left: -80%;
+  width: 100%;
+  color: #d4c0d8, 100%;
+  border-style: none;
+  color: white;
+  width: 21px;
+  height: 22px;
+  align-self: flex-end;
+  margin-top: 40px;
 }
 
-.parameter-name{
-    line-height: 17px;
-    margin-left: 7%;
-    font-family: Montserrat;
-    font-size: 14px;
-    color: #FFFFFF;
+.parameters-pop-up .parameter-name {
+  line-height: 17px;
+  margin-left: 7%;
+  font-family: Montserrat;
+  font-size: 14px;
+  color: #ffffff;
 }
 
-.parameter-div{
-    margin-bottom: 1%;
+.parameters-pop-up .parameter-div {
+  margin-bottom: 1%;
 }
 
-.constraints-text{
-    margin-left: 13%;
-    font-family: Montserrat;
-    font-size: 14px;
-    color: #FFFFFF;
-    line-height: 17px;
-    font-weight: 400;
-    width: 161px;
-    height: 26px;
+.parameters-pop-up .constraints-text {
+  margin-left: 13%;
+  font-family: Montserrat;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 17px;
+  font-weight: 400;
+  width: 161px;
+  height: 26px;
 }
 
-.new-constraint-text{
-    margin-top: -36%;
-    margin-left: 17%;
-    font-family: Montserrat;
-    font-size: 12px;
-    color: #D4C0D8;
-    width: 120%;
+.parameters-pop-up .new-constraint-text {
+  margin-top: -36%;
+  margin-left: 17%;
+  font-family: Montserrat;
+  font-size: 12px;
+  color: #d4c0d8;
+  width: 120%;
 }
 
-.new-constraint{
-    margin-top: -7%;
-    margin-left: 14%;
+.parameters-pop-up .new-constraint {
+  margin-top: -7%;
+  margin-left: 14%;
 }
 
-.new-constraint-image{
-    margin-left:-80% ;
-    width: 100%;
-    color: #D4C0D8, 100%;
-    border-style: none;
-    color: white;
-    width: 17px;
-    height: 18px;
-    align-self: flex-end;
-    margin-top: 21px;
-    margin-bottom: 21px;
+.parameters-pop-up .new-constraint-image {
+  margin-left: -80%;
+  width: 100%;
+  color: #d4c0d8, 100%;
+  border-style: none;
+  color: white;
+  width: 17px;
+  height: 18px;
+  align-self: flex-end;
+  margin-top: 21px;
+  margin-bottom: 21px;
 }
 
-.scrollbar {
-    margin-right: 3%;
-    margin-top: 3%;
-    overflow-y:auto;
-    height: 70%;
+.parameters-pop-up .scrollbar {
+  margin-right: 3%;
+  margin-top: 3%;
+  overflow-y: auto;
+  height: 70%;
 }
-  
-::-webkit-scrollbar {
-    width: 9px;               /* width of the entire scrollbar */
-  }
-  
-::-webkit-scrollbar-track {
-    background: #6A5B70;  
-    border-radius: 20px;       /* color of the tracking area */
-  }
-  
-::-webkit-scrollbar-thumb {
-    background-color: white;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-  }
 
+.parameters-pop-up :-webkit-scrollbar {
+  width: 9px; /* width of the entire scrollbar */
+}
 
+.parameters-pop-up ::-webkit-scrollbar-track {
+  background: #6a5b70;
+  border-radius: 20px; /* color of the tracking area */
+}
 
+.parameters-pop-up ::-webkit-scrollbar-thumb {
+  background-color: white; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}

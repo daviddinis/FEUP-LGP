@@ -4,7 +4,7 @@ import Header from "components/Header/Header";
 import addType from "shared/icons/addtype_1.svg";
 import trash from "shared/icons/caixote lixo.svg";
 import Modal from '@material-ui/core/Modal';
-import Para from "components/ParametersPopUp/ParameterPopUp";
+import ParametersPopUp from "components/ParametersPopUp/ParameterPopUp";
 
 interface Constraint {
   constraint: string,
@@ -138,7 +138,7 @@ function Parameters(): JSX.Element {
               </div>
               <footer className="type-block-footer">
                 <div className="add-parameter-button">
-                  <Para file={fileType}/>
+                  <ParametersPopUp file={fileType}/>
                 </div>
               </footer>
             </div>
