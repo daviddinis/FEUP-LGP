@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./RegisteredUsers.scss";
-import Header from "components/Header/Header";
+import Header, { SideBarOption } from "components/Header/Header";
 import BottomCornerImage from "components/BottomCornerImage/BottomCornerImage";
 import person from "shared/icons/person.svg";
 import search from "shared/icons/search.svg";
@@ -41,7 +41,7 @@ function RegisteredUsersPage(): JSX.Element {
 
   return (
     <div className="registered-users-page">
-      <Header username="Miller" isAdmin={true} />
+      <Header username="Miller" isAdmin={true} sideBarOption={SideBarOption.RegisteredUsers}/>
       <div className="body-container">
         <div className="search-bar">
           <img src={search} className="search-image" />

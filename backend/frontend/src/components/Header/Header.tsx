@@ -8,11 +8,18 @@ import { SidebarData } from "components/Header/SidebarData";
 import { Link } from "react-router-dom";
 import BackButton from "components/BackButton/BackButton";
 
+export enum SideBarOption {
+  SubmittedDocuments = 0,
+  ParametersTypes = 1,
+  RegisteredUsers = 2
+}
+
 interface User {
   username: string;
   isAdmin: boolean;
   withBackArrow?: boolean;
   filesOwnerUserName?: string;
+  sideBarOption?: SideBarOption;
 }
 
 const HeaderBase = (user: User): JSX.Element => {
@@ -44,7 +51,7 @@ const HeaderBase = (user: User): JSX.Element => {
           <ul className="side-bar-items">
             {SidebarData.map((item, index) => {
               return (
-                <Link to={item.path} key={index} className={item.cName}>
+                <Link to={item.path} key={index} className={user.sideBarOption === index ? `${item.cName} selected` : item.cName}>
                   <p>{item.title}</p>
                 </Link>
               );
