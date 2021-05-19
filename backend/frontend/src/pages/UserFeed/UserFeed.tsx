@@ -32,7 +32,7 @@ function UserFeed(): JSX.Element {
         "content-type": "multipart/form-data",
       },
     }).then((res) => {
-      setFiles((oldFiles) => oldFiles.concat([res.data]));
+      setFiles((oldFiles) => [res.data].concat(oldFiles));
     });
   }, []);
 

@@ -6,7 +6,7 @@ import config from "../config";
 
 export default class DocumentController {
     static async list(req : any, res: any) {
-        const files = await File.find().populate('user');
+        const files = await File.find().sort({'createdAt': -1}).populate('user');
 
         return res.status(200).json(files);
     }
