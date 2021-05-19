@@ -38,6 +38,7 @@ app.post('/api/files/submit', upload.single('file'), DocumentController.submit);
 
 app.get('/api/users/:id/submissions', UserController.submissions);
 app.get('/api/users', UserController.list);
+app.get('/api/users/:id/flag', UserController.flag);
 
 app.get('/api/types', TypeController.list);
 app.post('/api/types/add', TypeController.add);
