@@ -5,7 +5,7 @@ import person from "shared/icons/person.svg";
 import Hamburger from "shared/icons/hamburger.svg";
 import HamburgerWhite from "shared/icons/hamburger_white.svg";
 import { SidebarData } from "components/Header/SidebarData";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BackButton from "components/BackButton/BackButton";
 import Auth from "auth/auth";
 import User from "models/User";
