@@ -41,7 +41,7 @@ function RegisteredUsersPage(): JSX.Element {
 
   return (
     <div className="registered-users-page">
-      <Header username="Miller" isAdmin={true} />
+      <Header />
       <div className="body-container">
         <div className="search-bar">
           <img src={search} className="search-image" />

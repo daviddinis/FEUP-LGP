@@ -38,7 +38,7 @@ function AdminFeed(): JSX.Element {
 
   return (
     <div className="admin-feed">
-      <Header username="gingerAle" isAdmin={true} />
+      <Header />
 
       <div className="content">
         <SubmissionTableAdmin

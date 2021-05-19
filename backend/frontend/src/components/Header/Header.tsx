@@ -7,22 +7,31 @@ import HamburgerWhite from "shared/icons/hamburger_white.svg";
 import { SidebarData } from "components/Header/SidebarData";
 import { Link } from "react-router-dom";
 import BackButton from "components/BackButton/BackButton";
+import Auth from "auth/auth";
 
-interface User {
-  username: string;
-  isAdmin: boolean;
+interface IHeader {
   withBackArrow?: boolean;
   filesOwnerUserName?: string;
 }
 
-const HeaderBase = (user: User): JSX.Element => {
+const HeaderBase = (OHeader: IHeader): JSX.Element => {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
 
   let toogleSideBar: JSX.Element = <div></div>;
   let sideBar: JSX.Element = <div></div>;
 
-  if (user.isAdmin) {
+  //TODO: erase this when login is implemented
+  //Auth.logUser("filipa@gmail.com", "123456789");
+  Auth.logUser("admin@gmail.com", "123456789");
+  //Auth.logoutUser();
+
+  const user = Auth.getLoggedUser();
+
+  const username = user?.username;
+  const isAdmin = user?.isAdmin;
+
+  if (isAdmin) {
     toogleSideBar = (
       <button className={"navbar-toggle icon hamburger"} onClick={showSidebar}>
         <img src={Hamburger} />
@@ -66,16 +75,16 @@ const HeaderBase = (user: User): JSX.Element => {
         </h1>
         <nav>
           <p className={"username"}>
-            {user.username}
+            {username}
             <img className={"icon user"} src={person} />
           </p>
         </nav>
       </header>
-      {user.withBackArrow && (
+      {OHeader.withBackArrow && (
         <div className={`go-back-container ${sidebar ? "active" : ""}`}>
           <BackButton />
-          {user.filesOwnerUserName && (
-            <p className={"username"}>{user.filesOwnerUserName}</p>
+          {OHeader.filesOwnerUserName && (
+            <p className={"username"}>{OHeader.filesOwnerUserName}</p>
           )}
         </div>
       )}

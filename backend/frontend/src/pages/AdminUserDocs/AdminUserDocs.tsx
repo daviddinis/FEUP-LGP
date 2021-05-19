@@ -49,8 +49,6 @@ function AdminUserDocs(): JSX.Element {
   return (
     <div className="user-submissions">
       <Header 
-        username="gingerAle"
-        isAdmin={true}
         filesOwnerUserName={username}
         withBackArrow />
       <div className="content">

@@ -52,7 +52,7 @@ function UserFeed(): JSX.Element {
   return (
     <div className="user-page">
       <header className={"header"}>
-        <Header username="gingerAle" isAdmin={false} />
+        <Header />
 
         <div {...getRootProps({ className: "dropzone" })}>
           <input {...getInputProps()} />
