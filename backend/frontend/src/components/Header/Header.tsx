@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "components/Header/Header.scss";
 import "components/Header/Sidebar.scss";
 import person from "shared/icons/person.svg";
 import Hamburger from "shared/icons/hamburger.svg";
 import HamburgerWhite from "shared/icons/hamburger_white.svg";
 import { SidebarData } from "components/Header/SidebarData";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import BackButton from "components/BackButton/BackButton";
 import Auth from "auth/auth";
+import User from "models/User";
 
 interface IHeader {
   withBackArrow?: boolean;
@@ -17,21 +18,18 @@ interface IHeader {
 const HeaderBase = (OHeader: IHeader): JSX.Element => {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
+  const [user, setUser] = useState<User | undefined>(undefined);
 
   let toogleSideBar: JSX.Element = <div></div>;
   let sideBar: JSX.Element = <div></div>;
 
-  //TODO: erase this when login is implemented
-  //Auth.logUser("filipa@gmail.com", "123456789");
-  Auth.logUser("admin@gmail.com", "123456789");
-  //Auth.logoutUser();
+  useEffect(() => {
+    const requestedUser = Auth.getLoggedUser();
+    if(requestedUser) setUser(requestedUser);
 
-  const user = Auth.getLoggedUser();
+  }, []);
 
-  const username = user?.username;
-  const isAdmin = user?.isAdmin;
-
-  if (isAdmin) {
+  if (user?.isAdmin) {
     toogleSideBar = (
       <button className={"navbar-toggle icon hamburger"} onClick={showSidebar}>
         <img src={Hamburger} />
@@ -66,6 +64,7 @@ const HeaderBase = (OHeader: IHeader): JSX.Element => {
 
   return (
     <>
+    { user && <>
       <header className={"page-header"}>
         {toogleSideBar}
 
@@ -75,7 +74,7 @@ const HeaderBase = (OHeader: IHeader): JSX.Element => {
         </h1>
         <nav>
           <p className={"username"}>
-            {username}
+            {user.username}
             <img className={"icon user"} src={person} />
           </p>
         </nav>
@@ -88,7 +87,7 @@ const HeaderBase = (OHeader: IHeader): JSX.Element => {
           )}
         </div>
       )}
-    </>
+    </>}</>
   );
 };
 

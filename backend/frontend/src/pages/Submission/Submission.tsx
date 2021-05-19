@@ -38,7 +38,7 @@ function Submission(): JSX.Element {
 
     return (
         <div className="submition-details">
-            <Header withBackArrow/>
+            <Header withBackArrow />
 
             <div className="content">
                 {submission &&

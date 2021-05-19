@@ -1,11 +1,10 @@
 import axios from "axios";
+import User from "models/User";
 
 export default class Auth {
   static async logUser(email: string, password: string): Promise<boolean> {
     try {
-      if (this.isUserLoggedIn()) return true;
-
-      const user = await axios.post(
+      await axios.post(
         "api/auth/login",
         { email, password },
         {
@@ -14,8 +13,6 @@ export default class Auth {
           },
         }
       );
-
-      this.setLoggedUser(user.data.username, user.data.isAdmin);
 
       return true;
     } catch (error) {
@@ -26,13 +23,33 @@ export default class Auth {
   static async logoutUser(): Promise<boolean> {
     try {
       await axios.post("api/auth/logout");
-      this.removeLoggedUser();
 
       return true;
-
     } catch (error) {
       return false;
     }
+  }
+
+  static getLoggedUser(): User | null {
+    const user = window.localStorage.getItem("KyCON_USER");
+
+    if (!user) return null;
+
+    const userParse = JSON.parse(user);
+
+    return { username: userParse.username, isAdmin: userParse.isAdmin };
+  }
+
+  static async isUserLogged(): Promise<boolean> {
+    const user = await axios.get("api/auth/check");
+
+    if (!user || user.status !== 200) {
+      this.removeLoggedUser();
+      return false;
+    }
+
+    this.setLoggedUser(user.data.username, user.data.isAdmin);
+    return true;
   }
 
   private static setLoggedUser(username: string, isAdmin: boolean): void {
@@ -45,20 +62,5 @@ export default class Auth {
   private static removeLoggedUser(): void {
     window.localStorage.removeItem(
       "KyCON_USER");
-  }
-
-  private static isUserLoggedIn(): boolean {
-    console.log(window.localStorage.getItem("KyCON_USER"));
-    return window.localStorage.getItem("KyCON_USER") !== null;
-  }
-
-  static getLoggedUser(): any {
-    const user = window.localStorage.getItem("KyCON_USER");
-
-    if (!user) return null;
-
-    const userParse = JSON.parse(user);
-
-    return { username: userParse.username, isAdmin: userParse.isAdmin };
   }
 }
