@@ -10,7 +10,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import User from 'pages/UserFeed/UserFeed';
 import Home from 'pages/HomePage/HomePage';
 import Parameters from 'pages/Parameters/Parameters';
-import Login from 'pages/Login/Login';
+import Login from 'pages/Authentication/Login';
 
 ReactDOM.render(
     <React.StrictMode>

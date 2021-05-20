@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import "pages/Login/Login.scss";
+import "pages/Authentication/Authentication.scss";
 import PropTypes from 'prop-types';
 import axios from "axios";
 import map from 'shared/images/mapa1.svg';
