@@ -10,9 +10,15 @@ import BackButton from "components/BackButton/BackButton";
 import Auth from "auth/auth";
 import User from "models/User";
 
+export enum SideBarOption {
+  SubmittedDocuments = 0,
+  ParametersTypes = 1,
+  RegisteredUsers = 2
+}
 interface IHeader {
   withBackArrow?: boolean;
   filesOwnerUserName?: string;
+  sideBarOption?: SideBarOption;
 }
 
 const HeaderBase = (OHeader: IHeader): JSX.Element => {
@@ -51,7 +57,7 @@ const HeaderBase = (OHeader: IHeader): JSX.Element => {
           <ul className="side-bar-items">
             {SidebarData.map((item, index) => {
               return (
-                <Link to={item.path} key={index} className={item.cName}>
+                <Link to={item.path} key={index} className={OHeader.sideBarOption === index ? `${item.cName} selected` : item.cName}>
                   <p>{item.title}</p>
                 </Link>
               );

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios'
-import Header from "components/Header/Header";
+import Header, { SideBarOption } from "components/Header/Header";
 import SubmissionBlock from "components/SubmissionBlock/SubmissionBlock";
 import {useParams} from "react-router";
 import {getPercentage} from "components/State/State";
@@ -38,7 +38,7 @@ function Submission(): JSX.Element {
 
     return (
         <div className="submition-details">
-            <Header withBackArrow />
+            <Header withBackArrow sideBarOption={SideBarOption.SubmittedDocuments}/>
 
             <div className="content">
                 {submission &&
