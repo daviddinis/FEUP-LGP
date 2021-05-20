@@ -6,7 +6,7 @@ import config from "../config";
 
 export default class DocumentController {
     static async list(req : any, res: any) {
-        const files = await File.find().populate('user');
+        const files = await File.find().sort({'createdAt': -1}).populate('user');
 
         return res.status(200).json(files);
     }
@@ -46,7 +46,7 @@ export default class DocumentController {
             path: req.file.path,
             name: req.file.originalname,
             documentId: document.id,
-            type: "AFCA", // TODO: Get type from request
+            type: req.body.type,
             extracted: null,
             user: await GetRandomUserID()
         })
