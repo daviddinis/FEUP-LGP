@@ -1,14 +1,6 @@
-<<<<<<< HEAD:backend/frontend/src/pages/Authentication/Login.tsx
-import React from 'react';
 import "pages/Authentication/Authentication.scss";
-=======
 import React, { useRef } from 'react';
-<<<<<<< HEAD:backend/frontend/src/pages/Authentication/Login.tsx
-import "pages/Login/Login.scss";
->>>>>>> df0a51d1... feat(Login): handle login incomplete:backend/frontend/src/pages/Login/Login.tsx
-=======
 import "pages/Authentication/Authentication.scss";
->>>>>>> 19579c3c... feat(Login): resolve problem for small screens:backend/frontend/src/pages/Login/Login.tsx
 import PropTypes from 'prop-types';
 import axios from "axios";
 import map from 'shared/images/mapa1.svg';
