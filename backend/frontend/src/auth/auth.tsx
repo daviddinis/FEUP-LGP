@@ -4,7 +4,7 @@ import User from "models/User";
 export default class Auth {
   static async logUser(email: string, password: string): Promise<boolean> {
     try {
-      await axios.post(
+      const res = await axios.post(
         "api/auth/login",
         { email, password },
         {
@@ -14,8 +14,9 @@ export default class Auth {
         }
       );
 
-      return true;
+      return res.data;
     } catch (error) {
+      console.error(error)
       return false;
     }
   }

@@ -10,7 +10,7 @@ function AdminFeed(): JSX.Element {
       <Link to={ '/login' } className="log-in">Log in</Link>
       <Link to={ '' }className="sign-up">Sign Up</Link>
       </header>
-      <body className="home-body">
+      <div className="home-body">
         <h1 className="home-title">Know your costumer on the news</h1>
         <p className="home-text">The tool that recognizes and validates sections in a<br/>document and highlights important information.</p>
         <p className="home-text">Relieves the burden from an entity and<br/>make the process easier to the client.</p>
@@ -19,7 +19,7 @@ function AdminFeed(): JSX.Element {
             <button className="email-button">Sign up</button>
             <img className={ 'home-map' } src={ map }/>
         </div>
-      </body>
+      </div>
     </div>
   );
 }
