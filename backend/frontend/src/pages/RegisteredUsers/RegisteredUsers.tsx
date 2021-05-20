@@ -87,8 +87,6 @@ function RegisteredUsersPage(): JSX.Element {
   return (
     <div className="registered-users-page">
       <Header
-        username="Miller"
-        isAdmin={true}
         sideBarOption={SideBarOption.RegisteredUsers}
       />
       <div className="body-container content">

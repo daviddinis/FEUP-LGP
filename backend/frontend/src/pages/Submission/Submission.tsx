@@ -38,7 +38,7 @@ function Submission(): JSX.Element {
 
     return (
         <div className="submition-details">
-            <Header username="gingerAle" isAdmin={true} withBackArrow sideBarOption={SideBarOption.SubmittedDocuments}/>
+            <Header withBackArrow sideBarOption={SideBarOption.SubmittedDocuments}/>
 
             <div className="content">
                 {submission &&

@@ -101,7 +101,7 @@ function Parameters(): JSX.Element {
       >
         {modalBody()}
       </Modal>
-      <Header username="MillerGinger" isAdmin={true} sideBarOption={SideBarOption.ParametersTypes}/>
+      <Header sideBarOption={SideBarOption.ParametersTypes}/>
       <div className="body-container content">
         {fileTypes.map((fileType, fileTypeIndex) => (
           <div key={`${fileType.name}-${fileTypeIndex}`} className="type-block">
