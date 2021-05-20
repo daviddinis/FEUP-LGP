@@ -20,8 +20,8 @@
     font-family: Montserrat;
     font-size: 20px;
     color: #F7F4F9;
-    padding-top: 150px;
-    padding-left: 241px;
+    padding-top: min(10%,150px);
+    padding-left: min(17%,241px);
 }
 
 .login-content{
@@ -29,7 +29,7 @@
     border-radius: 10px;
     width: 368px;
     height: 303px;
-    margin-left: 241px;
+    margin-left: min(17%, 241px);
 }
 
 .login-page {
@@ -50,7 +50,7 @@
     color: #F7F4F9;
     width: 368px;
     height: 40px;
-    margin-left: 241px;
+    margin-left: min(17%,241px);;
     margin-top: 19px;
 }
 
