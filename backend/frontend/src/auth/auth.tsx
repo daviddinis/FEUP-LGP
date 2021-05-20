@@ -2,9 +2,28 @@ import axios from "axios";
 import User from "models/User";
 
 export default class Auth {
-  static async logUser(email: string, password: string): Promise<boolean> {
+  static async registerUser(username: string, email: string, password: string) : Promise<any> {
     try {
-      await axios.post(
+      const res = await axios.post(
+          "api/auth/register",
+          {username, email, password},
+          {
+            headers: {
+              "content-type": "application/json",
+            },
+          }
+      );
+
+      return res.data;
+    } catch (error) {
+      console.error(error)
+      return false;
+    }
+  }
+
+  static async logUser(email: string, password: string): Promise<any> {
+    try {
+      const res = await axios.post(
         "api/auth/login",
         { email, password },
         {
@@ -14,8 +33,9 @@ export default class Auth {
         }
       );
 
-      return true;
+      return res.data;
     } catch (error) {
+      console.error(error)
       return false;
     }
   }

@@ -11,6 +11,7 @@ import User from 'pages/UserFeed/UserFeed';
 import Home from 'pages/HomePage/HomePage';
 import Parameters from 'pages/Parameters/Parameters';
 import PrivateRoute from 'routes/PrivateRoute';
+import Login from 'pages/Authentication/Login';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -37,6 +38,9 @@ ReactDOM.render(
                 <PrivateRoute path="/users">
                     <RegisteredUsers/>
                 </PrivateRoute>
+                <Route path="/login">
+                    <Login/>
+                </Route>
                 <Route path="/">
                     <Home/>
                 </Route>

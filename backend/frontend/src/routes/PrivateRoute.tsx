@@ -8,11 +8,6 @@ const PrivateRoute = ({ component, ...rest }: any): JSX.Element => {
   const [isBusy, setIsBusy] = useState<boolean>(true);
 
   useEffect(() => {
-    //TODO: erase this when login is implemented
-    //Auth.logUser("filipa@gmail.com", "123456789");
-    Auth.logUser("admin@gmail.com", "123456789");
-    //Auth.logoutUser();
-
     Auth.isUserLogged().then((res) => {
       setIsLoggedIn(res)
       setIsBusy(false);
