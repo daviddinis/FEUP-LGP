@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import User from 'pages/UserFeed/UserFeed';
 import Home from 'pages/HomePage/HomePage';
 import Parameters from 'pages/Parameters/Parameters';
+import Register from 'pages/Register/Register';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -36,8 +37,11 @@ ReactDOM.render(
                 <Route path="/users">
                     <RegisteredUsers/>
                 </Route>
+                <Route path="/register">
+                    <Register/>
+                </Route>
                 <Route path="/">
-                    <Home/>
+                    <Register/>
                 </Route>
             </Switch>
         </Router>
