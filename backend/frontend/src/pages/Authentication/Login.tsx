@@ -1,17 +1,18 @@
-import "pages/Authentication/Authentication.scss";
-import React, { useRef } from 'react';
+import React from 'react';
 import "pages/Authentication/Authentication.scss";
 import PropTypes from 'prop-types';
 import axios from "axios";
 import map from 'shared/images/mapa1.svg';
 import { Link } from "react-router-dom";
 
-interface LoginParams {
-    _id: string;
-    username: string;
-    password: string;
-    logged: boolean;
-}
+
+// This interface is to be used for what comes from the backend login service
+// interface LoginParams {
+//     _id: string;
+//     username: string;
+//     password: string;
+//     logged: boolean;
+// }
 
 interface Props {
   setUser: any;
@@ -38,10 +39,11 @@ function LogginPage({ setUser }: Props): JSX.Element {
         password: password?.value,
       });
 
-      console.log(request);
-
-      // const { user } = request;
-      // setUser({ name: user.name, id: user.id });
+      if (request) {
+        // When backend service exists, we should not send request but intead only what is necessary, like for example:
+        // setUser({ name: request.user.name, request.user.id });
+        setUser(request);
+      }
 
     } catch (error) {
       console.log(error);
@@ -59,7 +61,9 @@ function LogginPage({ setUser }: Props): JSX.Element {
       <p className="text-login">Log in</p>
 
       <div className="login-content">
-        <form className="struct-form">
+        <form 
+          onSubmit={ handleOnLogin }
+          className="struct-form">
           <p>username or email</p>
           <input id="username"/>
           <p>password</p>
