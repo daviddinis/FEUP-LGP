@@ -60,11 +60,9 @@ function UserFeed(): JSX.Element {
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
-
-      <div className="user-page">
-        <header className={"header"}>
-          <Header username="gingerAle" isAdmin={false}/>
-
+    <div className="user-page">
+      <header className={"header"}>
+        <Header />
 
           <SelectTypePopup onSubmit={onSubmit} onClose={() => setPopupOpen(false)} isOpen={isPopupOpen}/>
 

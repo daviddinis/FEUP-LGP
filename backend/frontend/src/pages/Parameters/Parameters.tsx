@@ -101,7 +101,7 @@ function Parameters(): JSX.Element {
       >
         {modalBody()}
       </Modal>
-      <Header username="MillerGinger" isAdmin={true} />
+      <Header />
       <div className="body-container content">
         {fileTypes.map((fileType, fileTypeIndex) => (
           <div key={`${fileType.name}-${fileTypeIndex}`} className="type-block">
