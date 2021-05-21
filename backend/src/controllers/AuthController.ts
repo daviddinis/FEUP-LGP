@@ -83,7 +83,6 @@ export default class AuthController {
 
     static async ensureLogin(req, res, next){
         if (req.user) {
-            console.log(req.user.email);
             next();
         }
         return res.status(401).send();
