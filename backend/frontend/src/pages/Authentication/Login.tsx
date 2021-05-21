@@ -17,14 +17,14 @@ function LoginPage(): JSX.Element {
   }
 
   return (
-    <div className="login-page">
-      <img className={ 'login-map' } src={ map }/>
+    <div className="authentication-page">
+      <img className={ 'authentication-map' } src={ map }/>
       <h1 className="title-page">
         Know your customer on the news
       </h1>
-      <p className="text-login">Log in</p>
+      <p className="text-authentication">Log in</p>
 
-      <div className="login-content">
+      <div className="authentication-content">
         <form 
           onSubmit={ handleOnLogin }
           className="struct-form">

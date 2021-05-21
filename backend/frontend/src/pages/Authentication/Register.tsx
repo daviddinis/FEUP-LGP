@@ -1,28 +1,33 @@
 import React from 'react';
 import "./Authentication.scss";
-import PropTypes from 'prop-types';
 import map from 'shared/images/mapa1.svg';
-
-interface LoginParams {
-    _id: string;
-    username: string;
-    password: string;
-    logged: boolean;
-}
+import { Link } from "react-router-dom";
+import Auth from '../../auth/auth';
 
 function RegisterPage(): JSX.Element {
+  const handleOnRegister = async (e : any) => {
+    e.preventDefault();
+    const email = document.getElementById('email') as HTMLInputElement;
+    const password = document.getElementById('password') as HTMLInputElement;
+    // const user : any = await Auth.logUser(email.value, password.value);
 
+    // if (user)
+    //     window.location.href = user.isAdmin ? "/admin" : "/user";
+    // else alert("Invalid credentials");
+  }
 
   return (
-    <div className="login-page">
-      <img className={ 'login-map' } src={ map }/>
-      <h1 className="page-title">
+    <div className="authentication-page">
+      <img className={ 'authentication-map' } src={ map }/>
+      <h1 className="title-page">
         Know your customer on the news
       </h1>
-      <p className="text-login">Join Us</p>
+      <p className="text-authentication">Join us</p>
 
-      <div className="loginContent">
-        <form className="struct-form">
+      <div className="authentication-content">
+        <form 
+          onSubmit={ handleOnRegister }
+          className="struct-form">
           <p>username</p>
           <input id="username" type="text"/>
           <p>email</p>
@@ -36,4 +41,5 @@ function RegisterPage(): JSX.Element {
   );
 }
 
-export default RegisterPage; 
+
+export default RegisterPage;
