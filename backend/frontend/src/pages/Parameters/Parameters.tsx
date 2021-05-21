@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./Parameters.scss";
-import Header from "components/Header/Header";
+import Header, { SideBarOption } from "components/Header/Header";
 import addType from "shared/icons/addtype_1.svg";
 import trash from "shared/icons/caixote lixo.svg";
 import Modal from "@material-ui/core/Modal";
@@ -101,7 +101,7 @@ function Parameters(): JSX.Element {
       >
         {modalBody()}
       </Modal>
-      <Header username="MillerGinger" isAdmin={true} />
+      <Header sideBarOption={SideBarOption.ParametersTypes}/>
       <div className="body-container content">
         {fileTypes.map((fileType, fileTypeIndex) => (
           <div key={`${fileType.name}-${fileTypeIndex}`} className="type-block">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "components/Header/Header.scss";
 import "components/Header/Sidebar.scss";
 import person from "shared/icons/person.svg";
@@ -7,22 +7,40 @@ import HamburgerWhite from "shared/icons/hamburger_white.svg";
 import { SidebarData } from "components/Header/SidebarData";
 import { Link } from "react-router-dom";
 import BackButton from "components/BackButton/BackButton";
+import Auth from "auth/auth";
+import User from "models/User";
 
-interface User {
-  username: string;
-  isAdmin: boolean;
+export enum SideBarOption {
+  SubmittedDocuments = 0,
+  ParametersTypes = 1,
+  RegisteredUsers = 2
+}
+interface IHeader {
   withBackArrow?: boolean;
   filesOwnerUserName?: string;
+  sideBarOption?: SideBarOption;
 }
 
-const HeaderBase = (user: User): JSX.Element => {
+const HeaderBase = (OHeader: IHeader): JSX.Element => {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
+  const [user, setUser] = useState<User | undefined>(undefined);
 
   let toogleSideBar: JSX.Element = <div></div>;
   let sideBar: JSX.Element = <div></div>;
 
-  if (user.isAdmin) {
+  useEffect(() => {
+    const requestedUser = Auth.getLoggedUser();
+    if(requestedUser) setUser(requestedUser);
+
+  }, []);
+
+
+  function logout() {
+    Auth.logoutUser().then(() => window.location.href = "/");
+  }
+
+  if (user?.isAdmin) {
     toogleSideBar = (
       <button className={"navbar-toggle icon hamburger"} onClick={showSidebar}>
         <img src={Hamburger} />
@@ -44,7 +62,7 @@ const HeaderBase = (user: User): JSX.Element => {
           <ul className="side-bar-items">
             {SidebarData.map((item, index) => {
               return (
-                <Link to={item.path} key={index} className={item.cName}>
+                <Link to={item.path} key={index} className={OHeader.sideBarOption === index ? `${item.cName} selected` : item.cName}>
                   <p>{item.title}</p>
                 </Link>
               );
@@ -57,6 +75,7 @@ const HeaderBase = (user: User): JSX.Element => {
 
   return (
     <>
+    { user && <>
       <header className={"page-header"}>
         {toogleSideBar}
 
@@ -69,17 +88,18 @@ const HeaderBase = (user: User): JSX.Element => {
             {user.username}
             <img className={"icon user"} src={person} />
           </p>
+          <button className="logout-btn" onClick={logout}>Sign Out</button>
         </nav>
       </header>
-      {user.withBackArrow && (
+      {OHeader.withBackArrow && (
         <div className={`go-back-container ${sidebar ? "active" : ""}`}>
           <BackButton />
-          {user.filesOwnerUserName && (
-            <p className={"username"}>{user.filesOwnerUserName}</p>
+          {OHeader.filesOwnerUserName && (
+            <p className={"username"}>{OHeader.filesOwnerUserName}</p>
           )}
         </div>
       )}
-    </>
+    </>}</>
   );
 };
 

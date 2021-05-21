@@ -13,8 +13,6 @@ import UserController from "./controllers/UserController";
 import TypeController from "./controllers/TypeController";
 import AuthController from "./controllers/AuthController";
 
-import User from "./models/user"
-
 import seed from "./seed"
 
 const app = express();

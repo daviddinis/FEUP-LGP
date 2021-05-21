@@ -6,7 +6,7 @@ import config from "../config";
 
 export default class DocumentController {
     static async list(req : any, res: any) {
-        const files = await File.find().populate('user');
+        const files = await File.find({ user: req.user.id }).sort({'createdAt': -1}).populate('user');
 
         return res.status(200).json(files);
     }
@@ -35,20 +35,13 @@ export default class DocumentController {
 
         const document = await DocParser.uploadDocument(config.docparserParserId , req.file.path);
 
-        async function GetRandomUserID() { // TODO: get logged in user
-            const allUsers : any[] = await User.find();
-            if (allUsers.length === 0)
-                return (await User.create({ username: "Johnny" }))._id;
-            return allUsers[Math.floor(Math.random() * allUsers.length)];
-        }
-
         const file = await File.create({
             path: req.file.path,
             name: req.file.originalname,
             documentId: document.id,
-            type: "AFCA", // TODO: Get type from request
+            type: req.body.type,
             extracted: null,
-            user: await GetRandomUserID()
+            user: req.user.id
         })
 
         return res.status(200).json(file)

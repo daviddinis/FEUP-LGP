@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "components/Header/Header";
+import Header, { SideBarOption } from "components/Header/Header";
 import { getPercentage } from "../../components/State/State";
 import SubmissionTableAdmin from "components/SubmissionTable/SubmissionAdminTable/SubmissionAdminTable";
 import Submission from "models/Submission";
@@ -42,7 +42,7 @@ function AdminFeed(): JSX.Element {
 
   return (
     <div className="admin-feed">
-      <Header username="gingerAle" isAdmin={true} />
+      <Header sideBarOption={SideBarOption.SubmittedDocuments}/>
 
       <div className="content">
         <SubmissionTableAdmin
