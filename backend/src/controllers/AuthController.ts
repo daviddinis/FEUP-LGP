@@ -6,6 +6,7 @@ import User from '../models/user';
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import config from "../config";
+import { EWOULDBLOCK } from 'constants';
 
 passport.serializeUser((user, done) => done(null, user._id));
 passport.deserializeUser((id, done) => {
@@ -79,6 +80,11 @@ export default class AuthController {
     static async logout(req, res) {
         req.logout();
         return res.status(204).send();
+    }
+
+    static async ensureLogin(req, res, next){
+        require('connect-ensure-login').ensureLoggedIn('/login');
+        next();
     }
 }
 
