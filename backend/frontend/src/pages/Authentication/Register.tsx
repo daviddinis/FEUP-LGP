@@ -1,19 +1,19 @@
 import React from 'react';
 import "./Authentication.scss";
 import map from 'shared/images/mapa1.svg';
-import { Link } from "react-router-dom";
 import Auth from '../../auth/auth';
 
 function RegisterPage(): JSX.Element {
   const handleOnRegister = async (e : any) => {
     e.preventDefault();
+    const username = document.getElementById('username') as HTMLInputElement;
     const email = document.getElementById('email') as HTMLInputElement;
     const password = document.getElementById('password') as HTMLInputElement;
-    // const user : any = await Auth.logUser(email.value, password.value);
+    const user : any = await Auth.registerUser(username.value, email.value, password.value);
 
-    // if (user)
-    //     window.location.href = user.isAdmin ? "/admin" : "/user";
-    // else alert("Invalid credentials");
+    if (user)
+        window.location.href = user.isAdmin ? "/admin" : "/user";
+    else alert("Invalid credentials");
   }
 
   return (
