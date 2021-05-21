@@ -75,9 +75,12 @@ export default class Auth {
   }
 
   static async isUserAdmin(): Promise<boolean> {
-    const user = await axios.get("api/auth/check");
     if(this.isUserLogged()){
-      return user.data.isAdmin;
+      const user = this.getLoggedUser();
+      if(user != null)
+        return user.isAdmin;
+      else
+        return false;
     }else{
       return false;
     }
