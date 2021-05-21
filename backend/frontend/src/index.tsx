@@ -11,6 +11,7 @@ import User from 'pages/UserFeed/UserFeed';
 import Home from 'pages/HomePage/HomePage';
 import Parameters from 'pages/Parameters/Parameters';
 import PrivateRoute from 'routes/PrivateRoute';
+import AdminRoute from 'routes/AdminRoute'
 import Login from 'pages/Authentication/Login';
 import Register from 'pages/Authentication/Register';
 
@@ -25,20 +26,20 @@ ReactDOM.render(
                     <Submission/>
                 </PrivateRoute>
 
-                <PrivateRoute path="/admin">
+                <AdminRoute path="/admin">
                     <Admin/>
-                </PrivateRoute>
+                </AdminRoute>
 
-                <PrivateRoute path="/parameters">
+                <AdminRoute path="/parameters">
                     <Parameters/>
-                </PrivateRoute>
+                </AdminRoute>
 
-                <PrivateRoute path="/users/:username/:id/submissions">
+                <AdminRoute path="/users/:username/:id/submissions">
                     <AdminUserDocs/>
-                </PrivateRoute>
-                <PrivateRoute path="/users">
+                </AdminRoute>
+                <AdminRoute path="/users">
                     <RegisteredUsers/>
-                </PrivateRoute>
+                </AdminRoute>
                 <Route path="/login">
                     <Login/>
                 </Route>

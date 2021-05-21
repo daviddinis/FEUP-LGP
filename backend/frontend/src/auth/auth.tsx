@@ -74,6 +74,18 @@ export default class Auth {
     return true;
   }
 
+  static async isUserAdmin(): Promise<boolean> {
+    if(await this.isUserLogged()){
+      const user = this.getLoggedUser();
+      if(user != null)
+        return user.isAdmin;
+      else
+        return false;
+    }else{
+      return false;
+    }
+  }
+
   private static setLoggedUser(username: string, isAdmin: boolean): void {
     window.localStorage.setItem(
       "KyCON_USER",
