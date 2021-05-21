@@ -6,7 +6,6 @@ import User from '../models/user';
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import config from "../config";
-import { EWOULDBLOCK } from 'constants';
 
 passport.serializeUser((user, done) => done(null, user._id));
 passport.deserializeUser((id, done) => {
