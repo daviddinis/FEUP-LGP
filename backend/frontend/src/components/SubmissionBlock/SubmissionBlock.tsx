@@ -31,7 +31,7 @@ const SubmissionBlock = (submission: Submission): JSX.Element => {
               <h2>
                 <b>{submission.name}</b>
               </h2>
-              <span className="submission-author">{submission.owner/*TODO*/}</span>
+              <span className="submission-author">{submission.owner}</span>
             </div>
             <p className="date">
               <time>{new Date(submission.date).toLocaleDateString()}</time>
