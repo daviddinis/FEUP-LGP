@@ -74,6 +74,15 @@ export default class Auth {
     return true;
   }
 
+  static async isUserAdmin(): Promise<boolean> {
+    const user = await axios.get("api/auth/check");
+    if(this.isUserLogged()){
+      return user.data.isAdmin;
+    }else{
+      return false;
+    }
+  }
+
   private static setLoggedUser(username: string, isAdmin: boolean): void {
     window.localStorage.setItem(
       "KyCON_USER",
