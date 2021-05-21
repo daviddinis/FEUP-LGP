@@ -84,16 +84,14 @@ export default class AuthController {
 
     static async ensureLogin(req, res, next){
         if (req.user) {
+            console.log(req.user.email);
             next();
         }
         return res.status(401).send();
     }
 
     static async ensureAdminLogin(req, res, next){
-        if (req.user) {
-            const email = req.user.email;
-            const user : any = await User.findOne({ email });
-            console.log(email);
+        if (req.user && req.user.isAdmin) {
             next();
         }
         return res.status(401).send();

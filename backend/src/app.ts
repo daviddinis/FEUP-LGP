@@ -36,14 +36,14 @@ app.get('/api/files/self', AuthController.ensureLogin, DocumentController.listSe
 app.get('/api/files/:id', AuthController.ensureLogin, DocumentController.read);
 app.post('/api/files/submit', AuthController.ensureLogin, upload.single('file'), DocumentController.submit);
 
-app.get('/api/users/:id/submissions', AuthController.ensureLogin, UserController.submissions);
-app.get('/api/users', AuthController.ensureLogin, UserController.list);
-app.post('/api/users/:id/flag', AuthController.ensureLogin, UserController.flag);
+app.get('/api/users/:id/submissions', AuthController.ensureAdminLogin, UserController.submissions);
+app.get('/api/users', AuthController.ensureAdminLogin, UserController.list);
+app.post('/api/users/:id/flag', AuthController.ensureAdminLogin, UserController.flag);
 
-app.get('/api/types', AuthController.ensureLogin, TypeController.list);
-app.post('/api/types/add', AuthController.ensureLogin, TypeController.add);
-app.put("/api/types/:id", AuthController.ensureLogin, TypeController.update);
-app.delete("/api/types/:id", AuthController.ensureLogin, TypeController.delete);
+app.get('/api/types', AuthController.ensureAdminLogin, TypeController.list);
+app.post('/api/types/add', AuthController.ensureAdminLogin, TypeController.add);
+app.put("/api/types/:id", AuthController.ensureAdminLogin, TypeController.update);
+app.delete("/api/types/:id", AuthController.ensureAdminLogin, TypeController.delete);
 
 app.listen(config.port, async () => {
   console.log("App is running on port " + config.port);
