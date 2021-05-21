@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Register.scss";
+import "./Authentication.scss";
 import PropTypes from 'prop-types';
 import map from 'shared/images/mapa1.svg';
 
@@ -21,7 +21,7 @@ function RegisterPage(): JSX.Element {
       </h1>
       <p className="text-login">Join Us</p>
 
-      <div className="register-content">
+      <div className="loginContent">
         <form className="struct-form">
           <p>username</p>
           <input id="username" type="text"/>
