@@ -1,12 +1,17 @@
 import File from "../models/file";
-import User from "../models/user";
 import DocParser from "../lib/DocParserAPI";
 import DocumentValidator from "../lib/DocumentValidator";
 import config from "../config";
 
 export default class DocumentController {
-    static async list(req : any, res: any) {
+    static async listSelf(req : any, res: any) {
         const files = await File.find({ user: req.user.id }).sort({'createdAt': -1}).populate('user');
+
+        return res.status(200).json(files);
+    }
+
+    static async list(req : any, res: any) {
+        const files = await File.find({ }).sort({'createdAt': -1}).populate('user');
 
         return res.status(200).json(files);
     }
@@ -16,6 +21,9 @@ export default class DocumentController {
 
         if (!file)
             return res.status(404).send();
+
+        if (!req.user.isAdmin && file.user._id.toString() !== req.user._id.toString())
+            return res.status(401).send();
 
         if (file.extracted == null) {
             const extracted = await DocumentValidator.parseExtractedInfo(file.type, file.documentId);

@@ -83,7 +83,7 @@ const HeaderBase = (OHeader: IHeader): JSX.Element => {
         <h1 className={`page-title ${sidebar ? "active" : ""}`}>
           Know your customer on the news
         </h1>
-        <nav>
+        <nav className="user-nav">
           <p className={"username"}>
             {user.username}
             <img className={"icon user"} src={person} />

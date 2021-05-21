@@ -8,8 +8,8 @@ import Submission from "models/Submission";
 const SubmissionAdminLine = (submission : Submission): JSX.Element => {
     return (
         <tr className={'line submission'}>
-            <td><Flag flagged={submission.isFlagged} /></td>
-            <td>{submission.user}</td>
+            <td><Flag flagged={submission.user.isFlagged} userId={submission.user.id} /></td>
+            <td>{submission.user.username}</td>
             <td><span className={"icon status " + stateToClass(submission.state)}/></td>
             <td>{stateToString(submission.state)}</td>
             <td>{submission.name}</td>

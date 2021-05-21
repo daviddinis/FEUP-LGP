@@ -88,11 +88,13 @@
 }
 
 .home-page .home-body .email-area .home-map{
-  margin-left: 60px;
-  margin-top: -50px;
   border-radius: 12px;
   padding: 0.5em 1.1em;
   height: 400px;
   font-size: 15px;
+
+  position: absolute;
+  bottom: 73px;
+  right: 63px;
 }
 

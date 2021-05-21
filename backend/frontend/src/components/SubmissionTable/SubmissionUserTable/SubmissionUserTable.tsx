@@ -10,7 +10,7 @@ interface ISubmissionUserTable {
 
 const SubmissionUserTable = (submissions : ISubmissionUserTable) : JSX.Element => {
     if (submissions.submissions.length === 0)
-        return <p className="no-submissions">You have not submitted any documents yet</p>
+        return <p className="no-submissions">No documents were submitted yet</p>
     return (
         <table className={"submissions user"}>
         <thead>

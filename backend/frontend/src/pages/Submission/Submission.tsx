@@ -20,6 +20,7 @@ interface Submission {
     extracted: Highlights[];
     createdAt: string;
     user: {
+        _id: string
         username: string
     }
 }

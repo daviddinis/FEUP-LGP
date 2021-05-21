@@ -86,9 +86,7 @@ function RegisteredUsersPage(): JSX.Element {
 
   return (
     <div className="registered-users-page">
-      <Header
-        sideBarOption={SideBarOption.RegisteredUsers}
-      />
+      <Header sideBarOption={SideBarOption.RegisteredUsers} />
       <div className="body-container content">
         <header>
           <div className="search-bar">

@@ -4,7 +4,9 @@ import flag from "shared/icons/flag.svg";
 import flagSelected from "shared/icons/flagSelected.svg";
 import { updateUserFlag } from "./ApiCallFlag";
 
+
 interface IFlag {
+  userId: string
   flagged: boolean
 }
 
@@ -13,7 +15,8 @@ function Flag(OFlagged: IFlag): JSX.Element {
 
   function setFlag() {
     setFlagged(!flagged);
-    updateUserFlag("1"); //TODO
+    updateUserFlag(OFlagged.userId);
+
   }
 
   return (

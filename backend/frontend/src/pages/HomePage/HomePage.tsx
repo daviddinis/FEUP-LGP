@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import "pages/HomePage/HomePage.scss";
 import map from 'shared/images/mapa.svg';
 import { Link } from "react-router-dom";
 
 function AdminFeed(): JSX.Element {
+  const [email, setEmail] = useState<string>();
+
   return (
     <div className='home-page'>
       <header className="home-header">
@@ -15,8 +17,10 @@ function AdminFeed(): JSX.Element {
         <p className="home-text">The tool that recognizes and validates sections in a<br/>document and highlights important information.</p>
         <p className="home-text">Relieves the burden from an entity and<br/>make the process easier to the client.</p>
         <div className = "email-area">
-            <input type="text" className="email-input" placeholder="Email"></input>
-            <button className="email-button">Sign up</button>
+            <input type="text" className="email-input" placeholder="Email" onChange={e => setEmail(e.target.value)}/>
+            <button className="email-button">
+                <Link to={{ pathname: "/register", state: { email }}} >Sign up</Link>
+            </button>
             <img className={ 'home-map' } src={ map }/>
         </div>
       </div>

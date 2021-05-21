@@ -1,7 +1,10 @@
 export default interface Submission {
     id: string;
-    user: string;
-    isFlagged: boolean;
+    user: {
+      id: string,
+      username: string,
+      isFlagged: boolean;
+    };
     name: string;
     type: string;
     state: number;

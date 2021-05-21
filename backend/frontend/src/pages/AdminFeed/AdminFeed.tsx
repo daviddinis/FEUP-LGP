@@ -11,8 +11,9 @@ interface FileSubmission {
   type: string;
   extracted: any[];
   createdAt: Date;
-  isFlagged: boolean;
   user: {
+    flagged: boolean;
+    _id: string;
     username: string;
   };
 }
@@ -31,9 +32,12 @@ function AdminFeed(): JSX.Element {
     state: getPercentage(submission.extracted),
     name: submission.name,
     type: submission.type,
-    date: new Date(submission.createdAt),
-    isFlagged: submission.isFlagged,
-    user: submission?.user?.username,
+    date: new Date(submission.createdAt), 
+    user: {
+      isFlagged: submission?.user?.flagged,
+      id:   submission?.user?._id,
+      username: submission?.user?.username,
+    }
   }));
 
   return (
