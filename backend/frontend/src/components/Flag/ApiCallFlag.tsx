@@ -1,4 +1,5 @@
+import axios from "axios";
+
 export function updateUserFlag(id : string) : void {
-    //TODO: API call
-    console.log(id);
+    axios.post("/api/users/" + id + "/flag");
 }
