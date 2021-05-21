@@ -4,8 +4,14 @@ import DocumentValidator from "../lib/DocumentValidator";
 import config from "../config";
 
 export default class DocumentController {
-    static async list(req : any, res: any) {
+    static async listSelf(req : any, res: any) {
         const files = await File.find({ user: req.user.id }).sort({'createdAt': -1}).populate('user');
+
+        return res.status(200).json(files);
+    }
+
+    static async list(req : any, res: any) {
+        const files = await File.find({ }).sort({'createdAt': -1}).populate('user');
 
         return res.status(200).json(files);
     }

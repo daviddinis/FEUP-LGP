@@ -31,6 +31,7 @@ app.post('/api/auth/register', AuthController.register)
 app.post('/api/auth/logout', AuthController.logout)
 
 app.get('/api/files', DocumentController.list);
+app.get('/api/files/self', DocumentController.listSelf);
 app.get('/api/files/:id', DocumentController.read);
 app.post('/api/files/submit', upload.single('file'), DocumentController.submit);
 

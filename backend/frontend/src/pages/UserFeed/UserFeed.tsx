@@ -24,7 +24,7 @@ function UserFeed(): JSX.Element {
   const [isPopupOpen, setPopupOpen] = useState(false);
 
   useEffect(() => {
-    axios.get("/api/files").then((res) => setFiles(res.data));
+    axios.get("/api/files/self").then((res) => setFiles(res.data));
   }, [])
 
   const onDrop = (acceptedFiles : any[]) => {
