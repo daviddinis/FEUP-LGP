@@ -80,6 +80,20 @@ export default class AuthController {
         req.logout();
         return res.status(204).send();
     }
+
+    static async ensureLogin(req, res, next){
+        if (req.user) {
+            next();
+        }
+        else return res.status(401).send();
+    }
+
+    static async ensureAdminLogin(req, res, next){
+        if (req.user && req.user.isAdmin) {
+            next();
+        }
+        else return res.status(401).send();
+    }
 }
 
 module.exports = AuthController;
