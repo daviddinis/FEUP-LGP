@@ -22,6 +22,9 @@ export default class DocumentController {
         if (!file)
             return res.status(404).send();
 
+        if (!req.user.isAdmin && file.user._id.toString() !== req.user._id.toString())
+            return res.status(401).send();
+
         if (file.extracted == null) {
             const extracted = await DocumentValidator.parseExtractedInfo(file.type, file.documentId);
             await file.updateOne({extracted});
