@@ -35,7 +35,7 @@ function LoginPage(): JSX.Element {
           <button type="submit">Log in</button>
         </form>
       </div>
-      <Link to={ '/login' } className={ 'signup-link' } >New here? Create account</Link>
+      <Link to={ '/register' } className={ 'signup-link' } >New here? Create account</Link>
     </div>
   );
 }
