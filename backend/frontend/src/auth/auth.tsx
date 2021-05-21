@@ -5,7 +5,7 @@ export default class Auth {
   static async registerUser(username: string, email: string, password: string) : Promise<any> {
     try {
       const res = await axios.post(
-          "api/auth/register",
+          "/api/auth/register",
           {username, email, password},
           {
             headers: {
@@ -13,6 +13,8 @@ export default class Auth {
             },
           }
       );
+
+
 
       return res.data;
     } catch (error) {
@@ -24,7 +26,7 @@ export default class Auth {
   static async logUser(email: string, password: string): Promise<any> {
     try {
       const res = await axios.post(
-        "api/auth/login",
+        "/api/auth/login",
         { email, password },
         {
           headers: {
@@ -42,7 +44,7 @@ export default class Auth {
 
   static async logoutUser(): Promise<boolean> {
     try {
-      await axios.post("api/auth/logout");
+      await axios.post("/api/auth/logout");
 
       return true;
     } catch (error) {
@@ -61,7 +63,7 @@ export default class Auth {
   }
 
   static async isUserLogged(): Promise<boolean> {
-    const user = await axios.get("api/auth/check");
+    const user = await axios.get("/api/auth/check");
 
     if (!user || user.status !== 200) {
       this.removeLoggedUser();
