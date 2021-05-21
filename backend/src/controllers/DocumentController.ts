@@ -1,5 +1,4 @@
 import File from "../models/file";
-import User from "../models/user";
 import DocParser from "../lib/DocParserAPI";
 import DocumentValidator from "../lib/DocumentValidator";
 import config from "../config";

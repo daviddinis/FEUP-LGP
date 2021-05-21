@@ -1,10 +1,12 @@
 import React from 'react';
 import "./Authentication.scss";
 import map from 'shared/images/mapa1.svg';
-import { Link } from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import Auth from '../../auth/auth';
 
 function RegisterPage(): JSX.Element {
+  const state : any = useLocation().state
+
   const handleOnRegister = async (e : any) => {
     e.preventDefault();
     const username = document.getElementById('username') as HTMLInputElement;
@@ -32,7 +34,7 @@ function RegisterPage(): JSX.Element {
           <p>username</p>
           <input id="username" type="text"/>
           <p>email</p>
-          <input id="email" type="email"/>
+          <input id="email" type="email" defaultValue={state?.email}/>
           <p>password</p>
           <input id="password" type="password"/>
           <button type="submit">Sign up</button>

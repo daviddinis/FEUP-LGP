@@ -8,7 +8,7 @@ export default class UserController {
     }
 
     static async submissions(req : any, res : any) {
-        const file : any = await File.find({"user" : req.params.id}, {sort: {'_id': -1}});
+        const file : any = await File.find({"user" : req.params.id}).sort({'createdAt': -1})
         if (!file)
             return res.status(404).send();
 
