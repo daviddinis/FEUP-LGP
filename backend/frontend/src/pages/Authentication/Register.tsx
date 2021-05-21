@@ -1,15 +1,16 @@
 import React from 'react';
-import "pages/Authentication/Authentication.scss";
+import "./Authentication.scss";
 import map from 'shared/images/mapa1.svg';
 import { Link } from "react-router-dom";
 import Auth from '../../auth/auth';
 
-function LoginPage(): JSX.Element {
-  const handleOnLogin = async (e : any) => {
+function RegisterPage(): JSX.Element {
+  const handleOnRegister = async (e : any) => {
     e.preventDefault();
+    const username = document.getElementById('username') as HTMLInputElement;
     const email = document.getElementById('email') as HTMLInputElement;
     const password = document.getElementById('password') as HTMLInputElement;
-    const user : any = await Auth.logUser(email.value, password.value);
+    const user : any = await Auth.registerUser(username.value, email.value, password.value);
 
     if (user)
         window.location.href = user.isAdmin ? "/admin" : "/user";
@@ -22,23 +23,25 @@ function LoginPage(): JSX.Element {
       <h1 className="title-page">
         Know your customer on the news
       </h1>
-      <p className="text-authentication">Log in</p>
+      <p className="text-authentication">Join us</p>
 
       <div className="authentication-content">
         <form 
-          onSubmit={ handleOnLogin }
+          onSubmit={ handleOnRegister }
           className="struct-form">
+          <p>username</p>
+          <input id="username" type="text"/>
           <p>email</p>
-          <input id="email"/>
+          <input id="email" type="email"/>
           <p>password</p>
           <input id="password" type="password"/>
-          <button type="submit">Log in</button>
+          <button type="submit">Sign up</button>
         </form>
       </div>
-      <Link to={ '/register' } className={ 'signup-link' } >New here? Create account</Link>
+        <Link to={ '/login' } className={ 'signup-link' } >Already have an account? Sign in</Link>
     </div>
   );
 }
 
 
-export default LoginPage;
+export default RegisterPage;

@@ -8,7 +8,7 @@ function AdminFeed(): JSX.Element {
     <div className='home-page'>
       <header className="home-header">
       <Link to={ '/login' } className="log-in">Log in</Link>
-      <Link to={ '' }className="sign-up">Sign Up</Link>
+      <Link to={ '/register' }className="sign-up">Sign Up</Link>
       </header>
       <div className="home-body">
         <h1 className="home-title">Know your costumer on the news</h1>

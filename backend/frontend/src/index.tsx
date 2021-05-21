@@ -12,6 +12,7 @@ import Home from 'pages/HomePage/HomePage';
 import Parameters from 'pages/Parameters/Parameters';
 import PrivateRoute from 'routes/PrivateRoute';
 import Login from 'pages/Authentication/Login';
+import Register from 'pages/Authentication/Register';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -40,6 +41,9 @@ ReactDOM.render(
                 </PrivateRoute>
                 <Route path="/login">
                     <Login/>
+                </Route>
+                <Route path="/register">
+                    <Register/>
                 </Route>
                 <Route path="/">
                     <Home/>
