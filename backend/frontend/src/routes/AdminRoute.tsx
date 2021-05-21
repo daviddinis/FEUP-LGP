@@ -4,7 +4,6 @@ import { Redirect, Route } from "react-router-dom";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const AdminRoute = ({ component, ...rest }: any): JSX.Element => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [isBusy, setIsBusy] = useState<boolean>(true);
 
@@ -12,9 +11,6 @@ const AdminRoute = ({ component, ...rest }: any): JSX.Element => {
     Auth.isUserAdmin().then((res) => {
       setIsAdmin(res)
       setIsBusy(false);
-    });
-    Auth.isUserLogged().then((res) => {
-      setIsLoggedIn(res);
     });
   }, []);
 
