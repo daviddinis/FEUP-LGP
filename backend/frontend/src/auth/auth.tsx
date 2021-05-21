@@ -75,7 +75,7 @@ export default class Auth {
   }
 
   static async isUserAdmin(): Promise<boolean> {
-    if(this.isUserLogged()){
+    if(await this.isUserLogged()){
       const user = this.getLoggedUser();
       if(user != null)
         return user.isAdmin;
