@@ -12,8 +12,10 @@ header.page-header {
 } 
 
 .username {
+    display: flex;
+    align-items: center;
     font-family: Montserrat;
-    font-size: 14px;
+    font-size: 1em;
     line-height: 17px;
     color: #701C74;
 }
@@ -35,6 +37,20 @@ header.page-header {
 header.page-header nav {
     float: right;
     margin-top: 0.5%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+header.page-header .logout-btn {
+    background: rgba(74, 196, 244, 0.8);
+    border-radius: 12px;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    font-family: Montserrat, serif;
+
+    color: white;
+
 }
 
 button{

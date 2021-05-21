@@ -35,6 +35,11 @@ const HeaderBase = (OHeader: IHeader): JSX.Element => {
 
   }, []);
 
+
+  function logout() {
+    Auth.logoutUser().then(() => window.location.href = "/");
+  }
+
   if (user?.isAdmin) {
     toogleSideBar = (
       <button className={"navbar-toggle icon hamburger"} onClick={showSidebar}>
@@ -83,6 +88,7 @@ const HeaderBase = (OHeader: IHeader): JSX.Element => {
             {user.username}
             <img className={"icon user"} src={person} />
           </p>
+          <button className="logout-btn" onClick={logout}>Sign Out</button>
         </nav>
       </header>
       {OHeader.withBackArrow && (
