@@ -10,38 +10,39 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import User from 'pages/UserFeed/UserFeed';
 import Home from 'pages/HomePage/HomePage';
 import Parameters from 'pages/Parameters/Parameters';
-import Register from 'pages/Register/Register';
+import PrivateRoute from 'routes/PrivateRoute';
+import Login from 'pages/Authentication/Login';
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
             <Switch>
-                <Route path="/user">
+                <PrivateRoute path="/user">
                     <User/>
-                </Route>
-                <Route path="/submissions/:id">
+                </PrivateRoute>
+                <PrivateRoute path="/submissions/:id">
                     <Submission/>
-                </Route>
+                </PrivateRoute>
 
-                <Route path="/admin">
+                <PrivateRoute path="/admin">
                     <Admin/>
-                </Route>
+                </PrivateRoute>
 
-                <Route path="/parameters">
+                <PrivateRoute path="/parameters">
                     <Parameters/>
-                </Route>
+                </PrivateRoute>
 
-                <Route path="/users/:username/:id/submissions">
+                <PrivateRoute path="/users/:username/:id/submissions">
                     <AdminUserDocs/>
-                </Route>
-                <Route path="/users">
+                </PrivateRoute>
+                <PrivateRoute path="/users">
                     <RegisteredUsers/>
-                </Route>
-                <Route path="/register">
-                    <Register/>
+                </PrivateRoute>
+                <Route path="/login">
+                    <Login/>
                 </Route>
                 <Route path="/">
-                    <Register/>
+                    <Home/>
                 </Route>
             </Switch>
         </Router>
