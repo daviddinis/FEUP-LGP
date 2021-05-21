@@ -12,9 +12,6 @@ interface LoginParams {
 
 function RegisterPage(): JSX.Element {
 
-    // const handleOnLogin = () => {
-
-    // };
 
   return (
     <div className="login-page">
@@ -22,18 +19,19 @@ function RegisterPage(): JSX.Element {
       <h1 className="page-title">
         Know your customer on the news
       </h1>
-      <p className="text-login">Log in</p>
+      <p className="text-login">Join Us</p>
 
-      <div className="loginContent">
+      <div className="register-content">
         <form className="struct-form">
-          <p>username or email</p>
-          <input id="username"/>
+          <p>username</p>
+          <input id="username" type="text"/>
+          <p>email</p>
+          <input id="email" type="email"/>
           <p>password</p>
           <input id="password" type="password"/>
-          <button type="submit">Log in</button>
+          <button type="submit">Sign up</button>
         </form>
       </div>
-      <button>New here? Create account</button>
     </div>
   );
 }
