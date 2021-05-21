@@ -40,7 +40,7 @@ app.get('/api/users/:id/submissions', AuthController.ensureAdminLogin, UserContr
 app.get('/api/users', AuthController.ensureAdminLogin, UserController.list);
 app.post('/api/users/:id/flag', AuthController.ensureAdminLogin, UserController.flag);
 
-app.get('/api/types', AuthController.ensureAdminLogin, TypeController.list);
+app.get('/api/types', AuthController.ensureLogin, TypeController.list);
 app.post('/api/types/add', AuthController.ensureAdminLogin, TypeController.add);
 app.put("/api/types/:id", AuthController.ensureAdminLogin, TypeController.update);
 app.delete("/api/types/:id", AuthController.ensureAdminLogin, TypeController.delete);
