@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Authentication.scss";
 import map from 'shared/images/mapa1.svg';
+import { Link } from "react-router-dom";
 import Auth from '../../auth/auth';
 
 function RegisterPage(): JSX.Element {
@@ -37,6 +38,7 @@ function RegisterPage(): JSX.Element {
           <button type="submit">Sign up</button>
         </form>
       </div>
+        <Link to={ '/login' } className={ 'signup-link' } >Already have an account? Sign in</Link>
     </div>
   );
 }
