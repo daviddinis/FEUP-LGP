@@ -30,7 +30,7 @@ function RegisteredUsersPage(): JSX.Element {
 
   const userItem = (user: User) => (
       <div className="user-item" key={user._id}>
-          <Flag flagged={user.flagged} />
+          <Flag flagged={user.flagged} userId={user._id} />
           <img src={person} className="user-image" />
 
           <Link to={`/users/${user.username}/${user._id}/submissions`}>

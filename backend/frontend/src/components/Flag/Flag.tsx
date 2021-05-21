@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./Flag.scss";
 import flag from "shared/icons/flag.svg";
 import flagSelected from "shared/icons/flagSelected.svg";
+import axios from "axios";
 
 interface IFlag {
+  userId: string
   flagged: boolean
 }
 
@@ -12,7 +14,7 @@ function Flag(OFlagged: IFlag): JSX.Element {
 
   function setFlag() {
     setFlagged(!flagged);
-    //TODO: call api
+    axios.get("/api/users/" + OFlagged.userId + "/flag");
   }
 
   return (
